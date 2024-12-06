@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트레이드잇</title>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- <link rel="stylesheet" href="../files/fonts/xeicon/xeicon.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/d49aa60918.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/mypage.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="../assets/imgs/tradeit_logo.svg" alt="logo" onclick="location.href='/';">
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="./crm_dashboard.html" id="dash">
+                            <div>
+                                <img src="../assets/imgs/sidebar-dash.svg" class="sidebar_icon">
+                                <span>대시보드</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="./crm_buyerlist.html" id="buyerlist">
+                            <div>
+                                <img src="../assets/imgs/sidebar-buyerlist.svg" class="sidebar_icon">
+                                <span>바이어 리스트</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="./crm_clientlist.html" id="clientlist">
+                            <div>
+                                <img src="../assets/imgs/sidebar-clientlist.svg" class="sidebar_icon">
+                                <span>고객 관리</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li id="toggle-menu">
+                        <a href="#" id="report">
+                            <div>
+                                <img src="../assets/imgs/sidebar-board.svg" class="sidebar_icon">
+                                <span>업무 리포트</span>
+                            </div>
+                            <img src="../assets/imgs/sidebar-toggle.svg" class="sidebar_drop_icon">
+                        </a>
+                    </li>
+                    <div class="submenu">
+                        <div class="submenu-item"><a href="./crm_week_report.html" id="week">주간 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_month_report.html" id="month">월간 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_meeting_report.html" id="meeting">미팅 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_business_report.html" id="business">출장 리포트</a></div>
+                    </div>
+                    <li>
+                        <a href="./crm_calendar.html" id="calendar">
+                            <div>
+                                <img src="../assets/imgs/sidebar-calendar.svg" class="sidebar_icon">
+                                <span>일정 관리</span>
+                            </div>
+                        </a>
+                    </li> 
+                </ul>
+            </nav>
+            <div>
+                <button class="transfer-button">
+                    <img src="../assets/imgs/change_type.svg">
+                    <span>기업 전환</span>
+                </button>
+            </div>
+    </aside>
+    <main class="mg-14">
+    <header>
+        <div class="menu-nav">
+            <span>Dashboard</span>
+        </div>
+        <div class="mypage">
+            <div class="user-info" id="myprofile">
+                    <img src="/images/supplier/100003-티제이코프/profile_1643868771.png" class="profile_img">
+                <span class="bold">홍길동</span><span>님</span>
+                <img src="../assets/imgs/drop_inactive_icon.svg" class="sidebar_drop_icon">
+            </div>
+        </div>
+    </header>
+    <div class="myprofile-box">
+        <div>
+            <span>
+                <a href="/crm_profile_edit.html">개인정보 수정</a>
+            </span>
+        </div>
+        <div>
+            <span onclick="signOut()">로그아웃</span>
+        </div>
+    </div>
+    <div class="calendar-wrap">
+        <div class="header">
+            <div class="flex-center">
+                <div class="title">2024년 9월</div>
+                <div class="buttons">
+                    <button class="btn_dash lightgray_bg slide-btn prev">
+                        <img src="./assets/imgs/prev_icon.svg"> 
+                    </button>
+                    <button class="btn_dash lightgray_bg slide-btn next">
+                        <img src="./assets/imgs/next_icon.svg"> 
+                    </button>
+                </div>
+            </div>
+            <button class="btn_add">
+                <img src="./assets/imgs/plus_icon.svg"> 
+                <span>추가하기</span>
+            </button>
+        </div>
+        <div class="calendar-box">
+            <!-- 왼쪽 큰달력 -->
+            <div class="calendar-left">
+                <div class="calendar">
+                    <div class="day-label">일</div>
+                    <div class="day-label">월</div>
+                    <div class="day-label">화</div>
+                    <div class="day-label">수</div>
+                    <div class="day-label">목</div>
+                    <div class="day-label">금</div>
+                    <div class="day-label">토</div>
+            
+                    <!-- First Week -->
+                    <div class="day previous-month sun">29</div>
+                    <div class="day previous-month">30</div>
+                    <div class="day previous-month">31</div>
+                    <div class="day">1</div>
+                    <div class="day">2</div>
+                    <div class="day">3</div>
+                    <div class="day sat">4</div>
+                    <div class="day sun">5</div>
+            
+                    <!-- Second Week -->
+                    <div class="day">6</div>
+                    <div class="day">7</div>
+                    <div class="day">8</div>
+                    <div class="day">9</div>
+                    <div class="day">10
+                        <div class="event notice">공지사항입니다.</div>
+                        <div class="event second meeting"><span>오전 10:00</span> OO업체 미팅</div>
+                        <div class="event third meeting"><span>오전 10:00</span> OO업체 미팅</div>
+                        <div class="more-view">2개 더보기</div>
+                    </div>
+                    <div class="day sat">11</div>
+                    <div class="day sun">12</div>
+                    <div class="day">13</div>
+            
+                    <!-- Third Week -->
+                    <div class="day">13</div>
+                    <div class="day">14</div>
+                    <div class="day">15</div>
+                    <div class="day">16</div>
+                    <div class="day sat">17</div>
+                    <div class="day sun">18</div>
+                    <div class="day today">19</div>
+            
+                    <!-- Fourth Week -->
+                    <div class="day">20</div>
+                    <div class="day">21
+                        <div class="event twodays meeting">베트남 호치민 1박2일 출장</div>
+                        <div class="event second notice">공지1</div>
+                        <div class="event third notice">공지2</div>
+                        <div class="event four meeting"><span>오전 10:00</span> OOOO업체..</div>
+                    </div>
+                    <div class="day">22</div>
+                    <div class="day">23</div>
+                    <div class="day sat">24</div>
+                    <div class="day sun">25</div>
+                    <div class="day">26</div>
+            
+                    <!-- Fifth Week -->
+                    <div class="day">27</div>
+                    <div class="day">28</div>
+                    <div class="day">29</div>
+                    <div class="day">30</div>
+                    <div class="day previous-month sat">1</div>
+                </div>
+                <!-- 상세 일정 팝업 -->
+                <div class="calendar-popup">
+                    <div class="popup-content">
+                        <div class="header">
+                            <div>
+                                <div class="flex-center">
+                                    <div class="dot meeting"></div>
+                                    <div class="category">미팅</div>
+                                </div>
+                                <h4>OOO업체 미팅</h4>
+                            </div>
+                            <div class="buttons">
+                                <button class="settings-btn">
+                                    <img src="./assets/imgs/more_icon.svg" class="settings">
+                                    <div class="update-box">
+                                        <div class="row-div" id="update-schedule">
+                                            <img src="./assets/imgs/update_inactive.svg">
+                                            <span>수정</span>
+                                        </div>
+                                        <div class="row-div">
+                                            <img src="./assets/imgs/delete_inactive.svg">
+                                            <span>삭제</span>
+                                        </div>
+                                    </div>
+                                </button>
+                                <button>
+                                    <img src="./assets/imgs/close_icon.svg" class="close"> 
+                                </button>
+                            </div>
+                        </div>
+                        <div class="contents">
+                            <div class="row">
+                                <div class="label">일시</div>
+                                <div class="value">9월 2일 (월) 오전 10시</div>
+                            </div>
+                            <div class="row">
+                                <div class="label">메모</div>
+                                <div class="value">메모입니다.</div>
+                            </div>
+                            <div class="row">
+                                <div class="label">화상미팅</div>
+                                <div class="value flex-center">
+                                    <a href="https://home.office.hiworks.com/main">https://home.office.hiworks.com/main</a>
+                                    <a href="https://home.office.hiworks.com/main"><img src="./assets/imgs/homepage_icon.svg" class="site-icon"> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 일정 더보기 팝업 -->
+                <div class="moreview-popup">
+                    <div class="header">
+                        <h4>2024년 9월 9일</h4>
+                        <button>
+                            <img src="./assets/imgs/close_icon.svg" class="close"> 
+                        </button>
+                    </div>
+                    <div class="contents">
+                        <div class="event notice">공지사항입니다.</div>
+                        <div class="event meeting"><span>오전 10:00</span>OO업체 미팅</div>
+                        <div class="event meeting"><span>오후 13:30</span>OOO 전략 발표</div>
+                        <div class="event notice">공지사항 두번째입니다.</div>
+                        <div class="event notice">공지사항 세번째입니다.</div>
+                    </div>
+                </div>
+            </div>   
+
+            <!-- 오른쪽 작은달력과 일정 -->
+            <div class="calendar-right">
+                <!-- <div class="calendar">
+                    <div class="header flex-side">
+                        <div class="flex-center">
+                            <div class="title">2024년 09월</div>
+                        </div>
+                        <div class="buttons">
+                            <button class="btn_dash lightgray_bg slide-btn prev">
+                                <img src="./assets/imgs/prev_icon.svg"> 
+                            </button>
+                            <button class="btn_dash lightgray_bg slide-btn next">
+                                <img src="./assets/imgs/next_icon.svg"> 
+                            </button>
+                        </div>
+                    </div>
+                    <div class="calendar-header">
+                        <span class="disabled">일</span>
+                        <span>월</span>
+                        <span>화</span>
+                        <span>수</span>
+                        <span>목</span>
+                        <span>금</span>
+                        <span class="disabled">토</span>
+                    </div>
+                    <div class="calendar-body">
+                        <span class="disabled">1</span>
+                        <span class="disabled">2</span>
+                        <span class="disabled">3</span>
+                        <span class="disabled">4</span>
+                        <span class="disabled">5</span>
+                        <span class="disabled">6</span>
+                        <span class="disabled">7</span>
+                        <span class="disabled">8</span>
+                        <span class="selected">9</span>
+                        <span>10</span>
+                        <span>11</span>
+                        <span>12</span>
+                        <span>13</span>
+                        <span class="disabled">14</span>
+                        <span class="disabled">15</span>
+                        <span>16</span>
+                        <span>17</span>
+                        <span>18</span>
+                        <span>19</span>
+                        <span>20</span>
+                        <span class="disabled">21</span>
+                        <span class="disabled">22</span>
+                        <span>23</span>
+                        <span>24</span>
+                        <span>25</span>
+                        <span>26</span>
+                        <span>27</span>
+                        <span class="disabled">28</span>
+                        <span class="disabled">29</span>
+                        <span>30</span>
+                        <span>31</span>
+                    </div>
+                </div> -->
+                <div class="calendar-board">
+                    <div class="header">
+                        <div class="title">내 캘린더</div>
+                        <button class="add-category">
+                            <img src="./assets/imgs/add_icon.svg">
+                        </button>
+                    </div> 
+                    <div class="contents">
+                        <div class="schedule-box">
+                            <div class="dot meeting"></div>
+                            <span>미팅</span>
+                        </div>
+                        <div class="schedule-box">
+                            <div class="dot notice"></div>
+                            <span>공지사항</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 새 캘린더 만들기 모달 -->
+                <div class="overlay"></div>
+                <div class="category-modal">
+                    <div class="header">
+                        <h4>새 캘린더 만들기</h4>
+                        <button class="close">
+                            <img src="./assets/imgs/close_icon.svg"> 
+                        </button>
+                    </div>
+                    <div class="contents">
+                        <div class="label">캘린더 이름</div>
+                        <input type="text" placeholder="캘린더 이름을 입력하세요.">
+                        <div class="label">컬러</div>
+                        <div class="form-select" tabindex="0">
+                            <div class="selected">선택</div>
+                        </div>
+                        <div class="color-box" style="display: none;">
+                            <div class="palette" style="background-color: #ff6363;"></div>
+                            <div class="palette" style="background-color: #ffa163;"></div>
+                            <div class="palette" style="background-color: #68d995;"></div>
+                            <div class="palette" style="background-color: #68a8d9;"></div>
+                            <div class="palette" style="background-color: #9f28e3;"></div>
+                            <div class="palette" style="background-color:  #d9688e;"></div>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button class="btn_lightgray cancel">취소하기</button>
+                        <button class="btn_blue save">저장하기</button>
+                    </div>
+                </div>
+                <!-- 일정 추가 모달 -->
+                <div class="schedule-modal">
+                    <div class="header">
+                        <h4>일정 추가</h4>
+                        <button>
+                            <img src="./assets/imgs/close_icon.svg" class="close">
+                        </button>
+                    </div>
+                    <div class="contents">
+                        <div class="label">캘린더</div>
+                        <div class="form-select" tabindex="0">
+                            <div class="selected">선택</div>
+                        </div>
+                        <div class="option-box calendar">
+                            <div class="option-value">미팅</div>
+                            <div class="option-value">공지사항</div>
+                        </div>
+                        <div class="label">일정 제목</div>
+                        <input type="text" placeholder="제목을 입력하세요.">
+                        <div class="label">시작</div>
+                        <div class="flex-center relative" style="gap:0.625rem;">
+                            <input type="date">
+                            <div class="form-select timestamp" tabindex="0">
+                                <div class="selected">오후 12:00</div>
+                            </div>
+                            <div class="option-box start">
+                                <div class="option-value">오전 07:00</div>
+                                <div class="option-value">오전 07:30</div>
+                                <div class="option-value">오전 08:00</div>
+                                <div class="option-value">오전 08:30</div>
+                                <div class="option-value">오전 09:00</div>
+                                <div class="option-value">오전 09:30</div>
+                                <div class="option-value">오전 10:00</div>
+                            </div>                      
+                        </div>
+                        <div class="all-day">
+                            <input type="checkbox" id="all-day">
+                            <span>종일</span>
+                        </div>
+                        <div class="label">종료</div>
+                        <div class="flex-center relative" style="gap:0.625rem;">
+                            <input type="date">
+                            <div class="form-select timestamp" tabindex="0">
+                                <div class="selected">오후 12:00</div>
+                            </div>
+                            <div class="option-box end">
+                                <div class="option-value">오전 07:00</div>
+                                <div class="option-value">오전 07:30</div>
+                                <div class="option-value">오전 08:00</div>
+                                <div class="option-value">오전 08:30</div>
+                                <div class="option-value">오전 09:00</div>
+                                <div class="option-value">오전 09:30</div>
+                                <div class="option-value">오전 10:00</div>
+                            </div> 
+                        </div>
+                        <div class="label">내용</div>
+                        <textarea placeholder="내용을 입력하세요."></textarea>
+                        <div class="label">화상 회의 URL</div>
+                        <input type="text" placeholder="URL을 입력하세요.">
+                    </div>
+                    <div class="buttons">
+                        <button class="btn_lightgray cancel">취소하기</button>
+                        <button class="btn_blue save">저장하기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+<script>
+    const menuItems = [
+        {
+            id: 'dash',
+            iconHover: '../assets/imgs/sidebar-dash-active.svg',
+            iconDefault: '../assets/imgs/sidebar-dash.svg',
+            urls: ['/crm_dashboard.html']
+        },
+        {
+            id: 'buyerlist',
+            iconHover: '../assets/imgs/sidebar-buyerlist-active.svg',
+            iconDefault: '../assets/imgs/sidebar-buyerlist.svg',
+            urls: ['/crm_buyerlist.html']
+        },
+        {
+            id: 'clientlist',
+            iconHover: '../assets/imgs/sidebar-clientlist-active.svg',
+            iconDefault: '../assets/imgs/sidebar-clientlist.svg',
+            urls: ['/crm_clientlist.html', '/crm_detail.html', '/crm_update_detail.html', '/crm_update_manager.html', '/crm_update_report.html']
+        },
+        {
+            id: 'report',
+            iconHover: '../assets/imgs/sidebar-board-active.svg',
+            iconDefault: '../assets/imgs/sidebar-board.svg',
+            urls: [''],
+            submenuUrls: ['/crm_week_report.html', '/crm_month_report.html', '/crm_meeting_report.html', '/crm_business_report.html'] 
+        },
+        {
+            id: 'calendar',
+            iconHover: '../assets/imgs/sidebar-calendar-active.svg',
+            iconDefault: '../assets/imgs/sidebar-calendar.svg',
+            urls: ['/crm_calendar.html']
+        },
+    ];
+
+    const currentPath = window.location.pathname;
+
+    const setMenuStyle = (item, icon, isActive) => {
+        item.style.backgroundColor = isActive ? 'rgba(12, 120, 251, 0.1)' : 'transparent';
+        item.style.color = isActive ? '#0c77fb' : '#505050';
+        item.style.fontWeight = isActive ? 'bold' : 'normal';
+        icon.src = isActive ? item.dataset.iconHover : item.dataset.iconDefault;
+    };
+
+    // 서브메뉴 상태 관리 함수
+    const toggleSubmenu = (isActive) => {
+        const submenu = document.querySelector('.submenu');
+        submenu.style.display = isActive ? 'block' : 'none';
+    };
+
+    // 메뉴 아이템 반복 처리
+    menuItems.forEach(menu => {
+        const item = document.getElementById(menu.id);
+        const icon = item.querySelector('img');
+        
+        // Dataset 속성을 통해 아이콘 정보를 추가
+        item.dataset.iconHover = menu.iconHover;
+        item.dataset.iconDefault = menu.iconDefault;
+
+        item.addEventListener('mouseover', () => setMenuStyle(item, icon, true));
+        item.addEventListener('mouseout', () => !item.classList.contains('active') && setMenuStyle(item, icon, false));
+
+        if (menu.urls.includes(currentPath)) {
+            item.classList.add('active');
+            setMenuStyle(item, icon, true);
+        }
+
+        // 서브메뉴를 포함한 메뉴일 경우 추가 처리
+        if (menu.submenuUrls && menu.submenuUrls.includes(currentPath)) {
+            const toggleItem = document.getElementById('toggle-menu');
+            item.style.fontWeight = 'bold';
+            item.style.color = '#0c77fb';
+
+            toggleSubmenu(true);
+
+            const sidebarIcon = toggleItem.querySelector('.sidebar_icon');
+            const sidebarDropIcon = toggleItem.querySelector('.sidebar_drop_icon');
+            
+            sidebarIcon.src = '../assets/imgs/sidebar-board-active.svg'; 
+            sidebarDropIcon.src = '../assets/imgs/sidebar-toggle-active.svg';  
+
+            const submenuItems = document.querySelectorAll('.submenu-item a');
+            submenuItems.forEach(subItem => {
+                if (subItem.getAttribute('href') === currentPath) {
+                    subItem.style.backgroundColor = 'rgba(12, 120, 251, 0.1)';
+                    subItem.style.color = '#0c77fb';
+                    subItem.style.fontWeight = 'bold';
+                }
+            });
+        }
+    });
+
+    // 현재 경로와 서브메뉴 a 요소의 href 속성 비교
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.submenu-item a').forEach(subItem => {
+            const hrefPath = subItem.getAttribute('href').replace('./', '');
+
+            console.log("currentPath:", currentPath); 
+            console.log("subItem href:", hrefPath);  
+
+            if (currentPath.includes(hrefPath)) {
+                subItem.style.backgroundColor = 'rgba(12, 120, 251, 0.1)';
+                subItem.style.color = '#0c77fb';
+
+                // 서브메뉴 열기
+                toggleSubmenu(true);
+            }
+        });
+    });
+
+    // 업무 리포트 사이드메뉴 CSS 스크립트
+    $(function() {
+        $('#report').click(function(e) {
+            e.preventDefault();
+
+            const $submenu = $('.submenu');
+            const isExpanded = $submenu.is(':visible');
+
+            $submenu.slideToggle(300);
+            $('#report .sidebar_drop_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-toggle.svg' : '../assets/imgs/sidebar-toggle-active.svg');
+            $('#report .sidebar_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-board.svg' : '../assets/imgs/sidebar-board-active.svg');
+            $('#report span').css({
+                'color': isExpanded ? '#505050' : '#0c77fb',
+                'font-weight': isExpanded ? '400' : 'bold'
+            });
+            $('#report').css('background-color', 'transparent');
+        });
+    });
+    // 상단 프로필 공통 스크립트
+    $("#myprofile").click(function(event) {
+        event.stopPropagation();
+        $(".myprofile-box").toggle();
+        if ($(".myprofile-box").is(":visible")) {
+            $(".sidebar_drop_icon").attr("src", "../assets/imgs/drop_active_icon.svg");
+        } else {
+            $(".sidebar_drop_icon").attr("src", "../assets/imgs/drop_inactive_icon.svg");
+        }
+    });
+    // select-box 커스텀 
+    $(function() {
+        $('.form-select').click(function() {
+            $('.option-box').hide();
+
+            $(this).next('.option-box').toggle();
+        });
+
+        // option-value를 클릭했을 때 option-box 닫기
+        $('.option-box .option-value').click(function() {
+            $(this).parent('.option-box').hide();
+
+            var selectedValue = $(this).text();
+            $(this).closest('.option-box').prev('.form-select').find('.selected').text(selectedValue);
+        });
+
+        $(document).click(function(e) {
+            if (!$(e.target).closest('.form-select, .option-box').length) {
+                $('.option-box').hide();
+            }
+        });
+        
+      // all-day 체크박스 상태 변경 시 동작
+    $('#all-day').change(function() {
+        if ($(this).is(':checked')) {
+            // all-day가 체크되면 시간 선택 비활성화
+            $('.timestamp').css({
+                'background-color': '#f9f9f9',
+                'color': '#ccc'
+            });
+            // option-box 클릭 방지
+            $('.timestamp').off('click');
+        } else {
+            // all-day 체크 해제 시 시간 선택 활성화
+            $('.timestamp').css({
+                'background-color': '',
+                'color': ''
+            });
+            // 클릭 이벤트 다시 활성화
+            $('.timestamp').on('click', function() {
+                $('.option-box').hide();
+                $(this).next('.option-box').toggle();
+            });
+        }
+    });
+});
+
+$(document).ready(function() {
+    // 팝업 위치 설정 및 표시
+    function showPopup(popupClass, event) {
+        if (popupClass === '.calendar-popup') {
+            $(popupClass).css({
+                top: event.pageY,
+                left: event.pageX
+            }).show();
+        } else if (popupClass === '.moreview-popup') {
+            $(popupClass).css({
+                top: event.pageY - $(popupClass).outerHeight(), // 팝업 높이만큼 위로 이동
+                left: event.pageX
+            }).show();
+        }
+        event.stopPropagation();
+    }
+
+    // 팝업 숨기기
+    function hidePopup(event, popupClass, triggerClass) {
+        if (!$(event.target).closest(popupClass).length && !$(event.target).closest(triggerClass).length) {
+            $(popupClass).hide();
+        }
+    }
+
+    // more-view 클릭 시 팝업 표시
+    $('.more-view').on('click', function(event) {
+        showPopup('.moreview-popup', event);
+    });
+
+    // 이벤트 클릭 시 팝업 표시
+    $('.event').on('click', function(event) {
+        event.stopPropagation();
+        // 캘린더 팝업을 표시하면서 moreview-popup은 그대로 유지
+        showPopup('.calendar-popup', event);
+    });
+
+    // 팝업의 close 버튼 클릭 시 숨기기
+    $('.calendar-popup .close, .moreview-popup .close').on('click', function() {
+        $(this).closest('.calendar-popup, .moreview-popup').hide();
+    });
+
+    // 팝업 외부 클릭 시 팝업 숨기기
+    $(document).on('click', function(event) {
+        hidePopup(event, '.calendar-popup', '.event');
+        hidePopup(event, '.moreview-popup', '.more-view');
+    });
+
+    // settings 버튼 클릭 시 update-box 표시/숨기기
+    $('.settings-btn').on('click', function(event) {
+        $(this).find('.update-box').toggle();
+        event.stopPropagation();
+    });
+
+    // update-box 외부 클릭 시 숨기기
+    $(document).on('click', function(event) {
+        hidePopup(event, '.update-box', '.settings-btn');
+    });
+});
+    // hover 이미지 변경
+    $(document).ready(function() {
+        $('.row-div').hover(
+            function() {
+                toggleImageSrc($(this).find('img'), 'inactive', 'active');
+            },
+            function() {
+                toggleImageSrc($(this).find('img'), 'active', 'inactive');
+            }
+        );
+
+        function toggleImageSrc($img, oldState, newState) {
+            const src = $img.attr('src');
+            if (src.includes(`update_${oldState}`)) {
+                $img.attr('src', `./assets/imgs/update_${newState}.svg`);
+            } else if (src.includes(`delete_${oldState}`)) {
+                $img.attr('src', `./assets/imgs/delete_${newState}.svg`);
+            }
+        }
+    });
+
+    // 모달 
+    $(document).ready(function() {
+    function showModal(modalClass) {
+        $('.overlay, .calendar-popup, .moreview-popup').fadeOut(); 
+        $('.overlay').fadeIn();
+        $(modalClass).fadeIn();
+        $('body').addClass('fixed');
+        $('.color-box').hide();
+        $('.timestamp').css({
+        'background-color': '',
+        'color': ''
+    });
+    }
+
+    function hideModal(modalClass) {
+        $('.overlay').fadeOut();
+        $(modalClass).fadeOut();
+        $('body').removeClass('fixed');
+        // 모달 안의 input, textarea, select 값 초기화
+        $(modalClass).find('input[type="text"],input[type="date"], textarea').val('');
+        $(modalClass).find('input[type="checkbox"]').prop('checked', false);
+        $(modalClass).find('.form-select .selected').text('선택'); // 선택된 텍스트 초기화
+        $(modalClass).find('.option-box .option-value').removeClass('selected'); // 선택된 옵션 초기화
+        $('.option-box').hide();
+    }
+
+    // 모달 열기
+    $('.add-category').on('click', function() {
+        showModal('.category-modal');
+    });
+
+    $('.btn_add').on('click', function() {
+        showModal('.schedule-modal');
+    });
+
+     // 일정 수정 시, 수정 팝업 노출
+    $('#update-schedule').on('click', function() {
+        showModal('.schedule-modal');
+    });
+
+    // 모달 닫기
+    $('.overlay, .category-modal .close, .schedule-modal .close, .btn_lightgray').on('click', function() {
+        hideModal('.category-modal');
+        hideModal('.schedule-modal');
+    });
+
+        // 모달 내에서 클릭 이벤트 전파 방지
+        $('.category-modal, .schedule-modal').on('click', function(e) {
+            e.stopPropagation();
+        });
+    });
+
+    // 새 캘린더 모달 컬러 지정 
+    document.querySelectorAll('.color-box .palette').forEach(div => {
+        div.addEventListener('click', function() {
+            document.querySelector('.color-box .checked')?.classList.remove('checked');
+            this.classList.add('checked');
+        });
+    });
+
+    // select-box 컬러
+    $(function() {
+        const $colorBox = $('.color-box').hide();
+        $('.form-select').click(() => $colorBox.toggle());
+    });
+
+</script>
+
+</html>

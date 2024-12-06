@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트레이드잇</title>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- <link rel="stylesheet" href="../files/fonts/xeicon/xeicon.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/d49aa60918.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/mypage.css">
+    
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="../assets/imgs/tradeit_logo.svg" alt="logo" onclick="location.href='/';">
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="./crm_dashboard.html" id="dash">
+                            <div>
+                                <img src="../assets/imgs/sidebar-dash.svg" class="sidebar_icon">
+                                <span>대시보드</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="./crm_buyerlist.html" id="buyerlist">
+                            <div>
+                                <img src="../assets/imgs/sidebar-buyerlist.svg" class="sidebar_icon">
+                                <span>바이어 리스트</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="./crm_clientlist.html" id="clientlist">
+                            <div>
+                                <img src="../assets/imgs/sidebar-clientlist.svg" class="sidebar_icon">
+                                <span>고객 관리</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li id="toggle-menu">
+                        <a href="#" id="report">
+                            <div>
+                                <img src="../assets/imgs/sidebar-board.svg" class="sidebar_icon">
+                                <span>업무 리포트</span>
+                            </div>
+                            <img src="../assets/imgs/sidebar-toggle.svg" class="sidebar_drop_icon">
+                        </a>
+                    </li>
+                    <div class="submenu" id="submenu">
+                        <div class="submenu-item"><a href="./crm_week_report.html" id="week">주간 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_month_report.html" id="month">월간 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_meeting_report.html" id="meeting">미팅 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_business_report.html" id="business">출장 리포트</a></div>
+                    </div>
+                    <li>
+                        <a href="./crm_calendar.html" id="calendar">
+                            <div>
+                                <img src="../assets/imgs/sidebar-calendar.svg" class="sidebar_icon">
+                                <span>일정 관리</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li id="toggle-menu-insight">
+                        <a href="#" id="insight">
+                            <div>
+                                <img src="../assets/imgs/sidebar-insight.svg" class="sidebar_icon">
+                                <span>인사이트</span>
+                            </div>
+                            <img src="../assets/imgs/sidebar-toggle.svg" class="sidebar_drop_icon">
+                        </a>
+                    </li>
+                    <div class="submenu" id="submenu-insight">
+                        <div class="submenu-item"><a href="./crm_traders_journey.html" id="journey">Trader’s Journey</a></div>
+                        <div class="submenu-item"><a href="./crm_export_case.html" id="export">수출 성공 사례</a></div>
+                        <div class="submenu-item"><a href="./crm_taas_team.html" id="taas">TaaS 팀</a></div>
+                    </div>
+                </ul>
+            </nav>
+            <div>
+                <button class="transfer-button">
+                    <img src="../assets/imgs/change_type.svg">
+                    <span>기업 전환</span>
+                </button>
+            </div>
+    </aside>
+    <main class="mg-14">
+    <header>
+        <div class="menu-nav">
+            <span class="text_colors_1">인사이트</span>
+            <img src="./assets/imgs/nav_right_icon.svg">
+            <span>수출 성공 사례</span>
+        </div>
+        <div class="mypage">
+            <div class="user-info" id="myprofile">
+                    <img src="/images/supplier/100003-티제이코프/profile_1643868771.png" class="profile_img">
+                <span class="bold">홍길동</span><span>님</span>
+                <img src="../assets/imgs/drop_inactive_icon.svg" class="sidebar_drop_icon">
+            </div>
+        </div>
+    </header>
+    <div class="myprofile-box">
+        <div>
+            <span>
+                <a href="/crm_profile_edit.html">개인정보 수정</a>
+            </span>
+        </div>
+        <div>
+            <span onclick="signOut()">로그아웃</span>
+        </div>
+    </div>
+    <div>
+        <div class="page-box">
+            <div class="page-title">수출 성공 사례</div>
+        </div>
+    </div>
+    <div class="export-case-wrap">
+        <div class="export-case-box" onclick="goView()">
+            <div class="export-img">
+                <img src="./assets/imgs/export-case-sample.png">
+            </div>
+            <div>
+                <div class="numbering">수출 성공 사례 01</div>
+                <h4>(주)제이케이메탈소재</h4>
+                <div class="company-info">
+                    제이케이메탈소재는 금속 자원 재활용 및 합금철 제조를 전문으로 하는 기업으로, 주로 샤시 슈레더, 스크랩, 잉곳, 망간 등을 주로 취급하고 있습니다. <br>
+                    약 20년의 업력을 가지고 있으며 국내외에서 페기물 재활용 및 금속 자원 회수 기술을 확장하며 해외 수출도 활발히 진행 중입니다. <br>
+                    트레이드잇을 통해 수출을 희망하셨던 제품은 그 중 '알루미늄 스크랩' 제품이였습니다. <br>
+                </div>
+                <div class="tag-box">
+                    <div class="tag">
+                        <span># Aluminum Scrap</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="export-case-box" onclick="goView()">
+            <div class="export-img">
+                <img src="./assets/imgs/export-case-sample.png">
+            </div>
+            <div>
+                <div class="numbering">수출 성공 사례 02</div>
+                <h4>루미텍㈜</h4>
+                <div class="company-info">
+                    제이케이메탈소재는 금속 자원 재활용 및 합금철 제조를 전문으로 하는 기업으로, 주로 샤시 슈레더, 스크랩, 잉곳, 망간 등을 주로 취급하고 있습니다. <br>
+                    약 20년의 업력을 가지고 있으며 국내외에서 페기물 재활용 및 금속 자원 회수 기술을 확장하며 해외 수출도 활발히 진행 중입니다. <br>
+                    트레이드잇을 통해 수출을 희망하셨던 제품은 그 중 '알루미늄 스크랩' 제품이였습니다. <br>
+                </div>
+                <div class="tag-box">
+                    <div class="tag">
+                        <span># Optical Lens</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="export-case-box" onclick="goView()">
+            <div class="export-img">
+                <img src="./assets/imgs/export-case-sample.png">
+            </div>
+            <div>
+                <div class="numbering">수출 성공 사례 03</div>
+                <h4>갑산메탈㈜</h4>
+                <div class="company-info">
+                    제이케이메탈소재는 금속 자원 재활용 및 합금철 제조를 전문으로 하는 기업으로, 주로 샤시 슈레더, 스크랩, 잉곳, 망간 등을 주로 취급하고 있습니다. <br>
+                    약 20년의 업력을 가지고 있으며 국내외에서 페기물 재활용 및 금속 자원 회수 기술을 확장하며 해외 수출도 활발히 진행 중입니다. <br>
+                    트레이드잇을 통해 수출을 희망하셨던 제품은 그 중 '알루미늄 스크랩' 제품이였습니다. <br>
+                </div>
+                <div class="tag-box">
+                    <div class="tag">
+                        <span># Aluminum Scrap</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="export-case-box" onclick="goView()">
+            <div class="export-img">
+                <img src="./assets/imgs/export-case-sample.png">
+            </div>
+            <div>
+                <div class="numbering">수출 성공 사례 04</div>
+                <h4>제트웨이크</h4>
+                <div class="company-info">
+                    제이케이메탈소재는 금속 자원 재활용 및 합금철 제조를 전문으로 하는 기업으로, 주로 샤시 슈레더, 스크랩, 잉곳, 망간 등을 주로 취급하고 있습니다. <br>
+                    약 20년의 업력을 가지고 있으며 국내외에서 페기물 재활용 및 금속 자원 회수 기술을 확장하며 해외 수출도 활발히 진행 중입니다. <br>
+                    트레이드잇을 통해 수출을 희망하셨던 제품은 그 중 '알루미늄 스크랩' 제품이였습니다. <br>
+                </div>
+                <div class="tag-box">
+                    <div class="tag">
+                        <span># Aluminum Scrap</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tradeimg">
+            <div class="title flex-side" style="margin-top: 5.25rem;">
+                <h5>트레이드잇과 함께한 기업들</h5>
+                <div class="buttons">
+                    <button class="btn_dash lightgray_bg slide-btn prev" onclick="slide('prev')">
+                        <img src="./assets/imgs/prev_icon.svg">
+                    </button>
+                    <button class="btn_dash lightgray_bg slide-btn next" onclick="slide('next')">
+                        <img src="./assets/imgs/next_icon.svg">
+                    </button>
+                </div>
+            </div>
+            <div class="slider-container">
+                <div class="dash-img-wrap" id="trade-slider">
+                    <div class="img-box">
+                        <img src="./assets/imgs/export-case-sample1.png"> 
+                    </div>
+                    <div class="img-box">
+                        <img src="./assets/imgs/export-case-sample2.png"> 
+                    </div>
+                    <div class="img-box">
+                        <img src="./assets/imgs/export-case-sample3.png"> 
+                    </div>
+                    <div class="img-box">
+                        <img src="./assets/imgs/export-case-sample4.png"> 
+                    </div>
+                    <div class="img-box">
+                        <img src="./assets/imgs/export-case-sample1.png"> 
+                    </div>
+                    <div class="img-box">
+                        <img src="./assets/imgs/export-case-sample2.png"> 
+                    </div>
+                    <div class="img-box">
+                        <img src="./assets/imgs/export-case-sample3.png"> 
+                    </div>
+                </div>
+                <div class="dash-img-wrap" id="trade-slider-second">
+                    <div class="img-box">
+                        <img src="./assets/imgs/export-case-sample1.png"> 
+                    </div>
+                    <div class="img-box">
+                        <img src="./assets/imgs/export-case-sample2.png"> 
+                    </div>
+                    <div class="img-box">
+                        <img src="./assets/imgs/export-case-sample3.png"> 
+                    </div>
+                    <div class="img-box">
+                        <img src="./assets/imgs/export-case-sample4.png"> 
+                    </div>
+                    <div class="img-box">
+                        <img src="./assets/imgs/export-case-sample1.png"> 
+                    </div>
+                    <div class="img-box">
+                        <img src="./assets/imgs/export-case-sample2.png"> 
+                    </div>
+                    <div class="img-box">
+                        <img src="./assets/imgs/export-case-sample3.png"> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 이미지 미리보기 팝업 -->
+        <div class="overlay">
+            <div class="img-view">
+                <div class="img-box">
+                    <img src="" class="report-img">
+                </div>
+                <div class="buttons">
+                    <button class="btn_close">
+                        <img src="./assets/imgs/close_preview.svg">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- paging -->
+    <!-- <div class="pagination">
+        <img src="./assets/imgs/paging_left_inactive.svg">
+        <img src="./assets/imgs/paging_left_active.svg"> 
+        <button class="btn_page active">1</button>
+        <button class="btn_page ">2</button>
+        <button class="btn_page">3</button>
+        <button class="btn_page">4</button>
+        <button class="btn_page">5</button>
+        <img src="./assets/imgs/paging_right_active.svg">
+        <img src="./assets/imgs/paging_right_inactive.svg">
+    </div>  -->
+</main>
+</body>
+
+
+<script>
+    // 사이드 메뉴 공통 CSS 스크립트
+    const menuItems = [
+        {
+            id: 'dash',
+            iconHover: '../assets/imgs/sidebar-dash-active.svg',
+            iconDefault: '../assets/imgs/sidebar-dash.svg',
+            urls: ['/crm_dashboard.html']
+        },
+        {
+            id: 'buyerlist',
+            iconHover: '../assets/imgs/sidebar-buyerlist-active.svg',
+            iconDefault: '../assets/imgs/sidebar-buyerlist.svg',
+            urls: ['/crm_buyerlist.html']
+        },
+        {
+            id: 'clientlist',
+            iconHover: '../assets/imgs/sidebar-clientlist-active.svg',
+            iconDefault: '../assets/imgs/sidebar-clientlist.svg',
+            urls: ['/crm_clientlist.html','/crm_detail.html','/crm_update_detail.html','/crm_update_manager.html','/crm_update_report.html']
+        },
+        {
+            id: 'report',
+            iconHover: '../assets/imgs/sidebar-board-active.svg',
+            iconDefault: '../assets/imgs/sidebar-board.svg',
+            urls: [''],
+            submenuUrls: ['/crm_week_report.html', '/crm_month_report.html', '/crm_meeting_report.html', '/crm_business_report.html'] 
+        },
+        {
+            id: 'calendar',
+            iconHover: '../assets/imgs/sidebar-calendar-acitve.svg',
+            iconDefault: '../assets/imgs/sidebar-calendar.svg',
+            urls: ['/crm_calendar.html']
+        },
+        {
+            id: 'insight',
+            iconHover: '../assets/imgs/sidebar-insight-active.svg',
+            iconDefault: '../assets/imgs/sidebar-insight.svg' ,
+            urls: [''],
+            submenuUrls: ['/crm_traders_journey.html', '/crm_export_case.html', '/crm_taas_team.html'] 
+        }
+    ];
+
+    const currentPath = window.location.pathname;
+
+    const setMenuStyle = (item, icon, isActive) => {
+        item.style.backgroundColor = isActive ? 'rgba(12, 120, 251, 0.1)' : 'transparent';
+        item.style.color = isActive ? '#0c77fb' : '#505050';
+        item.style.fontWeight = isActive ? 'bold' : 'normal';
+        icon.src = isActive ? item.dataset.iconHover : item.dataset.iconDefault;
+    };
+
+    // 서브메뉴 상태 관리 함수
+    const toggleSubmenu = (isActive) => {
+        const submenu = document.querySelector('#submenu-insight');
+        submenu.style.display = isActive ? 'block' : 'none';
+    };
+
+    // 메뉴 아이템 반복 처리
+    menuItems.forEach(menu => {
+        const item = document.getElementById(menu.id);
+        const icon = item.querySelector('img');
+        
+        // Dataset 속성을 통해 아이콘 정보를 추가
+        item.dataset.iconHover = menu.iconHover;
+        item.dataset.iconDefault = menu.iconDefault;
+
+        item.addEventListener('mouseover', () => setMenuStyle(item, icon, true));
+        item.addEventListener('mouseout', () => !item.classList.contains('active') && setMenuStyle(item, icon, false));
+
+        if (menu.urls.includes(currentPath)) {
+            item.classList.add('active');
+            setMenuStyle(item, icon, true);
+        }
+
+    // 서브메뉴를 포함한 메뉴일 경우 추가 처리
+    if (menu.submenuUrls && menu.submenuUrls.includes(currentPath)) {
+        const toggleItem = document.getElementById('toggle-menu-insight');
+        item.style.fontWeight = 'bold';
+        item.style.color = '#0c77fb';
+
+        toggleSubmenu(true);
+
+        const sidebarIcon = toggleItem.querySelector('.sidebar_icon');
+        const sidebarDropIcon = toggleItem.querySelector('.sidebar_drop_icon');
+        
+        sidebarIcon.src = '../assets/imgs/sidebar-insight-active.svg'; 
+        sidebarDropIcon.src = '../assets/imgs/sidebar-toggle-active.svg';  
+
+        const submenuItems = document.querySelectorAll('.submenu-item a');
+        submenuItems.forEach(subItem => {
+            if (subItem.getAttribute('href') === currentPath) {
+                subItem.style.backgroundColor = 'rgba(12, 120, 251, 0.1)';
+                subItem.style.color = '#0c77fb';
+                subItem.style.fontWeight = 'bold';
+            }
+        });
+    }
+});
+
+    // 현재 경로와 서브메뉴 a 요소의 href 속성 비교
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.submenu-item a').forEach(subItem => {
+            const hrefPath = subItem.getAttribute('href').replace('./', '');
+
+            if (currentPath.includes(hrefPath)) {
+                subItem.style.backgroundColor = 'rgba(12, 120, 251, 0.1)';
+                subItem.style.color = '#0c77fb';
+
+                // 서브메뉴 열기
+                toggleSubmenu(true);
+            }
+        });
+    });
+    // 업무 리포트 사이드메뉴 CSS 스크립트
+    $(function() {
+        $('#report').click(function(e) {
+            e.preventDefault();
+
+            const $submenu = $('#submenu');
+            const isExpanded = $submenu.is(':visible');
+
+            $submenu.slideToggle(300);
+            $('#report .sidebar_drop_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-toggle.svg' : '../assets/imgs/sidebar-toggle-active.svg');
+            $('#report .sidebar_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-board.svg' : '../assets/imgs/sidebar-board-active.svg');
+            $('#report span').css({
+                'color': isExpanded ? '#505050' : '#0c77fb',
+                'font-weight': isExpanded ? '400' : 'bold'
+            });
+            $('#report').css('background-color', 'transparent');
+        });
+    });
+    // 인사이트 사이드메뉴 css 스크립트 
+    $(function() {
+        $('#insight').click(function(e) {
+            e.preventDefault();
+
+            const $submenuInsight = $('#submenu-insight');
+            const isExpanded = $submenuInsight.is(':visible');
+
+            $submenuInsight.slideToggle(300);
+            $('#insight .sidebar_drop_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-toggle.svg' : '../assets/imgs/sidebar-toggle-active.svg');
+            $('#insight .sidebar_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-insight.svg' : '../assets/imgs/sidebar-insight-active.svg');
+            $('#insight span').css({
+                'color': isExpanded ? '#505050' : '#0c77fb',
+                'font-weight': isExpanded ? '400' : 'bold'
+            });
+            $('#insight').css('background-color', 'transparent');
+        });
+    });
+
+    
+    // 상단 프로필 공통 스크립트
+    $("#myprofile").click(function(event) {
+        event.stopPropagation();
+        $(".myprofile-box").toggle();
+        if ($(".myprofile-box").is(":visible")) {
+            $(".sidebar_drop_icon").attr("src", "../assets/imgs/drop_active_icon.svg");
+        } else {
+            $(".sidebar_drop_icon").attr("src", "../assets/imgs/drop_inactive_icon.svg");
+        }
+    });
+
+    // 상세 페이지 이동 (하드코딩)
+    function goView(chapter) {
+        window.location.href = '/crm_export_case_view_' + chapter + '.html';
+    }
+
+    document.querySelectorAll('.export-case-box').forEach(function (caseBox) {
+        caseBox.addEventListener('click', function () {
+            const chapter = this.querySelector('.numbering').textContent.replace(/[^\d]/g, ''); 
+            goView(chapter);
+        });
+    });
+
+    // 이미지 슬라이더
+    let tradeIndex = 0;
+    let tradeIndexSecond = 0;
+
+    function slide(direction) {
+        let containers = [
+            document.getElementById('trade-slider'),
+            document.getElementById('trade-slider-second')
+        ];
+        
+        let indexes = [tradeIndex, tradeIndexSecond];
+        let visibleBoxes = 5;
+        let slideFactor = 0.36 / visibleBoxes;
+
+        containers.forEach((container, i) => {
+            let currentIndex = indexes[i];
+            let totalBoxes = container.children.length;
+
+            if (direction === 'next') {
+                currentIndex++;
+                if (currentIndex >= totalBoxes / 2) {
+                    container.style.transition = 'none';
+                    currentIndex = 0;
+                    const offset = -(currentIndex * (100 * slideFactor));
+                    container.style.transform = `translateX(${offset}%)`;
+                    
+                    setTimeout(() => {
+                        container.style.transition = 'transform 0.5s ease-in-out';
+                        currentIndex++;
+                        const offset = -(currentIndex * (100 * slideFactor));
+                        container.style.transform = `translateX(${offset}%)`;
+                    }, 50);
+                } else {
+                    const offset = -(currentIndex * (100 * slideFactor));
+                    container.style.transform = `translateX(${offset}%)`;
+                }
+            } else if (direction === 'prev') {
+                if (currentIndex <= 0) {
+                    container.style.transition = 'none';
+                    currentIndex = totalBoxes / 2 - 1;
+                    const offset = -(currentIndex * (100 * slideFactor));
+                    container.style.transform = `translateX(${offset}%)`;
+
+                    setTimeout(() => {
+                        container.style.transition = 'transform 0.5s ease-in-out';
+                        currentIndex--;
+                        const offset = -(currentIndex * (100 * slideFactor));
+                        container.style.transform = `translateX(${offset}%)`;
+                    }, 50);
+                } else {
+                    currentIndex--;
+                    const offset = -(currentIndex * (100 * slideFactor));
+                    container.style.transform = `translateX(${offset}%)`;
+                }
+            }
+
+            // 각각의 슬라이더 인덱스를 업데이트
+            if (i === 0) {
+                tradeIndex = currentIndex;
+            } else {
+                tradeIndexSecond = currentIndex;
+            }
+        });
+    }
+
+    function duplicateSlides() {
+        const tradeSlider = document.getElementById('trade-slider');
+        const tradeSliderSecond = document.getElementById('trade-slider-second');
+        tradeSlider.innerHTML += tradeSlider.innerHTML;
+        tradeSliderSecond.innerHTML += tradeSliderSecond.innerHTML;
+    }
+
+    // 초기화 시 슬라이더 항목 복제
+    duplicateSlides();
+
+
+    // 이미지 클릭 시 미리보기 모달
+    $(document).ready(function() {
+    $('.img-box').on('click', function() {
+        // 클릭된 이미지의 src 가져오기
+        var imgSrc = $(this).find('img').attr('src');
+
+        // .report-img에 클릭된 이미지 src 설정
+        $('.report-img').attr('src', imgSrc);
+
+        // overlay 보이기
+        $('.overlay').fadeIn(); 
+        $('body').addClass('fixed'); 
+    });
+
+    // 닫기 버튼 클릭 시 overlay 닫기
+    $('.btn_close').on('click', function() {
+        $('.overlay').fadeOut(); 
+        $('body').removeClass('fixed'); 
+    });
+});
+
+</script>
+
+</html>

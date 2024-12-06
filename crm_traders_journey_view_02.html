@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트레이드잇</title>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- <link rel="stylesheet" href="../files/fonts/xeicon/xeicon.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/d49aa60918.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/mypage.css">
+    
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="../assets/imgs/tradeit_logo.svg" alt="logo" onclick="location.href='/';">
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="./crm_dashboard.html" id="dash">
+                            <div>
+                                <img src="../assets/imgs/sidebar-dash.svg" class="sidebar_icon">
+                                <span>대시보드</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="./crm_buyerlist.html" id="buyerlist">
+                            <div>
+                                <img src="../assets/imgs/sidebar-buyerlist.svg" class="sidebar_icon">
+                                <span>바이어 리스트</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="./crm_clientlist.html" id="clientlist">
+                            <div>
+                                <img src="../assets/imgs/sidebar-clientlist.svg" class="sidebar_icon">
+                                <span>고객 관리</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li id="toggle-menu">
+                        <a href="#" id="report">
+                            <div>
+                                <img src="../assets/imgs/sidebar-board.svg" class="sidebar_icon">
+                                <span>업무 리포트</span>
+                            </div>
+                            <img src="../assets/imgs/sidebar-toggle.svg" class="sidebar_drop_icon">
+                        </a>
+                    </li>
+                    <div class="submenu" id="submenu">
+                        <div class="submenu-item"><a href="./crm_week_report.html" id="week">주간 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_month_report.html" id="month">월간 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_meeting_report.html" id="meeting">미팅 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_business_report.html" id="business">출장 리포트</a></div>
+                    </div>
+                    <li>
+                        <a href="./crm_calendar.html" id="calendar">
+                            <div>
+                                <img src="../assets/imgs/sidebar-calendar.svg" class="sidebar_icon">
+                                <span>일정 관리</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li id="toggle-menu-insight">
+                        <a href="#" id="insight">
+                            <div>
+                                <img src="../assets/imgs/sidebar-insight.svg" class="sidebar_icon">
+                                <span>인사이트</span>
+                            </div>
+                            <img src="../assets/imgs/sidebar-toggle.svg" class="sidebar_drop_icon">
+                        </a>
+                    </li>
+                    <div class="submenu" id="submenu-insight">
+                        <div class="submenu-item"><a href="./crm_traders_journey.html" id="journey">Trader’s Journey</a></div>
+                        <div class="submenu-item"><a href="./crm_export_case.html" id="export">수출 성공 사례</a></div>
+                        <div class="submenu-item"><a href="./crm_taas_team.html" id="taas">TaaS 팀</a></div>
+                    </div>
+                </ul>
+            </nav>
+            <div>
+                <button class="transfer-button">
+                    <img src="../assets/imgs/change_type.svg">
+                    <span>기업 전환</span>
+                </button>
+            </div>
+    </aside>
+    <main class="mg-14">
+    <header>
+        <div class="menu-nav">
+            <span class="text_colors_1">인사이트</span>
+            <img src="./assets/imgs/nav_right_icon.svg">
+            <span class="text_colors_1">Trader’s Journey</span>
+            <img src="./assets/imgs/nav_right_icon.svg">
+            <span>수출 준비</span>
+        </div>
+        <div class="mypage">
+            <div class="user-info" id="myprofile">
+                    <img src="/images/supplier/100003-티제이코프/profile_1643868771.png" class="profile_img">
+                <span class="bold">홍길동</span><span>님</span>
+                <img src="../assets/imgs/drop_inactive_icon.svg" class="sidebar_drop_icon">
+            </div>
+        </div>
+    </header>
+    <div class="myprofile-box">
+        <div>
+            <span>
+                <a href="/crm_profile_edit.html">개인정보 수정</a>
+            </span>
+        </div>
+        <div>
+            <span onclick="signOut()">로그아웃</span>
+        </div>
+    </div>
+    <div class="insight-view-wrap">
+        <div class="chapter-txt">CHAPTER 02</div>
+        <h3>수출 준비</h3>
+        <div class="chapter-box">
+            <div>
+                <div class="chapter-tag">CHAPTER 02</div>
+                <h5 class="title">수출 준비</h5>
+                <span class="contents">
+                    수출을 위한 제반 준비, 상품 홍보자료, 무역 조직 구축 (Export Preparation)
+                </span>
+            </div>
+            <img src="./assets/imgs/chapter-img.svg">
+        </div>
+        <div class="contents-box">
+            <h5>수출 준비 항목에는 어떤게 있나요?</h5>
+            <span>
+                <span class="highlight">수출할 제품의 규격, 특징, 포장방식, 인증 및 허가, HS code 및 관세율 확인, 수출입 법규, 선적 방식(해상, 항공, 철도 등), 원산지 증명서, 보험 <br>가입 등 </span>
+                    수출에 있어 필요한 준비 항목은 매우 다양합니다. 
+                    하지만, 수출 초보기업을 위한 가장 기초가 되는 수출 준비 항목은 바이어에게 제시할 <br> 상품 홍보자료와 수출 업무를 담당할 수 있는 인력(무역 조직 구축), 
+                    그리고 기업의 생산능력, 규격 및 인증 등 '수출 가능 여부 검토'가 가장 우선시 되어야 합니다.  
+                    실제 트레이드잇에서도 고객사를 대상으로 수출에 필요한 가장 기초적인 항목들로 구성된 '수출 전략 수립 질의서'를 통해 각 기업의 수출 가능 여부를 검토하고 있습니다.  
+            <h5>수출 준비 항목에서 꼭 필요한 항목 2가지만 뽑자면 어떤 걸까요? <br> 준비사항을 위해 활용할 수 있는 것은?</h5>
+            <span>
+                수출 준비에 있어 가장 중요한 부분은 영문으로 된 기업 및 상품에 대한 소개서 그리고 바이어와 소통할 수 있는 인력입니다.
+                실제로 많은 기업들이 바이어와의 첫 접촉 이후 제안할 자료가 없거나, 소통에 어려움을 겪어 수출 기회를 놓치곤 합니다. 
+                <br><br>
+                준비된 자료는 바이어와의 첫 접촉 시 신뢰를 형성하는 중요한 역할을 합니다. <br>
+                완벽한 자료가 아니더라도 명확하게 전달될 수 있는 최소한의 영문 자료, 수출 업무를 담당할 수 있는 사람이 필요합니다. 
+            </span>
+            <img src="./assets/imgs/export-report.png" class="image"> <br>
+            <h5>상품 홍보자료는 어떻게 만들면 되나요?</h5>
+            <span>
+                기본적으로 바이어에게 소개할 수 있는 영문 회사소개서와 제안서가 필요합니다. <br>
+                홍보 자료에는 많은 내용을 담기보다는 우리 회사의 주력 제품과 바이어가 궁금해할 만한 핵심 내용을 간결하게 담아 가시성을 높이는 것이 중요합니다.
+                바이어들은 매일 수백 개의 기업으로부터 소싱 제안을 받기 때문에, 명확한 전달력이 필요합니다. <br>
+                <br>
+                예를 들어, 제품의 주요 특징과 경쟁력, 회사 연혁, 인증 및 품질 관리 체계 등 핵심 사항을 간략하게 정리하는 것이 좋습니다. <br>
+                자료는 시각적으로도 깔끔해야 하며, 너무 많은 텍스트를 담기보다는 중요한 포인트를 중심으로 시각 자료(이미지나 도표)를 활용하는 것이 좋습니다. <br>
+                <br>
+                상품 홍보자료는 가시성, 전달력, 디자인을 우선적으로 고려해야 합니다. <br>
+                특히, 직관적인 레이아웃과 주요 메시지를 명확히 전달하는 구조가 중요하며, 디자인적인 요소는 단순하면서도 명확한 전달을 목표로 해야 합니다. <br>
+                <br>
+                트레이드잇에서 해외 영업을 위해 내부적으로 제작한 영업자료 샘플을 공유드려요.  <br>
+                기업 및 제품 특성에 따라 영업자료 구성이 달라지지만, 최대한 저희 제품을 잘 전달할 수 있는 디자인과 구성이 필요해요!
+            </span>
+            <img src="./assets/imgs/export-report.png" class="image" > <br>
+            <h5>수출 업무가 가능한 무역인력이 없으면 어떻게 해야하나요? 채용해야 하나요?</h5>
+            <span>
+                수출을 고려중인 기업이라면 수출 업무를 수행할 수 있는 담당자가 필수적입니다. <br>
+                내부 직원을 고용하거나 외부 인력을 통해 진행할 수 있으며,  기업의 상황에 따라 적합한 방법을 선택하는 것이 좋습니다. <br>
+                <br>
+                내부 직원 고용의 장점은, 지속적인 관리와 대응이 가능하다는 것이며 외부 인력 활용의 경우 초기 비용이 들지만 전문성을 즉시 활용할 수 있다는 장점이 있습니다. 
+                수출 준비가 된 기업이라면, 하기와 같은 방법을 통해서 실질적인 수출 성과를 극대화 할 수 있습니다. <br>
+                <br>
+                - 물류, 통관, 결제 등 전문적인 업무를 대신 처리해주는 '무역 대행 서비스'<br>
+                - 한국무역협회(KOTRA)나 중소벤처기업진흥공단 등에서 제공하는 '수출 지원 프로그램' 활용<br>
+                - 수출 전략 및 시장 진출 계획, 계약서 작성 등 구체적인 도움을 받을 수 있는 '무역 컨설팅 업체' 이용<br>
+                - Alibaba, Global Sources와 같은 '글로벌 B2B 플랫폼' 활용  
+            </span>
+            <h5>영어, 일본어, 중국어 등 외국어에 능통하면 수출 업무를 수행하는데 어려움이 없을까요?</h5>
+            <span>
+                외국어 능력은 수출 업무에서 매우 중요한 부분이지만, 단순히 외국어에 능통하다고 해서 수출 업무 전반을 원활하게 수행할 수 있다고 보기는 어렵습니다. 
+                수출 업무는 언어 외에도 수출 절차와 규정에 대한 이해, 국제 무역 지식, 계약서 작성 및 법적 문제, 물류 및 운송 관리, 협상 및 문제 해결<br> 능력 등 다양한 요소가 결합되어야 합니다. <br>
+                <br>
+                외국어 능력 외에도 무역 실무에 대한 지식과 수출 절차 전반에 대한 경험을 쌓는 것이 필수적입니다. <br>
+                인코텀즈(Incoterms)와 같은 국제 무역 용어, 국가별 수출입 규정, 선적 서류 준비 등의 실무적 부분을 정확히 이해해야 합니다. <br>
+                <br>
+                실제 사례로, 바이어와의 의사소통이 원활하더라도 국제 거래의 법적 규정이나 계약 조건을 정확히 이해하지 못해 문제를 초래하는 경우가 많습니다. 
+                예를 들어, 계약서 조항에서 발생할 수 있는 리스크를 미리 파악하지 못해 법적 분쟁이나 지연된 결제 같은 문제가 발생할 수 있습니다. <br>
+                <br>
+                실제로 트레이드잇 서비스를 이용하는 고객사 중 다수는 이러한 무역 실무 및 법적 대응에서 도움을 받기 위해 무역 컨설팅 서비스나 수출 대행 <br>서비스를 함께 활용하고 있습니다. 
+                이는 외국어 능력 외에도 실무적 전문성이 중요함을 보여주는 사례입니다. 
+            </span>
+        </div>
+        <div class="footer">
+            <div class="flex-center">
+                <button class="move-button" onclick="location.href='/crm_traders_journey_view_01.html'">
+                    <img src="./assets/imgs/prev_icon.svg"> 
+                </button>
+                <div class="txt-box">
+                    <div class="default-txt">이전</div>
+                    <div>시장 조사</div>
+                </div>
+            </div>
+            <button class="list-button" onclick="location.href='/crm_traders_journey.html'">
+                <img src="./assets/imgs/list-icon.svg">
+                <span>목록</span>
+            </button>
+            <div class="flex-center">
+                <div class="txt-box" style="text-align: right;">
+                    <div class="default-txt">다음</div>
+                    <div>바이어 발굴</div>
+                </div>
+                <button class="move-button" onclick="location.href='/crm_traders_journey_view_03.html'">
+                    <img src="./assets/imgs/next_icon.svg"> 
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+
+
+<script>
+    // 사이드 메뉴 공통 CSS 스크립트
+    const menuItems = [
+        {
+            id: 'dash',
+            iconHover: '../assets/imgs/sidebar-dash-active.svg',
+            iconDefault: '../assets/imgs/sidebar-dash.svg',
+            urls: ['/crm_dashboard.html']
+        },
+        {
+            id: 'buyerlist',
+            iconHover: '../assets/imgs/sidebar-buyerlist-active.svg',
+            iconDefault: '../assets/imgs/sidebar-buyerlist.svg',
+            urls: ['/crm_buyerlist.html']
+        },
+        {
+            id: 'clientlist',
+            iconHover: '../assets/imgs/sidebar-clientlist-active.svg',
+            iconDefault: '../assets/imgs/sidebar-clientlist.svg',
+            urls: ['/crm_clientlist.html','/crm_detail.html','/crm_update_detail.html','/crm_update_manager.html','/crm_update_report.html']
+        },
+        {
+            id: 'report',
+            iconHover: '../assets/imgs/sidebar-board-active.svg',
+            iconDefault: '../assets/imgs/sidebar-board.svg',
+            urls: [''],
+            submenuUrls: ['/crm_week_report.html', '/crm_month_report.html', '/crm_meeting_report.html', '/crm_business_report.html'] 
+        },
+        {
+            id: 'calendar',
+            iconHover: '../assets/imgs/sidebar-calendar-acitve.svg',
+            iconDefault: '../assets/imgs/sidebar-calendar.svg',
+            urls: ['/crm_calendar.html']
+        },
+        {
+            id: 'insight',
+            iconHover: '../assets/imgs/sidebar-insight-active.svg',
+            iconDefault: '../assets/imgs/sidebar-insight.svg' ,
+            urls: [''],
+            submenuUrls: ['/crm_traders_journey.html', '/crm_export_case.html', '/crm_taas_team.html','/crm_traders_journey_view.html'] 
+        }
+    ];
+
+    const currentPath = window.location.pathname;
+
+    const setMenuStyle = (item, icon, isActive) => {
+        item.style.backgroundColor = isActive ? 'rgba(12, 120, 251, 0.1)' : 'transparent';
+        item.style.color = isActive ? '#0c77fb' : '#505050';
+        item.style.fontWeight = isActive ? 'bold' : 'normal';
+        icon.src = isActive ? item.dataset.iconHover : item.dataset.iconDefault;
+    };
+
+    // 서브메뉴 상태 관리 함수
+    const toggleSubmenu = (isActive) => {
+        const submenu = document.querySelector('#submenu-insight');
+        submenu.style.display = isActive ? 'block' : 'none';
+    };
+
+    // 메뉴 아이템 반복 처리
+    menuItems.forEach(menu => {
+        const item = document.getElementById(menu.id);
+        const icon = item.querySelector('img');
+        
+        // Dataset 속성을 통해 아이콘 정보를 추가
+        item.dataset.iconHover = menu.iconHover;
+        item.dataset.iconDefault = menu.iconDefault;
+
+        item.addEventListener('mouseover', () => setMenuStyle(item, icon, true));
+        item.addEventListener('mouseout', () => !item.classList.contains('active') && setMenuStyle(item, icon, false));
+
+        if (menu.urls.includes(currentPath)) {
+            item.classList.add('active');
+            setMenuStyle(item, icon, true);
+        }
+
+    // 서브메뉴를 포함한 메뉴일 경우 추가 처리
+    if (menu.submenuUrls && menu.submenuUrls.includes(currentPath)) {
+        const toggleItem = document.getElementById('toggle-menu-insight');
+        item.style.fontWeight = 'bold';
+        item.style.color = '#0c77fb';
+
+        toggleSubmenu(true);
+
+        const sidebarIcon = toggleItem.querySelector('.sidebar_icon');
+        const sidebarDropIcon = toggleItem.querySelector('.sidebar_drop_icon');
+        
+        sidebarIcon.src = '../assets/imgs/sidebar-insight-active.svg'; 
+        sidebarDropIcon.src = '../assets/imgs/sidebar-toggle-active.svg';  
+
+        const submenuItems = document.querySelectorAll('.submenu-item a');
+        submenuItems.forEach(subItem => {
+            if (subItem.getAttribute('href') === currentPath) {
+                subItem.style.backgroundColor = 'rgba(12, 120, 251, 0.1)';
+                subItem.style.color = '#0c77fb';
+                subItem.style.fontWeight = 'bold';
+            }
+        });
+    }
+});
+
+    // 현재 경로와 서브메뉴 a 요소의 href 속성 비교
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.submenu-item a').forEach(subItem => {
+            const hrefPath = subItem.getAttribute('href').replace('./', '');
+
+            if (currentPath.includes(hrefPath)) {
+                subItem.style.backgroundColor = 'rgba(12, 120, 251, 0.1)';
+                subItem.style.color = '#0c77fb';
+
+                // 서브메뉴 열기
+                toggleSubmenu(true);
+            }
+        });
+    });
+    // 업무 리포트 사이드메뉴 CSS 스크립트
+    $(function() {
+        $('#report').click(function(e) {
+            e.preventDefault();
+
+            const $submenu = $('#submenu');
+            const isExpanded = $submenu.is(':visible');
+
+            $submenu.slideToggle(300);
+            $('#report .sidebar_drop_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-toggle.svg' : '../assets/imgs/sidebar-toggle-active.svg');
+            $('#report .sidebar_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-board.svg' : '../assets/imgs/sidebar-board-active.svg');
+            $('#report span').css({
+                'color': isExpanded ? '#505050' : '#0c77fb',
+                'font-weight': isExpanded ? '400' : 'bold'
+            });
+            $('#report').css('background-color', 'transparent');
+        });
+    });
+    // 인사이트 사이드메뉴 css 스크립트 
+    $(function() {
+        $('#insight').click(function(e) {
+            e.preventDefault();
+
+            const $submenuInsight = $('#submenu-insight');
+            const isExpanded = $submenuInsight.is(':visible');
+
+            $submenuInsight.slideToggle(300);
+            $('#insight .sidebar_drop_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-toggle.svg' : '../assets/imgs/sidebar-toggle-active.svg');
+            $('#insight .sidebar_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-insight.svg' : '../assets/imgs/sidebar-insight-active.svg');
+            $('#insight span').css({
+                'color': isExpanded ? '#505050' : '#0c77fb',
+                'font-weight': isExpanded ? '400' : 'bold'
+            });
+            $('#insight').css('background-color', 'transparent');
+        });
+    });
+
+    
+    // 상단 프로필 공통 스크립트
+    $("#myprofile").click(function(event) {
+        event.stopPropagation();
+        $(".myprofile-box").toggle();
+        if ($(".myprofile-box").is(":visible")) {
+            $(".sidebar_drop_icon").attr("src", "../assets/imgs/drop_active_icon.svg");
+        } else {
+            $(".sidebar_drop_icon").attr("src", "../assets/imgs/drop_inactive_icon.svg");
+        }
+    });    
+</script>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트레이드잇 | CRM</title>
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/tradeit.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/mypage.css">
+    <!-- js -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+</head>
+<!-- 기업 회원 -->
+<body id="wrap-signup-agree">
+    <header>
+        <div class="custom-hr"></div>
+        <h3>회원가입을 위해 <br> 약관에 동의해 주세요.</h3>
+    </header>
+
+    <main>
+        <div class="all-agree-box">
+            <span>약관 전체동의</span>
+            <input type="checkbox" class="all-agree">
+        </div>
+        <div class="agree-list-box">
+            <div class="agree-list">
+                <span>서비스 <span class="underline terms">이용약관</span> 동의 <span class="essential">(필수)</span></span>
+                <img src="./assets/imgs/agree-unchecked.svg" class="agree-unchecked must">
+            </div>
+            <div class="agree-list">
+                <span><span class="underline personal-info">개인정보</span> 수집 이용 동의 <span class="essential">(필수)</span></span>
+                <img src="./assets/imgs/agree-unchecked.svg" class="agree-unchecked must">
+            </div>
+            <div class="agree-list">
+                <span><span class="underline marketing">마케팅 활용 및 광고성 정보 수신</span> 동의 <span class="optional">(선택)</span></span>
+                <img src="./assets/imgs/agree-unchecked.svg" class="agree-unchecked">
+            </div>
+            <div class="ad-list g-30">
+                <div class="flex-center g-10">
+                    <img src="./assets/imgs/agree-unchecked.svg" class="agree-unchecked">
+                    <span>SNS</span>
+                </div>
+                <div class="flex-center g-10">
+                    <img src="./assets/imgs/agree-unchecked.svg" class="agree-unchecked">
+                    <span>이메일</span>
+                </div>
+            </div>
+        </div>
+        <div class="overlay"></div>
+        <div class="terms-modal">
+            <div class="header"> 
+                <div class="flex-side" style="border-bottom: 1px solid #dbdbdb;">
+                    <h3>이용약관</h3>
+                    <img src="./assets/imgs/modal-close.svg" class="modal-close">
+                </div>
+            </div>
+            <div class="modal-content"></div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="buttons-box">
+            <button class="prev-button" onclick="window.location.href = 'crm_sign_up.html';">  
+                <span>이전</span>
+            </button>
+            <button class="next-button">
+                <span>다음</span>
+            </button>
+        </div>
+    </footer>
+
+    <script>
+    $(document).ready(function() {
+        // 개별 항목 클릭 시 이미지 변경 및 필수 항목 상태 체크
+        $('.agree-unchecked').click(function() {
+            toggleImage($(this));
+            updateAllAgreeCheckbox();
+            checkMustAndChangeButtonColor();
+        });
+
+        // 전체 동의 체크박스 클릭 시 모든 항목의 이미지 변경 및 필수 항목 상태 체크
+        $('.all-agree').change(function() {
+            let isChecked = $(this).is(':checked');
+            $('.agree-unchecked').attr('src', isChecked ? './assets/imgs/agree-checked.svg' : './assets/imgs/agree-unchecked.svg');
+            checkMustAndChangeButtonColor();
+        });
+
+        // next-button 클릭 시 필수 항목이 체크되었는지 확인 후 페이지 이동
+        $('.next-button').click(function() {
+            if ($('.must[src="./assets/imgs/agree-unchecked.svg"]').length > 0) {
+                alert('필수 약관에 동의해야 합니다.');
+            } else {
+                window.location.href = 'crm_sign_up_info_com.html';
+            }
+        });
+
+        // 이미지 토글 함수
+        function toggleImage(img) {
+            let newSrc = img.attr('src') === './assets/imgs/agree-unchecked.svg' ? './assets/imgs/agree-checked.svg' : './assets/imgs/agree-unchecked.svg';
+            img.attr('src', newSrc);
+        }
+
+        // 모든 항목이 체크되었는지 확인하여 전체 동의 체크박스 업데이트
+        function updateAllAgreeCheckbox() {
+            let allChecked = $('.agree-unchecked[src="./assets/imgs/agree-unchecked.svg"]').length === 0;
+            $('.all-agree').prop('checked', allChecked);
+        }
+
+        // 필수 항목 체크 상태에 따라 next-button 배경색 변경
+        function checkMustAndChangeButtonColor() {
+            let allMustChecked = $('.must[src="./assets/imgs/agree-unchecked.svg"]').length === 0;
+            $('.next-button').css('background-color', allMustChecked ? '#0c77fb' : '');
+        }
+    });
+
+    // 약관 모달
+    $(document).ready(function() {
+        $('span.underline').on('click', function() {
+            $('.overlay').fadeIn();
+            $('.terms-modal').fadeIn();
+
+            // 클릭한 span의 클래스에 따라 다른 내용 삽입
+            if ($(this).hasClass('terms')) {
+                $('.modal-content').html('<p>여기에 서비스 이용약관 내용을 넣습니다.</p>');
+            } else if ($(this).hasClass('personal-info')) {
+                $('.modal-content').html('<p>여기에 개인정보 수집 및 이용에 대한 내용을 넣습니다.</p>');
+            } else if ($(this).hasClass('marketing')) {
+                $('.modal-content').html('<p>여기에 마케팅 활용 및 광고성 정보 수신에 대한 내용을 넣습니다.</p>');
+            }
+        });
+
+        // 모달 닫기
+        $('.modal-close, .overlay').on('click', function() {
+            $('.overlay').fadeOut();
+            $('.terms-modal').fadeOut();
+        });
+    });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트레이드잇</title>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- <link rel="stylesheet" href="../files/fonts/xeicon/xeicon.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/d49aa60918.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/mypage.css">
+    
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="../assets/imgs/tradeit_logo.svg" alt="logo" onclick="location.href='/';">
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="./crm_dashboard.html" id="dash">
+                            <div>
+                                <img src="../assets/imgs/sidebar-dash.svg" class="sidebar_icon">
+                                <span>대시보드</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="./crm_buyerlist.html" id="buyerlist">
+                            <div>
+                                <img src="../assets/imgs/sidebar-buyerlist.svg" class="sidebar_icon">
+                                <span>바이어 영업 현황</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li id="toggle-menu">
+                        <a href="#" id="report">
+                            <div>
+                                <img src="../assets/imgs/sidebar-board.svg" class="sidebar_icon">
+                                <span>업무 리포트</span>
+                            </div>
+                            <img src="../assets/imgs/sidebar-toggle.svg" class="sidebar_drop_icon">
+                        </a>
+                    </li>
+                    <div class="submenu" id="submenu">
+                        <div class="submenu-item"><a href="./crm_week_report.html" id="week">주간 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_month_report.html" id="month">월간 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_meeting_report.html" id="meeting">미팅 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_business_report.html" id="business">출장 리포트</a></div>
+                    </div>
+                    <li>
+                        <a href="./crm_calendar.html" id="calendar">
+                            <div>
+                                <img src="../assets/imgs/sidebar-calendar.svg" class="sidebar_icon">
+                                <span>일정 관리</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li id="toggle-menu-insight">
+                        <a href="#" id="insight">
+                            <div>
+                                <img src="../assets/imgs/sidebar-insight.svg" class="sidebar_icon">
+                                <span>인사이트</span>
+                            </div>
+                            <img src="../assets/imgs/sidebar-toggle.svg" class="sidebar_drop_icon">
+                        </a>
+                    </li>
+                    <div class="submenu" id="submenu-insight">
+                        <div class="submenu-item"><a href="./crm_traders_journey.html" id="journey">Trader’s Journey</a></div>
+                        <div class="submenu-item"><a href="./crm_export_case.html" id="export">수출 성공 사례</a></div>
+                        <div class="submenu-item"><a href="./crm_taas_team.html" id="taas">TaaS 팀</a></div>
+                        <div class="submenu-item"><a href="./crm_trade_ojt.html" id="ojt">무역실무 OJT</a></div>
+                    </div>
+                </ul>
+            </nav>
+            <div>
+                <button class="transfer-button">
+                    <img src="../assets/imgs/change_type.svg">
+                    <span>기업 전환</span>
+                </button>
+            </div>
+    </aside>
+<main class="mg-14">
+    <header>
+        <div class="menu-nav">
+            <span>Dashboard</span>
+        </div>
+        <div class="mypage">
+            <div class="user-info" id="myprofile">
+                    <img src="/images/supplier/100003-티제이코프/profile_1643868771.png" class="profile_img">
+                <span class="bold">홍길동</span><span>님</span>
+                <img src="../assets/imgs/drop_inactive_icon.svg" class="sidebar_drop_icon">
+            </div>
+        </div>
+    </header>
+    <div class="myprofile-box">
+        <div>
+            <span>
+                <a href="/crm_profile_edit.html">개인정보 수정</a>
+            </span>
+        </div>
+        <div>
+            <span onclick="signOut()">로그아웃</span>
+        </div>
+    </div>
+    <div>
+        <div class="page-box flex-side">
+            <div class="page-title"><span class="main_color">동림산업</span>님 반갑습니다!</div>
+            <button class="btn_zoom" onclick="window.open('https://zoom.us/', '_blank')">
+                <img src="./assets/imgs/zoom-logo.svg"> 
+                <span>바로가기</span>
+            </button>
+        </div>
+    </div>
+    <div class="crm-dashboard flex">
+        <!-- left section -->
+        <section class="left-section">
+            <!-- 데이터 있을 경우 -->
+            <div class="worldmap-box">
+                <div class="info-box-wrap">
+                    <h5>바이어 현황</h5>
+                    <div class="info-boxs"> 
+                        <div class="info-box">
+                            <div class="flex-center">
+                                <div class="map-category communication"></div>
+                                <span class="text">Communication</span>
+                            </div>
+                            <span class="cnt">85</span>
+                        </div>
+                        <div class="info-box">
+                            <div class="flex-center">
+                                <div class="map-category inquiry"></div>
+                                <span class="text">Inquiry</span>
+                            </div>
+                            <span class="cnt">12</span>
+                        </div>
+                        <div class="info-box">
+                            <div class="flex-center">
+                                <div class="map-category quotation"></div>
+                                <span class="text">Quotation</span>
+                            </div>
+                            <span class="cnt">8</span>
+                        </div>
+                        <div class="info-box">
+                            <div class="flex-center">
+                                <div class="map-category contract"></div>
+                                <span class="text">Contract</span>
+                            </div>
+                            <span class="cnt">1</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="worldmap">
+                    <div id="map"></div>
+                </div>
+            </div>
+            <!--  nodata (일단 display:none)-->
+            <div class="worldmap-box-nodata hidden">
+                <h5>바이어 현황</h5> 
+                <div class="nodata-box map">
+                    <div class="nodata-contents">
+                        <img src="./assets/imgs/nodata_map.svg">
+                        <span>바이어 현황이 없습니다.</span>
+                        <p>요청서를 작성하고, 바이어리스트를 받아보세요.</p>
+                        <button class="request">바이어리스트 요청하기</button>
+                        <button class="ing">바이어리스트 요청중</button>
+                    </div>
+                </div>
+            </div>
+            <div class="buyerlist">
+                <div class="title flex-side">
+                    <h5>고객 리스트</h5>
+                    <div class="buttons">
+                        <button class="btn_dash lightgray_bg slide-btn prev" onclick="slide('buyer', 'prev')">
+                            <img src="./assets/imgs/prev_icon.svg"> 
+                        </button>
+                        <button class="btn_dash lightgray_bg slide-btn next" onclick="slide('buyer', 'next')">
+                            <img src="./assets/imgs/next_icon.svg"> 
+                        </button>
+                        <button class="btn_dash plus btn_blue" onclick="location.href='/crm_clientlist.html'">
+                            <img src="./assets/imgs/plus_icon.svg"> 
+                        </button>
+                    </div>
+                </div>
+                <div class="slider-container">
+                    <div class="dash-client-wrap" id="buyer-slider">
+                        <div class="client-box" onclick="goDetail()">
+                            <div class="header">
+                                <img src="./assets/imgs/buyer_logo1.png" class="logo-m">
+                                <div class="update-icon">
+                                    <span>업데이트</span>
+                                </div>
+                            </div>
+                            <div class="company-name">
+                                <p>JAIN SULAMA SISTEMLERI SANAYI VE TICARET ANONIM SIRKETI</p>
+                            </div>
+                            <div class="info-wrap">
+                                <div class="flex-center">
+                                    <div class="label">국가</div>
+                                    <div class="flex-center value">
+                                        <div class="flag-box flex-center">
+                                            <img src="./assets/imgs/flag_jp.png">
+                                        </div>
+                                        <div>Japan</div>
+                                    </div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">전화번호</div>
+                                    <div class="value">90-3223945513</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">매출액</div>
+                                    <div class="value">16.03M</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">홈페이지</div>
+                                    <div class="value">www.jainsulama.co.kr</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="client-box" onclick="goDetail()">
+                            <div class="header">
+                                <img src="./assets/imgs/buyer_logo2.png" class="logo-m">
+                            </div>
+                            <div class="company-name">
+                                <p>PT. OTTEN COFFEE INDONESIA</p>
+                            </div>
+                            <div class="info-wrap">
+                                <div class="flex-center">
+                                    <div class="label">국가</div>
+                                    <div class="margin_0625 flex-center value">
+                                        <div class="flag-box flex-center">
+                                            <img src="./assets/imgs/flag_jp.png">
+                                        </div>
+                                        <div>Japan</div>
+                                    </div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">전화번호</div>
+                                    <div class="value">90-3223945513</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">매출액</div>
+                                    <div class="value">16.03M</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">홈페이지</div>
+                                    <div class="value">www.jainsulama.co.kr</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="client-box" onclick="goDetail()">
+                            <div class="header">
+                                <img src="./assets/imgs/buyer_logo3.png" class="logo-m">
+                            </div>
+                            <div class="company-name">
+                                <p>PT. OTTEN COFFEE INDONESIA</p>
+                            </div>
+                            <div class="info-wrap">
+                                <div class="flex-center">
+                                    <div class="label">국가</div>
+                                    <div class="flex-center value">
+                                        <div class="flag-box flex-center">
+                                            <img src="./assets/imgs/flag_jp.png">
+                                        </div>
+                                        <div>Japan</div>
+                                    </div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">전화번호</div>
+                                    <div class="value">90-3223945513</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">매출액</div>
+                                    <div class="value">16.03M</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">홈페이지</div>
+                                    <div class="value">www.jainsulama.co.kr</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="client-box" onclick="goDetail()">
+                            <div class="header">
+                                <img src="./assets/imgs/buyer_logo3.png" class="logo-m">
+                            </div>
+                            <div class="company-name">
+                                <p>PT. OTTEN COFFEE INDONESIA</p>
+                            </div>
+                            <div class="info-wrap">
+                                <div class="flex-center">
+                                    <div class="label">국가</div>
+                                    <div class="flex-center value">
+                                        <div class="flag-box flex-center">
+                                            <img src="./assets/imgs/flag_jp.png">
+                                        </div>
+                                        <div>Japan</div>
+                                    </div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">전화번호</div>
+                                    <div class="value">90-3223945513</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">매출액</div>
+                                    <div class="value">16.03M</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">홈페이지</div>
+                                    <div class="value">www.jainsulama.co.kr</div>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="client-box" onclick="goDetail()">
+                            <div class="header">
+                                <img src="./assets/imgs/buyer_logo3.png" class="logo-m">
+                            </div>
+                            <div class="company-name">
+                                <p>PT. OTTEN COFFEE INDONESIA</p>
+                            </div>
+                            <div class="info-wrap">
+                                <div class="flex-center">
+                                    <div class="label">국가</div>
+                                    <div class="flex-center value">
+                                        <div class="flag-box flex-center">
+                                            <img src="./assets/imgs/flag_jp.png">
+                                        </div>
+                                        <div>Japan</div>
+                                    </div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">전화번호</div>
+                                    <div class="value">90-3223945513</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">매출액</div>
+                                    <div class="value">16.03M</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">홈페이지</div>
+                                    <div class="value">www.jainsulama.co.kr</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dash-client-wrap" id="buyer-slider-second">
+                        <div class="client-box" onclick="goDetail()">
+                            <div class="header">
+                                <img src="./assets/imgs/buyer_logo1.png" class="logo-m">
+                                <div class="update-icon">
+                                    <span>업데이트</span>
+                                </div>
+                            </div>
+                            <div class="company-name">
+                                <p>JAIN SULAMA SISTEMLERI SANAYI VE TICARET ANONIM SIRKETI</p>
+                            </div>
+                            <div class="info-wrap">
+                                <div class="flex-center">
+                                    <div class="label">국가</div>
+                                    <div class="flex-center value">
+                                        <div class="flag-box flex-center">
+                                            <img src="./assets/imgs/flag_jp.png">
+                                        </div>
+                                        <div>Japan</div>
+                                    </div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">전화번호</div>
+                                    <div class="value">90-3223945513</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">매출액</div>
+                                    <div class="value">16.03M</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">홈페이지</div>
+                                    <div class="value">www.jainsulama.co.kr</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="client-box" onclick="goDetail()">
+                            <div class="header">
+                                <img src="./assets/imgs/buyer_logo2.png" class="logo-m">
+                            </div>
+                            <div class="company-name">
+                                <p>PT. OTTEN COFFEE INDONESIA</p>
+                            </div>
+                            <div class="info-wrap">
+                                <div class="flex-center">
+                                    <div class="label">국가</div>
+                                    <div class="margin_0625 flex-center value">
+                                        <div class="flag-box flex-center">
+                                            <img src="./assets/imgs/flag_jp.png">
+                                        </div>
+                                        <div>Japan</div>
+                                    </div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">전화번호</div>
+                                    <div class="value">90-3223945513</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">매출액</div>
+                                    <div class="value">16.03M</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">홈페이지</div>
+                                    <div class="value">www.jainsulama.co.kr</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="client-box" onclick="goDetail()">
+                            <div class="header">
+                                <img src="./assets/imgs/buyer_logo3.png" class="logo-m">
+                            </div>
+                            <div class="company-name">
+                                <p>PT. OTTEN COFFEE INDONESIA</p>
+                            </div>
+                            <div class="info-wrap">
+                                <div class="flex-center">
+                                    <div class="label">국가</div>
+                                    <div class="flex-center value">
+                                        <div class="flag-box flex-center">
+                                            <img src="./assets/imgs/flag_jp.png">
+                                        </div>
+                                        <div>Japan</div>
+                                    </div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">전화번호</div>
+                                    <div class="value">90-3223945513</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">매출액</div>
+                                    <div class="value">16.03M</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">홈페이지</div>
+                                    <div class="value">www.jainsulama.co.kr</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="client-box" onclick="goDetail()">
+                            <div class="header">
+                                <img src="./assets/imgs/buyer_logo3.png" class="logo-m">
+                            </div>
+                            <div class="company-name">
+                                <p>PT. OTTEN COFFEE INDONESIA</p>
+                            </div>
+                            <div class="info-wrap">
+                                <div class="flex-center">
+                                    <div class="label">국가</div>
+                                    <div class="flex-center value">
+                                        <div class="flag-box flex-center">
+                                            <img src="./assets/imgs/flag_jp.png">
+                                        </div>
+                                        <div>Japan</div>
+                                    </div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">전화번호</div>
+                                    <div class="value">90-3223945513</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">매출액</div>
+                                    <div class="value">16.03M</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">홈페이지</div>
+                                    <div class="value">www.jainsulama.co.kr</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="client-box" onclick="goDetail()">
+                            <div class="header">
+                                <img src="./assets/imgs/buyer_logo3.png" class="logo-m">
+                            </div>
+                            <div class="company-name">
+                                <p>PT. OTTEN COFFEE INDONESIA</p>
+                            </div>
+                            <div class="info-wrap">
+                                <div class="flex-center">
+                                    <div class="label">국가</div>
+                                    <div class="flex-center value">
+                                        <div class="flag-box flex-center">
+                                            <img src="./assets/imgs/flag_jp.png">
+                                        </div>
+                                        <div>Japan</div>
+                                    </div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">전화번호</div>
+                                    <div class="value">90-3223945513</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">매출액</div>
+                                    <div class="value">16.03M</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">홈페이지</div>
+                                    <div class="value">www.jainsulama.co.kr</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  nodata (일단 display:none)-->
+                <div class="nodata-box dash">
+                    <div class="nodata-contents">
+                        <img src="./assets/imgs/nodata_icon.svg">
+                        <span>고객 리스트가 없습니다.</span>
+                        <p>요청서를 작성하고, 바이어리스트를 받아보세요.</p>
+                        <button class="request">바이어리스트 요청하기</button>
+                        <button class="ing">바이어리스트 요청중</button>
+                    </div>
+                </div>
+            </div>
+            <div class="traders-journey">
+                <div class="title flex-side">
+                    <h5>Trader’s Journey</h5>
+                </div>
+                <div class="container">
+                    <div class="left">
+                        <div class="chapter-box" onclick="goView();">
+                            <div class="number-box">
+                                <span>CHAPTER 01</span>
+                            </div>
+                            <div class="txt-box">
+                                <h3 id="tj-title">시장 조사</h3>
+                                <span id="tj-contents">
+                                    제품의 상품성, 해외 시장
+                                    현황에 대한 시장조사
+                                </span>
+                            </div>
+                            <div class="imgs-box">
+                                <img src="./assets/imgs/chapter-plus.svg" style="margin-top: 11.5rem; cursor: pointer;">
+                                <img src="./assets/imgs/chapter-img.svg" id="chapter-img">
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="journey-box">
+                            <div class="contents-box">
+                                <div class="number-tag-container">
+                                    <div class="number-tag">01</div>
+                                    <img src="./assets/imgs/journey-line.png" class="line-image" />
+                                </div>
+                                <div class="txt-box">
+                                    <h5>시장 조사</h5>
+                                    <span>제품의 상품성, 해외 시장 현황에 대한 시장조사</span>
+                                </div>
+                            </div>
+                            <div class="contents-box">
+                                <div class="number-tag">02</div>
+                                <div class="txt-box">
+                                    <h5>수출 준비</h5>
+                                    <span>수출을 위한 제반 준비, 상품 홍보자료, 무역 조직 구축</span>
+                                </div>
+                            </div>
+                            <div class="contents-box">
+                                <div class="number-tag">03</div>
+                                <div class="txt-box">
+                                    <h5>바이어 발굴</h5>
+                                    <span>잠재 고객 발굴 (바이어 DB - Search, 전시회, Data 사이트 등)</span>
+                                </div>
+                            </div>
+                            <div class="contents-box">
+                                <div class="number-tag">04</div>
+                                <div class="txt-box">
+                                    <h5>홍보/마케팅/영업</h5>
+                                    <span>마케팅 홍보, 영업전략 수립 및 시행</span>
+                                </div>
+                            </div>
+                            <div class="contents-box">
+                                <div class="number-tag">05</div>
+                                <div class="txt-box">
+                                    <h5> INQ/RFQ/QUO</h5>
+                                    <span>바이어에 대한 거래 제안, 제품 문의 견적서</span>
+                                </div>
+                            </div>
+                            <div class="contents-box">
+                                <div class="number-tag">06</div>
+                                <div class="txt-box">
+                                    <h5>협상</h5>
+                                    <span>계약 체결을 위한 세부 협상 (가격, 품질, 납기, 결제, 포장 등 합의)</span>
+                                </div>
+                            </div>
+                            <div class="contents-box">
+                                <div class="number-tag">07</div>
+                                <div class="txt-box">
+                                    <h5>계약 체결</h5>
+                                    <span>협상 결과를 반영한 계약 체결</span>
+                                </div>
+                            </div>
+                            <div class="contents-box">
+                                <div class="number-tag">08</div>
+                                <div class="txt-box">
+                                    <h5>생산</h5>
+                                    <span>제품과 서비스의 생산</span>
+                                </div>
+                            </div>
+                            <div class="contents-box">
+                                <div class="number-tag">09</div>
+                                <div class="txt-box">
+                                    <h5>선적</h5>
+                                    <span>국제 운송을 통한 물품 운송 (FOB, C&F 조건 등 인코텀즈 활용)</span>
+                                </div>
+                            </div>
+                            <div class="contents-box">
+                                <div class="number-tag">10</div>
+                                <div class="txt-box">
+                                    <h5>결제</h5>
+                                    <span>대금의 지급과 수취 (T/T, L/C 방식 등)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tradeimg">
+                <div class="title flex-side">
+                    <h5>수출 성공 사례</h5>
+                    <div class="buttons">
+                        <button class="btn_dash lightgray_bg slide-btn prev" onclick="slide('trade', 'prev')">
+                            <img src="./assets/imgs/prev_icon.svg"> 
+                        </button>
+                        <button class="btn_dash lightgray_bg slide-btn next" onclick="slide('trade', 'next')">
+                            <img src="./assets/imgs/next_icon.svg"> 
+                        </button>
+                    </div>
+                </div>
+                <div class="slider-container">
+                    <div class="dash-img-wrap" id="trade-slider">
+                        <div class="img-box" onclick="location.href='/crm_export_case_view_04.html';">
+                            <img src="./assets/imgs/dash-export04.png"> 
+                            <span>㈜제트웨이크</span>
+                        </div>
+                        <div class="img-box" onclick="location.href='/crm_export_case_view_03.html';">
+                            <img src="./assets/imgs/dash-export03.png"> 
+                            <span>갑산메탈㈜</span>
+                        </div>
+                        <div class="img-box" onclick="location.href='/crm_export_case_view_02.html';">
+                            <img src="./assets/imgs/dash-export02.png"> 
+                            <span>루미텍㈜</span>
+                        </div>
+                        <div class="img-box" onclick="location.href='/crm_export_case_view_01.html';">
+                            <img src="./assets/imgs/dash-export01.png"> 
+                            <span>㈜제이케이메탈소재</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tradeimg">
+                <div class="title flex-side">
+                    <h5>TaaS 팀</h5>
+                    <div class="buttons">
+                        <button class="btn_dash lightgray_bg slide-btn prev" onclick="slide('taas', 'prev')">
+                            <img src="./assets/imgs/prev_icon.svg"> 
+                        </button>
+                        <button class="btn_dash lightgray_bg slide-btn next" onclick="slide('taas', 'next')">
+                            <img src="./assets/imgs/next_icon.svg"> 
+                        </button>
+                    </div>
+                </div>
+                <div class="slider-container">
+                    <div class="dash-img-wrap" id="taas-slider">
+                        <div class="img-box" onclick="location.href='/crm_taas_team_01.html';" style="width: 242px; height: 200px;">
+                            <img src="./assets/imgs/main-ceo.png">
+                            <span>CEO 문성용</span>
+                        </div>
+                        <div class="img-box" onclick="location.href='/crm_taas_team_02.html';" style="width: 242px; height: 160px;">
+                            <img src="./assets/imgs/main-dogyun.png">
+                            <span>TM 정도균</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 바이어 리스트 요청 모달 -->
+            <div class="overlay"></div>
+            <div class="request-modal" id="request-modal">
+                <div class="header">
+                    <h3>바이어 리스트 요청</h3>
+                    <button class="close-modal">
+                        <img src="./assets/imgs/close_icon.svg"> 
+                    </button>
+                </div>
+                <div class="contents">
+                    <div class="notice">
+                        <img src="./assets/imgs/modal-notice.svg">
+                        <span>요청서를 작성하고, 바이어리스트를 받아보세요.</span>
+                    </div>
+                    <div class="input-box">
+                        <span>기업명</span>
+                        <input type="text" placeholder="기업명을 입력해주세요.">
+                        <span>사이트 URL</span>
+                        <input type="text" class="must" placeholder="사이트 URL을 입력해주세요.">
+                        <span>키워드</span> <br>
+                        <div class="input-container">
+                            <input class="keyword" type="text" placeholder="키워드 작성 후 엔터키를 입력해주세요.">
+                            <div class="keyword-button">
+                                <button type="button" class="keyword-add"></button>
+                            </div>
+                        </div>
+                        <div class="flex-center g-5 keyword-container" style="display: none;">
+                            <!-- 동적으로 생성된 키워드 태그가 추가될 곳 -->
+                        </div>
+                    </div>
+                    <div class="buttons-box">
+                        <button class="cancel-button">  
+                            <span>취소</span>
+                        </button>
+                        <button class="request-button">
+                            <span>요청하기</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- 기업 회원 전환 모달 -->
+            <div class="request-modal" id="transfer-modal">
+                <div class="header">
+                    <h3>기업 회원 전환</h3>
+                    <button class="close-modal">
+                        <img src="./assets/imgs/close_icon.svg"> 
+                    </button>
+                </div>
+                <div class="contents">
+                    <div class="notice">
+                        <img src="./assets/imgs/modal-notice.svg">
+                        <span>기업회원으로 전환하고, 바이어리스트를 받아보세요.</span>
+                    </div>
+                    <div class="input-box">
+                        <span>사업자번호</span><span class="bold main_color">*</span> 
+                        <div class="flex-center g-10">
+                            <input id="company-number" class="must" type="text" placeholder="사업자번호를 입력해주세요.">
+                            <button class="search-button">검색</button>
+                        </div>
+                        <div class="company-info-box">
+                            <div class="flex-center">
+                                <label>회사명</label>
+                                <value>트레이드잇</value>
+                            </div>
+                            <div class="flex-center">
+                                <label>전화번호</label>
+                                <value>051-123-4567</value>
+                            </div>
+                            <div class="flex-center">
+                                <label>주소</label>
+                                <value>부산 해운대구 센텀6로 21</value>
+                            </div>
+                        </div>
+                        <span>기업명</span>
+                        <input type="text" placeholder="기업명을 입력해주세요.">
+                        <span>사이트 URL</span>
+                        <input type="text" class="must" placeholder="사이트 URL을 입력해주세요.">
+                        <span>키워드</span> <br>
+                        <div class="input-container">
+                            <input class="keyword" type="text" placeholder="키워드 작성 후 엔터키를 입력해주세요.">
+                            <div class="keyword-button">
+                                <button type="button" class="keyword-add"></button>
+                            </div>
+                        </div>
+                        <div class="flex-center g-5 keyword-container" style="display: none;">
+                            <!-- 동적으로 생성된 키워드 태그가 추가될 곳 -->
+                        </div>
+                    </div>
+                    <div class="buttons-box">
+                        <button class="cancel-button">  
+                            <span>취소</span>
+                        </button>
+                        <button class="request-button">
+                            <span>요청하기</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="right-section">
+            <!-- 개인회원 -->
+            <div class="calendar-box fixed" style="display: none;">
+                <div class="calendar">
+                    <div class="header flex-side">
+                        <div class="flex-center">
+                            <div class="title">2024년 09월</div>
+                        </div>
+                        <div class="buttons">
+                            <button class="btn_dash lightgray_bg slide-btn prev">
+                                <img src="./assets/imgs/prev_icon.svg"> 
+                            </button>
+                            <button class="btn_dash lightgray_bg slide-btn next">
+                                <img src="./assets/imgs/next_icon.svg"> 
+                            </button>
+                        </div>
+                    </div>
+                    <div class="calendar-header">
+                        <span class="disabled">일</span>
+                        <span>월</span>
+                        <span>화</span>
+                        <span>수</span>
+                        <span>목</span>
+                        <span>금</span>
+                        <span class="disabled">토</span>
+                    </div>
+                    <div class="calendar-body">
+                        <span class="disabled">1</span>
+                        <span class="disabled">2</span>
+                        <span class="disabled">3</span>
+                        <span class="disabled">4</span>
+                        <span class="disabled">5</span>
+                        <span class="disabled">6</span>
+                        <span class="disabled">7</span>
+                        <span class="disabled">8</span>
+                        <span class="selected">9</span>
+                        <span>10</span>
+                        <span>11</span>
+                        <span>12</span>
+                        <span>13</span>
+                        <span class="disabled">14</span>
+                        <span class="disabled">15</span>
+                        <span>16</span>
+                        <span>17</span>
+                        <span>18</span>
+                        <span>19</span>
+                        <span>20<div class="schedule-dots"><div class="notice"></div><div class="meeting"></div></div></span>
+                        <span class="disabled">21</span>
+                        <span class="disabled">22</span>
+                        <span>23</span>
+                        <span>24</span>
+                        <span>25</span>
+                        <span>26</span>
+                        <span>27</span>
+                        <span class="disabled">28</span>
+                        <span class="disabled">29</span>
+                        <span>30<div class="schedule-dots"><div class="notice"></div><div class="meeting"></div></div></span>
+                        <span>31</span>
+                    </div>
+                </div>
+                <div class="calendar-board">
+                    <div class="title">9월 9일 (월)</div>
+                    <div class="nodata">일정이 없습니다.</div>
+                    <div class="info-box notice">
+                        <div class="flex-center">
+                            <div class="dot notice"></div>
+                            <div class="timestamp">오전 10:00</div>
+                        </div>
+                        <div class="content">데모데이 공지</div>
+                    </div>
+                    <div class="info-box meeting">
+                        <div class="flex-center">
+                            <div class="dot meeting"></div>
+                            <div class="timestamp">오후 15:00</div>
+                        </div>
+                        <div class="content">OOO업체 미팅 일정</div>
+                    </div>
+                </div>
+            </div>
+            <!-- 유료회원  -->
+            <div class="membership">
+                <div class="contract-box">
+                    <div class="title">계약현황</div>
+                    <div class="content">수출바우처</div>
+                    <div class="date">2024년 7월 ~ 2024년 12월</div>
+                </div>
+                <div class="manager-box">
+                    <h5>담당 TM</h5>
+                    <div class="flex-center">
+                        <div class="img-box">
+                            <img src="./assets/imgs/manager_img.png"> 
+                        </div>
+                        <div>
+                            <div class="name">홍길동 매니저</div>
+                            <div class="flex-center">
+                                <img src="./assets/imgs/client_label3.svg">
+                                <div class="value">010-0000-0000</div>
+                            </div>
+                            <div class="flex-center">
+                                <img src="./assets/imgs/client_label2.svg">
+                                <div class="value">hong.gildong@tradeit.co.kr</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="calendar-box">
+                    <div class="calendar">
+                        <div class="header flex-side">
+                            <div class="flex-center">
+                                <div class="title">2024년 09월</div>
+                            </div>
+                            <div class="buttons">
+                                <button class="btn_dash lightgray_bg slide-btn prev">
+                                    <img src="./assets/imgs/prev_icon.svg"> 
+                                </button>
+                                <button class="btn_dash lightgray_bg slide-btn next">
+                                    <img src="./assets/imgs/next_icon.svg"> 
+                                </button>
+                            </div>
+                        </div>
+                        <div class="calendar-header">
+                            <span class="disabled">일</span>
+                            <span>월</span>
+                            <span>화</span>
+                            <span>수</span>
+                            <span>목</span>
+                            <span>금</span>
+                            <span class="disabled">토</span>
+                        </div>
+                        <div class="calendar-body">
+                            <span class="disabled">1</span>
+                            <span class="disabled">2</span>
+                            <span class="disabled">3</span>
+                            <span class="disabled">4</span>
+                            <span class="disabled">5</span>
+                            <span class="disabled">6</span>
+                            <span class="disabled">7</span>
+                            <span class="disabled">8</span>
+                            <span class="selected">9</span>
+                            <span>10</span>
+                            <span>11</span>
+                            <span>12</span>
+                            <span>13</span>
+                            <span class="disabled">14</span>
+                            <span class="disabled">15</span>
+                            <span>16</span>
+                            <span>17</span>
+                            <span>18</span>
+                            <span>19</span>
+                            <span>20<div class="schedule-dots"><div class="notice"></div><div class="meeting"></div></div></span>
+                            <span class="disabled">21</span>
+                            <span class="disabled">22</span>
+                            <span>23</span>
+                            <span>24</span>
+                            <span>25</span>
+                            <span>26</span>
+                            <span>27</span>
+                            <span class="disabled">28</span>
+                            <span class="disabled">29</span>
+                            <span>30<div class="schedule-dots"><div class="notice"></div><div class="meeting"></div></div></span>
+                            <span>31</span>
+                        </div>
+                    </div>
+                    <div class="calendar-board">
+                        <div class="title">9월 9일 (월)</div>
+                        <div class="nodata">일정이 없습니다.</div>
+                        <div class="info-box notice">
+                            <div class="flex-center">
+                                <div class="dot notice"></div>
+                                <div class="timestamp">오전 10:00</div>
+                            </div>
+                            <div class="content">데모데이 공지</div>
+                        </div>
+                        <div class="info-box meeting">
+                            <div class="flex-center">
+                                <div class="dot meeting"></div>
+                                <div class="timestamp">오후 15:00</div>
+                            </div>
+                            <div class="content">OOO업체 미팅 일정</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+</div>
+</body>
+
+<!-- FullCalendar JS -->
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.4/index.global.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.4/index.global.min.js"></script>
+
+<script>
+   // 사이드 메뉴 공통 CSS 스크립트
+    const menuItems = [
+        {
+            id: 'dash',
+            iconHover: '../assets/imgs/sidebar-dash-active.svg',
+            iconDefault: '../assets/imgs/sidebar-dash.svg',
+            urls: ['/crm_dashboard.html']
+        },
+        {
+            id: 'buyerlist',
+            iconHover: '../assets/imgs/sidebar-buyerlist-active.svg',
+            iconDefault: '../assets/imgs/sidebar-buyerlist.svg',
+            urls: ['/crm_buyerlist.html']
+        },
+        {
+            id: 'report',
+            iconHover: '../assets/imgs/sidebar-board-active.svg',
+            iconDefault: '../assets/imgs/sidebar-board.svg',
+            urls: [''],
+            submenuUrls: ['/crm_week_report.html', '/crm_month_report.html', '/crm_meeting_report.html', '/crm_business_report.html'] 
+        },
+        {
+            id: 'calendar',
+            iconHover: '../assets/imgs/sidebar-calendar-acitve.svg',
+            iconDefault: '../assets/imgs/sidebar-calendar.svg',
+            urls: ['/crm_calendar.html']
+        },
+        {
+            id: 'insight',
+            iconHover: '../assets/imgs/sidebar-insight-active.svg',
+            iconDefault: '../assets/imgs/sidebar-insight.svg' ,
+            urls: ['']
+        }
+    ];
+
+    const currentPath = window.location.pathname;
+
+    const setMenuStyle = (item, icon, isActive) => {
+        item.style.backgroundColor = isActive ? 'rgba(12, 120, 251, 0.1)' : 'transparent';
+        item.style.color = isActive ? '#0c77fb' : '#505050';
+        item.style.fontWeight = isActive ? 'bold' : 'normal';
+        icon.src = isActive ? item.dataset.iconHover : item.dataset.iconDefault;
+    };
+
+    menuItems.forEach(menu => {
+        const item = document.getElementById(menu.id);
+        const icon = item.querySelector('img');
+        
+        // Dataset 속성을 통해 아이콘 정보를 추가
+        item.dataset.iconHover = menu.iconHover;
+        item.dataset.iconDefault = menu.iconDefault;
+
+        item.addEventListener('mouseover', () => setMenuStyle(item, icon, true));
+        item.addEventListener('mouseout', () => !item.classList.contains('active') && setMenuStyle(item, icon, false));
+
+        if (menu.urls.includes(currentPath)) {
+            item.classList.add('active');
+            setMenuStyle(item, icon, true);
+        }
+    });
+
+    // 업무 리포트 사이드메뉴 CSS 스크립트
+    $(function() {
+        $('#report').click(function(e) {
+            e.preventDefault();
+
+            const $submenu = $('#submenu');
+            const isExpanded = $submenu.is(':visible');
+
+            $submenu.slideToggle(300);
+            $('#report .sidebar_drop_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-toggle.svg' : '../assets/imgs/sidebar-toggle-active.svg');
+            $('#report .sidebar_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-board.svg' : '../assets/imgs/sidebar-board-active.svg');
+            $('#report span').css({
+                'color': isExpanded ? '#505050' : '#0c77fb',
+                'font-weight': isExpanded ? '400' : 'bold'
+            });
+            $('#report').css('background-color', 'transparent');
+        });
+    });
+    // 인사이트 사이드메뉴 css 스크립트 
+    $(function() {
+        $('#insight').click(function(e) {
+            e.preventDefault();
+
+            const $submenuInsight = $('#submenu-insight');
+            const isExpanded = $submenuInsight.is(':visible');
+
+            $submenuInsight.slideToggle(300);
+            $('#insight .sidebar_drop_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-toggle.svg' : '../assets/imgs/sidebar-toggle-active.svg');
+            $('#insight .sidebar_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-insight.svg' : '../assets/imgs/sidebar-insight-active.svg');
+            $('#insight span').css({
+                'color': isExpanded ? '#505050' : '#0c77fb',
+                'font-weight': isExpanded ? '400' : 'bold'
+            });
+            $('#insight').css('background-color', 'transparent');
+        });
+    });
+
+    // 상단 프로필 공통 스크립트
+    $("#myprofile").click(function(event) {
+        event.stopPropagation();
+        $(".myprofile-box").toggle();
+        if ($(".myprofile-box").is(":visible")) {
+            $(".sidebar_drop_icon").attr("src", "../assets/imgs/drop_active_icon.svg");
+        } else {
+            $(".sidebar_drop_icon").attr("src", "../assets/imgs/drop_inactive_icon.svg");
+        }
+    });
+
+    // 상세 페이지 이동
+    function goDetail() {
+        window.location.href = '/crm_detail.html';
+    }
+
+    // 슬라이더
+    let buyerIndex = 0;
+    let tradeIndex = 0;
+    let taasIndex = 0; 
+
+    function slide(type, direction) {
+        let containers = [];
+        let currentIndex;
+        let visibleBoxes;
+        let totalBoxes;
+        let slideFactor; 
+
+        if (type === 'buyer') {
+            containers.push(document.getElementById('buyer-slider'));
+            containers.push(document.getElementById('buyer-slider-second'));
+            currentIndex = buyerIndex;
+            visibleBoxes = 3; 
+            slideFactor = 0.6 / visibleBoxes;
+        } else if (type === 'trade') {
+            containers.push(document.getElementById('trade-slider'));
+            currentIndex = tradeIndex;
+            visibleBoxes = 4; 
+            slideFactor = 1 / visibleBoxes; 
+        } else if (type === 'taas') { 
+            containers.push(document.getElementById('taas-slider'));
+            currentIndex = taasIndex;
+            visibleBoxes = 4; 
+            slideFactor = 1 / visibleBoxes; 
+        }
+
+        totalBoxes = containers[0].children.length;
+
+        if (direction === 'next') {
+            currentIndex++;
+            if (currentIndex >= totalBoxes / 2) {
+                containers.forEach(container => {
+                    container.style.transition = 'none';
+                });
+                currentIndex = 0;
+                const offset = -(currentIndex * (100 * slideFactor));
+                containers.forEach(container => {
+                    container.style.transform = `translateX(${offset}%)`;
+                });
+                setTimeout(() => {
+                    containers.forEach(container => {
+                        container.style.transition = 'transform 0.5s ease-in-out';
+                    });
+                    currentIndex++;
+                    const offset = -(currentIndex * (100 * slideFactor));
+                    containers.forEach(container => {
+                        container.style.transform = `translateX(${offset}%)`;
+                    });
+                }, 50);
+            } else {
+                const offset = -(currentIndex * (100 * slideFactor));
+                containers.forEach(container => {
+                    container.style.transform = `translateX(${offset}%)`;
+                });
+            }
+        } else if (direction === 'prev') {
+            if (currentIndex <= 0) {
+                containers.forEach(container => {
+                    container.style.transition = 'none';
+                });
+                currentIndex = totalBoxes / 2 - 1;
+                const offset = -(currentIndex * (100 * slideFactor));
+                containers.forEach(container => {
+                    container.style.transform = `translateX(${offset}%)`;
+                });
+                setTimeout(() => {
+                    containers.forEach(container => {
+                        container.style.transition = 'transform 0.5s ease-in-out';
+                    });
+                    currentIndex--;
+                    const offset = -(currentIndex * (100 * slideFactor));
+                    containers.forEach(container => {
+                        container.style.transform = `translateX(${offset}%)`;
+                    });
+                }, 50);
+            } else {
+                currentIndex--;
+                const offset = -(currentIndex * (100 * slideFactor));
+                containers.forEach(container => {
+                    container.style.transform = `translateX(${offset}%)`;
+                });
+            }
+        }
+
+        if (type === 'buyer') {
+            buyerIndex = currentIndex;
+        } else if (type === 'trade') {
+            tradeIndex = currentIndex;
+        } else if (type === 'taas') {
+            taasIndex = currentIndex;
+        }
+    }
+
+    function duplicateSlides() {
+        const buyerSlider = document.getElementById('buyer-slider');
+        const buyerSliderSecond = document.getElementById('buyer-slider-second');
+        const tradeSlider = document.getElementById('trade-slider');
+        const taasSlider = document.getElementById('taas-slider'); 
+
+        buyerSlider.innerHTML += buyerSlider.innerHTML;
+        buyerSliderSecond.innerHTML += buyerSliderSecond.innerHTML;
+        tradeSlider.innerHTML += tradeSlider.innerHTML;
+        taasSlider.innerHTML += taasSlider.innerHTML; 
+    }
+        
+    // 지도
+    var map = L.map('map', {
+        maxBounds: [
+        [-90, -180], 
+        [90, 180]    
+    ],
+    maxBoundsViscosity: 1.0,
+    worldCopyJump: true,
+    zoomSnap: 0.1, 
+    zoomDelta: 0.1, 
+    minZoom: 1.5,
+    maxBoundsViscosity: 1.0,
+        worldCopyJump: true,
+        zoomControl: false
+    }).setView([30, 30], 1.25);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    map.scrollWheelZoom.enable();
+
+    var circle1 = L.circle([30, 30], {
+        color: 'transparent',          
+        fillColor: '#6e31d1',  
+        fillOpacity: 0.2,       
+        radius: 2000000,       
+        weight: 1            
+        
+    }).addTo(map);
+    circle1.bindTooltip("Communication");
+
+    var circle2 = L.circle([10, 50], {  
+        color: 'transparent',           
+        fillColor: '#00bf4c',     
+        fillOpacity: 0.2, 
+        radius: 2000000,
+        weight: 1  
+    }).addTo(map);
+    circle2.bindTooltip("inquiry");
+
+    var circle3 = L.circle([60, 20], {  
+        color: 'transparent',          
+        fillColor: '#eb7639',     
+        fillOpacity: 0.2, 
+        radius: 500000,
+        weight: 1  
+    }).addTo(map);
+    circle3.bindTooltip("quotation");
+
+    var circle4 = L.circle([20, 40], {  
+        color: 'transparent',           
+        fillColor: '#0c77fb',     
+        fillOpacity: 0.2, 
+        radius: 500000,
+        weight: 1  
+    }).addTo(map);
+    circle4.bindTooltip("Contract");
+
+    // 모달 - 바이어리스트 요청, 기업 회원 전환
+    $(document).ready(function() {
+        function showModal(modalClass) {
+            $('.overlay').fadeIn();
+            $(modalClass).fadeIn();
+        }
+
+        function closeModal() {
+            // Transfer modal도 함께 닫히도록 추가
+            $('.overlay, #request-modal, #transfer-modal').fadeOut();
+
+            // input 필드 초기화
+            $('input').val('');
+
+            // keyword-container 내의 요소 초기화
+            $('.keyword-container').empty();
+
+            // company-info-box 숨김 처리
+            $('.company-info-box').slideUp();  // 숨김 처리
+
+            // search-button 초기화 (CSS 리셋)
+            $('.search-button').css('background-color', '');  // 원래 상태로 돌림
+
+            // 기타 필요한 초기화 작업이 있으면 여기에 추가
+        }
+
+        $('.request').on('click', function() {
+            showModal('#request-modal');
+        });
+
+        $('.transfer-button').on('click', function() {
+            showModal('#transfer-modal');
+        });
+
+        $('.close-modal, .overlay, .cancel-button').on('click', function() {
+            closeModal();
+        });
+        
+        // 기업 전환 모달 사업자번호
+        $('#company-number').on('input', function() {
+            $(this).val($(this).val().replace(/[^0-9]/g, ''));
+        });
+
+        $('#company-number').on('input', function() {
+            $('.search-button').css('background-color', $(this).val() !== '' ? '#0c77fb' : '');
+        });
+
+        $('.search-button').on('click', function() {
+            let businessNumber = $('#company-number').val();  
+            if (businessNumber === '') {
+                alert('사업자번호를 입력해주세요.');
+            } else {
+                $('.company-info-box').slideDown();
+            }
+        });
+    });
+     // 키워드 추가 및 삭제
+    $(document).ready(function () {
+    // 키워드 추가 버튼 클릭 또는 Enter 키를 눌렀을 때 호출
+        $('#request-modal .keyword-add, #transfer-modal .keyword-add').on('click', function () {
+            addKeywordTag($(this).closest('.request-modal'));  // 이벤트가 발생한 모달에 대해서만 처리
+        });
+
+        // Enter 키를 눌렀을 때 호출
+        $('#request-modal .keyword, #transfer-modal .keyword').on('keypress', function (e) {
+            if (e.which === 13) { 
+                e.preventDefault(); 
+                addKeywordTag($(this).closest('.request-modal'));  // 이벤트가 발생한 모달에 대해서만 처리
+            }
+        });
+
+        // 동적 이벤트 위임으로 삭제 버튼 처리
+        $(document).on('click', '.keyword-delete', function () {
+            $(this).parent().remove();
+            var modal = $(this).closest('.request-modal');
+            
+            if (modal.find('.keyword-container').children().length === 0) {
+                modal.find('.keyword-container').hide();
+            }
+        });
+
+        // 키워드 태그 추가 함수
+        function addKeywordTag(modal) {
+            var keyword = modal.find('.keyword').val().trim();
+
+            if (keyword !== '') {
+                var tag = `
+                    <div class="keyword-tag g-5">
+                        <div>${keyword}</div>
+                        <img src="./assets/imgs/keyword-delete.svg" class="keyword-delete" alt="삭제">
+                    </div>`;
+                
+                modal.find('.keyword-container').append(tag).show();
+                modal.find('.keyword').val('');
+            }
+        }
+    });
+    // 캘린더
+    $(document).ready(function() {
+        $('.calendar-body span').on('click', function() {
+            if ($(this).find('.schedule-dots').length) {
+                $('.calendar-board .nodata').hide();
+                
+                $('.calendar-board .info-box').show();
+            } else {
+                $('.calendar-board .nodata').show();
+                $('.calendar-board .info-box').hide();
+            }
+        });
+    });
+
+    // Trader’s Journey 
+    $(document).ready(function() {
+        $('.contents-box').on('click', function() {
+
+            $('#tj-title').text(''); 
+            $('#tj-contents').text('');  
+
+            var journeyTitle = $(this).find('h5').text();
+            var journeyContent = $(this).find('span').text();
+            var chapterNumber = $(this).find('.number-tag').text();
+
+            $('#tj-title').text(journeyTitle);
+            $('#tj-contents').text(journeyContent);
+
+            $('.number-box span').text('CHAPTER ' + chapterNumber);
+            $('#chapter-img').attr('src', './assets/imgs/chapter-img' + chapterNumber + '.png');
+        });
+    });
+
+    // Trader’s Journey 상세 페이지 이동
+    function goView() {
+        var chapterText = $('.chapter-box .number-box span').text(); 
+        var chapterNumber = chapterText.replace('CHAPTER ', '').trim();
+        var newPageUrl = 'crm_traders_journey_view_' + chapterNumber + '.html';
+
+        window.location.href = newPageUrl;
+    }
+
+
+</script>
+
+</html>

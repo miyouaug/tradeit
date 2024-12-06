@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트레이드잇</title>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- <link rel="stylesheet" href="../files/fonts/xeicon/xeicon.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/d49aa60918.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/mypage.css">
+    
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="../assets/imgs/tradeit_logo.svg" alt="logo" onclick="location.href='/';">
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="./crm_dashboard.html" id="dash">
+                            <div>
+                                <img src="../assets/imgs/sidebar-dash.svg" class="sidebar_icon">
+                                <span>대시보드</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="./crm_buyerlist.html" id="buyerlist">
+                            <div>
+                                <img src="../assets/imgs/sidebar-buyerlist.svg" class="sidebar_icon">
+                                <span>바이어 리스트</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="./crm_clientlist.html" id="clientlist">
+                            <div>
+                                <img src="../assets/imgs/sidebar-clientlist.svg" class="sidebar_icon">
+                                <span>고객 관리</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li id="toggle-menu">
+                        <a href="#" id="report">
+                            <div>
+                                <img src="../assets/imgs/sidebar-board.svg" class="sidebar_icon">
+                                <span>업무 리포트</span>
+                            </div>
+                            <img src="../assets/imgs/sidebar-toggle.svg" class="sidebar_drop_icon">
+                        </a>
+                    </li>
+                    <div class="submenu" id="submenu">
+                        <div class="submenu-item"><a href="./crm_week_report.html" id="week">주간 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_month_report.html" id="month">월간 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_meeting_report.html" id="meeting">미팅 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_business_report.html" id="business">출장 리포트</a></div>
+                    </div>
+                    <li>
+                        <a href="./crm_calendar.html" id="calendar">
+                            <div>
+                                <img src="../assets/imgs/sidebar-calendar.svg" class="sidebar_icon">
+                                <span>일정 관리</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li id="toggle-menu-insight">
+                        <a href="#" id="insight">
+                            <div>
+                                <img src="../assets/imgs/sidebar-insight.svg" class="sidebar_icon">
+                                <span>인사이트</span>
+                            </div>
+                            <img src="../assets/imgs/sidebar-toggle.svg" class="sidebar_drop_icon">
+                        </a>
+                    </li>
+                    <div class="submenu" id="submenu-insight">
+                        <div class="submenu-item"><a href="./crm_traders_journey.html" id="journey">Trader’s Journey</a></div>
+                        <div class="submenu-item"><a href="./crm_export_case.html" id="export">수출 성공 사례</a></div>
+                        <div class="submenu-item"><a href="./crm_taas_team.html" id="taas">TaaS 팀</a></div>
+                    </div>
+                </ul>
+            </nav>
+            <div>
+                <button class="transfer-button">
+                    <img src="../assets/imgs/change_type.svg">
+                    <span>기업 전환</span>
+                </button>
+            </div>
+    </aside>
+    <main class="mg-14">
+    <header>
+        <div class="menu-nav">
+            <span class="text_colors_1">인사이트</span>
+            <img src="./assets/imgs/nav_right_icon.svg">
+            <span>TaaS 팀</span>
+        </div>
+        <div class="mypage">
+            <div class="user-info" id="myprofile">
+                    <img src="/images/supplier/100003-티제이코프/profile_1643868771.png" class="profile_img">
+                <span class="bold">홍길동</span><span>님</span>
+                <img src="../assets/imgs/drop_inactive_icon.svg" class="sidebar_drop_icon">
+            </div>
+        </div>
+    </header>
+    <div class="myprofile-box">
+        <div>
+            <span>
+                <a href="/crm_profile_edit.html">개인정보 수정</a>
+            </span>
+        </div>
+        <div>
+            <span onclick="signOut()">로그아웃</span>
+        </div>
+    </div>
+    <div class="insight-view-wrap">
+        <div class="chapter-txt">CEO</div>
+        <h3>트레이드잇 CEO, 문성용 대표</h3>
+        <div class="contents-box">
+            <img src="./assets/imgs/taas-team.png"> <br><br>
+            <span>
+                트레이드잇은 해외 수출을 위한 '해외 영업 CRM'을 통해 수출 문화를 바꾸고 있는 팀입니다. <br>
+                많은 기업들이 수출에 대한 다양한 어려움과 막연함으로 인해 수출을 망설이고 있습니다. <br>
+                트레이드잇은 이 문제를 해결하기 위해 <span class="highlight">해외 영업 CRM 솔루션인 TaaS를 통해 수출 시장을 혁신</span>하고 있습니다. <br>
+                <br>
+                트레이드잇 시스템을 통해 기업들이 더 쉽게 해외 고객에게 접근하고,<br>
+                효율적으로 영업 활동을 펼쳐 더 큰 성과를 낼 수 있도록 하는 것이 목표라고 하는데요. <br>
+                <br>
+                세일즈포스, Slack 등 다양한 툴이 B2B 영업을 온라인화하고, 데이터베이스화하여 큰 변화를 이끌고 있는 것처럼<br>
+                트레이드잇은 수출 업무에 최적화된 솔루션을 제공함으로써 사용자 만족도를 빠르게 높이고 있습니다. <br>
+                <br>
+                그 트레이드잇의 CEO, 문성용 대표님과의 인터뷰를 준비했어요. <br>
+                대표님의 업력부터 기억에 남는 고객사들까지, 낱낱이 파헤쳤으니 끝까지 읽어주세요!
+            </span>  
+            <div class="taas-title-box">
+                <img src="./assets/imgs/taas-title-box.png"> 
+                <h3>1. 트레이드잇의 CEO, 문성용 대표</h3>
+            </div>
+            <div style="margin: 3.125rem 0 1.25rem;">
+                <span class="question icon">Q.</span>
+                <span class="question">문성용 대표님에 대해 소개해 주세요!</span>
+            </div>
+            <span>
+                안녕하세요. Trade as a Service(TaaS) 시장을 만들어가고 있는 트레이드잇 대표 문성용입니다. <br>
+                저는 대학에서 무역을 전공한 후, 종합상사인 LG상사에서 곡물과 석탄 트레이더로 근무하며 국제 무역의 감각을 키웠고<br>
+                이후 약 20년 동안 온라인 사업과 해외 수출입 사업을 진행해 왔습니다.<br>
+                오랜 시간동안 해외 영업과 무역의 최전선에서 다양한 아이템과 시장을 경험하며,<br>
+                이 과정에서 국내 기업들이 해외 영업과 수출에서 겪는 여러 어려움을 직접 확인하게 되었습니다. <br>
+                이러한 문제를 해결하기 위해 트레이드잇을 설립하게 되었고, 더 쉽고 빠른 무역 서비스를 제공하기 위해 최선을 다하고있습니다.
+            </span>
+            <div style="margin: 3.125rem 0 1.25rem;">
+                <span class="question icon">Q.</span>
+                <span class="question">그럼 대표로서 요즘 가장 신경을 쏟고 있는 일은 무엇인가요?</span>
+            </div>
+            <span>
+                최근 가장 집중하고 있는 일은 해외 영업에 최적화된 저희 <span class="highlight">TaaS 시스템을 지속적으로 업그레이드하는 일</span>입니다. <br>
+                많은 기업들이 해외 수출을 잘 진행하고 있지만,<br>
+                여전히 더 많은 기업들이 해외 시장에 진출하고 싶어도 방법을 몰라 어려움을 겪고 있는 상황입니다. <br>
+                <br>
+                현재 IT 기술이 세상을 빠르게 변화시키고 있으나 무역과 해외 영업은 여전히 IT 기술 적용이 더딥니다. <br>
+                90% 이상의 제품들이 산업재, 중간재, 비표준화된 B2B 제품들이지만,<br>
+                이들 제품의 영업은 여전히 오프라인과 아날로그 방식에 머물러 있는 실정입니다.<br>
+                국내뿐 아니라 전 세계의 제조업체들이 해외 시장 진출을 염원하고 있지만,<br>
+                여전히 아날로그와 오프라인 방식의 해외 영업은 효율성과 확장성 면에서 한계가 많습니다. <br>
+                <br>
+                이에 저희 트레이드잇(Tradeit)은 B2B 시장에서 IT 기술을 접목한 온라인 무역 솔루션을 제공하는 기업으로 자리 잡고 있습니다.<br>
+                해외 영업에 최적화된 시스템을 개발하여, 고객들이 이 시스템을 통해 더 쉽게 해외 시장에 진출하고 수출 성과를 올릴 수 있다고 확신합니다.
+            </span>
+            <div style="margin: 3.125rem 0 1.25rem;">
+                <span class="question icon">Q.</span>
+                <span class="question">지속적인 시스템 개발, 중요하죠! 이렇게 생각하시게 된 계기가 무엇인가요?</span>
+            </div>
+            <span>
+                우리나라에는 약 100만 개의 제조사가 있지만, 그중 수출을 직간접적으로 진행하는 업체는 10만 개에 불과합니다. <br>
+                여전히 많은 제조업체들이 해외 시장에 도전하고 싶어하지만, 그 과정이 쉽지 않은 것이 현실입니다. <br>
+                여러 가지 이유가 있겠지만, 그중에서도 가장 큰 문제는 <span class="highlight">해외 영업에 대한 노하우와 체계적인 시스템이 부족</span>하다는 점입니다. <br>
+                <br>
+                해외 수출의 성공을 위해서는 다양한 요소들이 필요하지만, <br>
+                그중에서도 '바이어는 어디에 있는가?', '바이어는 누구인가?', '어떻게 그들에게 우리 제품을 어필할 것인가?'와 같은<br>
+                기본적인 질문에서 시작합니다. <br>
+                <br>
+                저희 <span class="highlight">TaaS 시스템은 해외 영업에 최적화된 CRM을 제공</span>하여 기업들이 <span class="highlight">체계적인 고객 관리를 할 수 있도록 돕습니다.</span> <br>
+                이러한 시스템을 통해 기업들이 더 쉽게 고객에게 접근하고, 효율적으로 영업 활동을 펼쳐 더 큰 성과를 낼 수 있도록 하는 것이 저희의 목표입니다.<br><br>
+            </span>
+            <img src="./assets/imgs/taas-team-ceo.png"><br>
+            <div style="margin: 3.125rem 0 1.25rem;">
+                <span class="question icon">Q.</span>
+                <span class="question">리더로서 트레이드잇의 방향을 결정할 때 가장 중요하게 고려하는 것은 무엇인가요?</span>
+            </div>
+            <span>
+                스타트업의 본질은 문제 해결에 있다고 생각합니다. 문제가 있는 곳에 해결책이 존재하기 마련이죠. <br>
+                트레이드잇은 이러한 문제들을 해결하기 위해 존재하는 조직입니다.<br>
+                특히 해외 영업과 무역 분야에서 우리가 마주한 문제들은 매우 복잡하고 어려운 것들입니다.<br>
+                <br>
+                트레이드잇은 해외 영업과 무역을 지원하는 솔루션을 제공하여 이러한 복잡한 문제를 해결하고자 합니다. <br>
+                과연 해외 영업에 더 나은 방법은 무엇일까? 더 쉽고 빠르게 할 수 있는 방법은 없을까? 이것이 저희가 계속 고민하고 있는 부분입니다.<br>
+                트레이드잇의 미션은 바로 이러한 한계와 어려움을 해결하는 것입니다.<br>
+                앞으로도 더 쉽고 빠른 해외 영업의 길을 제시하기 위해 지속적으로 노력하겠습니다.
+            </span>
+            <div class="taas-title-box">
+                <img src="./assets/imgs/taas-title-box.png"> 
+                <h3>2. 수출자를 위한 CRM, TaaS(Trade as a Service)</h3>
+            </div>
+            <img src="./assets/imgs/taas-info.png" style="margin-top: 3.125rem;"><br>
+            <div style="margin: 3.125rem 0 1.25rem;">
+                <span class="question icon">Q.</span>
+                <span class="question">TaaS 서비스는 어떻게 시작하게 되었나요?</span>
+            </div>
+            <span>
+                처음 저희 서비스는 플랫폼 기반으로 기획되었습니다. <br>
+                초기에는 한국 제조사 DB를 해외로 옮겨 광고하고, 해외에서 문의가 들어오면 해당 업체에 전달하여<br>
+                무역을 지원하는 것이 저희 회사의 첫 비즈니스 모델이었습니다.<br>
+                그 과정에서 여러 업체들을 만나면서 알게 된 것은, 이들이 필요로 하는 것은 단순히 플랫폼이나 인쿼리가 아니라,<br>
+                '수출을 어떻게 시작해야 할지'에 대한 기본적인 고민이라는 점이었습니다. <br>
+                특히 중소기업들은 해외 수출을 담당할 인력이 부족하다는 문제도 있었습니다.<br>
+                <br>
+                그래서 한국 중소기업들이 <span class="highlight">해외 영업에 대한 노하우를 체계적으로 익히고, 이를 데이터베이스화할 수 있는 방법을 고민</span>하게 되었습니다. <br>
+                <span class="highlight">그 결과 SaaS 기반의 해외 영업 전문 CRM을 개발</span>하게 되었습니다. <br>
+                사실 개발이라고 하기보다, 저희 영업팀이 사용하는 매뉴얼을 온라인화한 것으로 이를 통해 기업들이 해외 영업의 매뉴얼을 쉽게 습득하고<br>
+                적용할 수 있는 출발점이 되었으면 합니다.
+            </span>
+            <div style="margin: 3.125rem 0 1.25rem;">
+                <span class="question icon">Q.</span>
+                <span class="question">수출자를 위한 CRM을 개발 하기까지, 쉽지 않았을 것 같아요. 어떻게 고객을 유치 하셨나요?</span>
+            </div>
+            <span>
+                SaaS 기반의 온라인 CRM 서비스는 매우 주목받는 분야입니다. <br>
+                세일즈포스와 Slack 같은 도구들이 B2B 영업을 온라인화하고, 데이터베이스화하여 큰 변화를 이끌고 있습니다. <br>
+                <br>
+                트레이드잇도 SaaS 기반 CRM인 TaaS를 통해, 해외 영업과 무역에 많은 어려움을 느끼는 고객에게 해외영업에 특화된 솔루션을 제공하고 있습니다. 
+                고객 유치에는 어려움이 있지만, 점차 디지털 전환이 확대되고 있으며 젊고 IT 친화적인 세대가 등장하면서 이러한 솔루션의 수요는 증가하고 있습니다. 
+                트레이드잇의의 목표는 <span class="highlight">"TaaS를 안 써본 기업은 있어도 한 번만 사용한 기업은 없다"</span>라는 인식을 주는 기업으로 성장하는 것입니다. 
+            </span>
+            <div style="margin: 3.125rem 0 1.25rem;">
+                <span class="question icon">Q.</span>
+                <span class="question">수출자에게 TaaS가 주는 가장 큰 가치는 무엇이라고 생각하나요?</span>
+            </div>
+            <span>
+                TaaS의 핵심 가치는 표준화입니다. "측정할 수 없으면 평가할 수 없고, 평가할 수 없으면 개선할 수 없다"는 말처럼, <br>
+                TaaS는 기존에 표준화되지 않았던 해외 영업을 매뉴얼화하고, 이를 통해 KPI를 설정하며 디지털과 아날로그 방식을 개선하는 데 주력하고 있습니다.
+                <br><br>
+                국내에도 해외 영업 전문가들이 많지만, 대부분은 아날로그 방식과 개인의 노하우에 의존하고 있습니다. <br>
+                특정 제품과 시장에만 국한된 경험으로 커리어를 쌓는 경우가 많고, 전체적인 시장 안목을 가지는 데는 한계가 있습니다. <br>
+                <span class="highlight">트레이드잇은 해외 영업 CRM인 TaaS를 통해 해외 영업 프로세스를 표준화하는 것이 핵심 가치</span>입니다. 
+            </span>
+            <img src="./assets/imgs/taas-crm.png" style="margin-top: 3.125rem;"><br>
+            <div style="margin: 3.125rem 0 1.25rem;">
+                <span class="question icon">Q.</span>
+                <span class="question">아주 좋은 서비스인데요! 그럼 어떤 기업에게 제일 추천드리고 싶나요?</span>
+            </div>
+            <span>
+                저희 TaaS 서비스는 두 가지로 구성되어 있습니다. <br><br>
+                첫째, <span class="highlight">SaaS 기반의 온라인 CRM 솔루션</span>으로, 해외 영업에 필요한 시스템을 제공하며 바이어 정보를 찾고 관리할 수 있는 도구를 제공합니다. <br>
+                타겟 바이어를 설정하고, 바이어별 CRM을 통해 영업 현황을 기록하고 분석할 수 있어, 보다 효율적인 고객 관리와 체계적인 영업이 가능합니다. <br>
+                해외 영업 조직을 운영하는 기업들에게 매우 유용한 솔루션입니다.
+                <br><br>
+                둘째, <span class="highlight">해외 영업 대행 서비스</span>입니다. <br>
+                전담 Trade Manager(TM)가 배정되어 시장조사부터 수출 전략 기획, 바이어 발굴, 영업, 견적, 계약 체결, 선적까지 모든 과정을 대행합니다. <br>
+                수출 초보 기업이나 수출 조직이 없는 경우, 저비용으로 빠르게 성과를 낼 수 있는 프로그램입니다.
+                <br><br>
+                문의 주시면 고객사의 상황에 맞는 서비스를 친절하게 안내해 드리겠습니다.
+            </span>
+            <div style="margin: 3.125rem 0 1.25rem;">
+                <span class="question icon">Q.</span>
+                <span class="question">TaaS 서비스가 향후 어떻게 발전해 나갈 계획인가요?</span>
+            </div>
+            <span>
+                현재 TaaS 서비스의 가장 중요한 목표는 고도화입니다. <br>
+                아직 무역과 해외 영업은 서비스로 인식되지 않고, 기업들이 내부 역량에 의존하는 프로세스로 진행되고 있습니다. 
+                <br>
+                트레이드잇은 내부 역량이 부족한 기업에게 최적의 솔루션을 제공하여 수출 성사율을 높이는 데 주력하고 있으며
+                이러한 목표를 달성하기 위해, <br>가장 빠르고 효과적인 방법을 지속적으로 개선해 나가는 데 집중할 계획입니다.
+            </span>
+            <div class="taas-title-box">
+                <img src="./assets/imgs/taas-title-box.png"> 
+                <h3>3. 고객들이 TaaS를 사랑하는 이유</h3>
+            </div>
+            <div style="margin: 3.125rem 0 1.25rem;">
+                <span class="question icon">Q.</span>
+                <span class="question">TaaS 고객들이 말하는 WOW 포인트는 무엇인가요?</span>
+            </div>
+            <span>
+                고객사들은 해외 영업에서 여러 문제에 직면해 있습니다. <br>
+                타겟 바이어를 찾지 못하고, 수출 인력이 부족하며, 데이터와 시스템의 일관성이 떨어지는 것이 대표적인 문제입니다. <br>
+                그중에서도 가장 큰 고민은 바이어는 어디에 있는가입니다.
+                <br><br>
+                트레이드잇은 이 문제를 해결하기 위해, "천기누설"이라고 불리는 기업 데이터를 제공합니다. <br>
+                <span class="highlight">고객사는 무역 데이터와 기업 데이터를 활용해 우리 제품을 구매하는 바이어를 찾아내고, 경쟁사들이 어디에 판매하고 있는지 파악할 수 있습니다. </span>
+            </span>
+            <img src="./assets/imgs/taas-crm2.png" style="margin: 1.25rem 0;"><br>
+            <span>
+                해외 영업에서는 마케팅보다는 타겟 바이어를 확정하는 것이 무엇보다 중요합니다. <br>
+                이 부분이 고객들이 가장 놀라는 Wow 포인트라고 생각합니다. 물론 더 많은 Wow 포인트가 있지만, 여기서는 이 하나만 말씀드리겠습니다. 😊
+            </span>
+            <div style="margin: 3.125rem 0 1.25rem;">
+                <span class="question icon">Q.</span>
+                <span class="question">인상 깊었던 고객 코멘트가 있으시다면 공유해 주세요!</span>
+            </div>
+            <span>
+                고객사들은 해외 영업에서 여러 문제에 직면해 있습니다. <br>
+                저희 고객사들은 소재, 철강, 화학, 섬유, 반도체 등 다양한 분야에 걸쳐 있으며, 대부분 매출 100억에서 300억 원 이상의 중견 기업입니다. <br>
+                이들은 수십 년간 국내 영업 기반을 다져왔지만, 해외 시장 진출에 대한 니즈가 굉장히 큽니다. <br>
+                그러나 해외 시장은 국내 시장과는 많이 다르며 결과가 나올 때까지 시간이 걸리기 때문에, 단기간에 성과를 기대하던 대표님들이 좌절을 느끼시는 경우가 많습니다.
+                기업마다 상황은 다르지만, 대부분 수출에 대한 좌절이나 위기를 겪고 나서 저희 서비스를 찾으십니다. 
+                <br>
+                저희 서비스를 통해 수출이 성공했을 때, 희열을 느끼시며 <span class="highlight">"트레이드잇 덕분에 드디어 저희도 수출을 하네요!!"</span>라는 멘트가 기억에 남습니다. 
+            </span>
+            <div class="taas-title-box">
+                <img src="./assets/imgs/taas-title-box.png"> 
+                <h3>4. Sales Force 같은 CRM을 목표로 하는 트레이드잇</h3>
+            </div>
+            <img src="./assets/imgs/tradeit-team.png" style="margin-top: 3.125rem;"><br>
+            <div style="margin: 3.125rem 0 1.25rem;">
+                <span class="question icon">Q.</span>
+                <span class="question">팀원들과 함께 그리는 트레이드잇의 최종 목표는 무엇인가요?</span>
+            </div>
+            <span>
+                여느 기업들과 마찬가지로 문제를 해결함으로써 사회에 기여하는 것이 최종 목표인 것 같습니다. <br>
+                어떤 서비스와 시장을 만들어 갈지에 대한 전략과 실행도 중요한 부분이지만 행복하고 즐거운 회사, 사회에 기여하는 회사를 만드는 것이 트레이드잇의 철학입니다. 
+                좋은 철학과 사명감을 바탕으로 즐겁게 성장하는 회사를 만들고 싶습니다.
+            </span>
+            <div style="margin: 3.125rem 0 1.25rem;">
+                <span class="question icon">Q.</span>
+                <span class="question">트레이드잇을 설명하는 한 마디, 어떤게 있을까요?</span>
+            </div>
+            <span>
+                트레이드잇은 "도전"입니다. 
+                우리는 항상 도전하며, 어려운 미션을 설정하고 해결해 나가면서 성장합니다.<br> 실패도 있지만, 그 과정에서 배우고 다시 새로운 도전을 맞이합니다.
+            인생과 사업은 결국 도전의 역사라고 믿습니다.<br> 트레이드잇도 도전하는 회사로 기억되길 바랍니다.
+            </span>
+        </div>
+        <div class="footer">
+            <div class="flex-center" style="visibility: hidden">
+                <button class="move-button">
+                    <img src="./assets/imgs/prev_icon.svg"> 
+                </button>
+                <div class="txt-box">
+                    <div class="default-txt">이전</div>
+                    <div>루미텍</div>
+                </div>
+            </div>
+            <button class="list-button" onclick="location.href='/crm_taas_team.html'">
+                <img src="./assets/imgs/list-icon.svg">
+                <span>목록</span>
+            </button>
+            <div class="flex-center">
+                <div class="txt-box" style="text-align: right;">
+                    <div class="default-txt">다음</div>
+                    <div>TM 정도균</div>
+                </div>
+                <button class="move-button" onclick="location.href='/crm_taas_team_02.html'">
+                    <img src="./assets/imgs/next_icon.svg"> 
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+
+
+<script>
+    // 사이드 메뉴 공통 CSS 스크립트
+    const menuItems = [
+        {
+            id: 'dash',
+            iconHover: '../assets/imgs/sidebar-dash-active.svg',
+            iconDefault: '../assets/imgs/sidebar-dash.svg',
+            urls: ['/crm_dashboard.html']
+        },
+        {
+            id: 'buyerlist',
+            iconHover: '../assets/imgs/sidebar-buyerlist-active.svg',
+            iconDefault: '../assets/imgs/sidebar-buyerlist.svg',
+            urls: ['/crm_buyerlist.html']
+        },
+        {
+            id: 'clientlist',
+            iconHover: '../assets/imgs/sidebar-clientlist-active.svg',
+            iconDefault: '../assets/imgs/sidebar-clientlist.svg',
+            urls: ['/crm_clientlist.html','/crm_detail.html','/crm_update_detail.html','/crm_update_manager.html','/crm_update_report.html']
+        },
+        {
+            id: 'report',
+            iconHover: '../assets/imgs/sidebar-board-active.svg',
+            iconDefault: '../assets/imgs/sidebar-board.svg',
+            urls: [''],
+            submenuUrls: ['/crm_week_report.html', '/crm_month_report.html', '/crm_meeting_report.html', '/crm_business_report.html'] 
+        },
+        {
+            id: 'calendar',
+            iconHover: '../assets/imgs/sidebar-calendar-acitve.svg',
+            iconDefault: '../assets/imgs/sidebar-calendar.svg',
+            urls: ['/crm_calendar.html']
+        },
+        {
+            id: 'insight',
+            iconHover: '../assets/imgs/sidebar-insight-active.svg',
+            iconDefault: '../assets/imgs/sidebar-insight.svg' ,
+            urls: [''],
+            submenuUrls: ['/crm_traders_journey.html', '/crm_export_case.html', '/crm_taas_team.html','/crm_traders_journey_view.html'] 
+        }
+    ];
+
+    const currentPath = window.location.pathname;
+
+    const setMenuStyle = (item, icon, isActive) => {
+        item.style.backgroundColor = isActive ? 'rgba(12, 120, 251, 0.1)' : 'transparent';
+        item.style.color = isActive ? '#0c77fb' : '#505050';
+        item.style.fontWeight = isActive ? 'bold' : 'normal';
+        icon.src = isActive ? item.dataset.iconHover : item.dataset.iconDefault;
+    };
+
+    // 서브메뉴 상태 관리 함수
+    const toggleSubmenu = (isActive) => {
+        const submenu = document.querySelector('#submenu-insight');
+        submenu.style.display = isActive ? 'block' : 'none';
+    };
+
+    // 메뉴 아이템 반복 처리
+    menuItems.forEach(menu => {
+        const item = document.getElementById(menu.id);
+        const icon = item.querySelector('img');
+        
+        // Dataset 속성을 통해 아이콘 정보를 추가
+        item.dataset.iconHover = menu.iconHover;
+        item.dataset.iconDefault = menu.iconDefault;
+
+        item.addEventListener('mouseover', () => setMenuStyle(item, icon, true));
+        item.addEventListener('mouseout', () => !item.classList.contains('active') && setMenuStyle(item, icon, false));
+
+        if (menu.urls.includes(currentPath)) {
+            item.classList.add('active');
+            setMenuStyle(item, icon, true);
+        }
+
+    // 서브메뉴를 포함한 메뉴일 경우 추가 처리
+    if (menu.submenuUrls && menu.submenuUrls.includes(currentPath)) {
+        const toggleItem = document.getElementById('toggle-menu-insight');
+        item.style.fontWeight = 'bold';
+        item.style.color = '#0c77fb';
+
+        toggleSubmenu(true);
+
+        const sidebarIcon = toggleItem.querySelector('.sidebar_icon');
+        const sidebarDropIcon = toggleItem.querySelector('.sidebar_drop_icon');
+        
+        sidebarIcon.src = '../assets/imgs/sidebar-insight-active.svg'; 
+        sidebarDropIcon.src = '../assets/imgs/sidebar-toggle-active.svg';  
+
+        const submenuItems = document.querySelectorAll('.submenu-item a');
+        submenuItems.forEach(subItem => {
+            if (subItem.getAttribute('href') === currentPath) {
+                subItem.style.backgroundColor = 'rgba(12, 120, 251, 0.1)';
+                subItem.style.color = '#0c77fb';
+                subItem.style.fontWeight = 'bold';
+            }
+        });
+    }
+});
+
+    // 현재 경로와 서브메뉴 a 요소의 href 속성 비교
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.submenu-item a').forEach(subItem => {
+            const hrefPath = subItem.getAttribute('href').replace('./', '');
+
+            if (currentPath.includes(hrefPath)) {
+                subItem.style.backgroundColor = 'rgba(12, 120, 251, 0.1)';
+                subItem.style.color = '#0c77fb';
+
+                // 서브메뉴 열기
+                toggleSubmenu(true);
+            }
+        });
+    });
+    // 업무 리포트 사이드메뉴 CSS 스크립트
+    $(function() {
+        $('#report').click(function(e) {
+            e.preventDefault();
+
+            const $submenu = $('#submenu');
+            const isExpanded = $submenu.is(':visible');
+
+            $submenu.slideToggle(300);
+            $('#report .sidebar_drop_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-toggle.svg' : '../assets/imgs/sidebar-toggle-active.svg');
+            $('#report .sidebar_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-board.svg' : '../assets/imgs/sidebar-board-active.svg');
+            $('#report span').css({
+                'color': isExpanded ? '#505050' : '#0c77fb',
+                'font-weight': isExpanded ? '400' : 'bold'
+            });
+            $('#report').css('background-color', 'transparent');
+        });
+    });
+    // 인사이트 사이드메뉴 css 스크립트 
+    $(function() {
+        $('#insight').click(function(e) {
+            e.preventDefault();
+
+            const $submenuInsight = $('#submenu-insight');
+            const isExpanded = $submenuInsight.is(':visible');
+
+            $submenuInsight.slideToggle(300);
+            $('#insight .sidebar_drop_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-toggle.svg' : '../assets/imgs/sidebar-toggle-active.svg');
+            $('#insight .sidebar_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-insight.svg' : '../assets/imgs/sidebar-insight-active.svg');
+            $('#insight span').css({
+                'color': isExpanded ? '#505050' : '#0c77fb',
+                'font-weight': isExpanded ? '400' : 'bold'
+            });
+            $('#insight').css('background-color', 'transparent');
+        });
+    });
+
+    
+    // 상단 프로필 공통 스크립트
+    $("#myprofile").click(function(event) {
+        event.stopPropagation();
+        $(".myprofile-box").toggle();
+        if ($(".myprofile-box").is(":visible")) {
+            $(".sidebar_drop_icon").attr("src", "../assets/imgs/drop_active_icon.svg");
+        } else {
+            $(".sidebar_drop_icon").attr("src", "../assets/imgs/drop_inactive_icon.svg");
+        }
+    });    
+</script>
+
+</html>

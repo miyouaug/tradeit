@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트레이드잇</title>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- <link rel="stylesheet" href="../files/fonts/xeicon/xeicon.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/d49aa60918.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/mypage.css">
+    
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="../assets/imgs/tradeit_logo.svg" alt="logo" onclick="location.href='/';">
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="./crm_dashboard.html" id="dash">
+                            <div>
+                                <img src="../assets/imgs/sidebar-dash.svg" class="sidebar_icon">
+                                <span>대시보드</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="./crm_buyerlist.html" id="buyerlist">
+                            <div>
+                                <img src="../assets/imgs/sidebar-buyerlist.svg" class="sidebar_icon">
+                                <span>바이어 리스트</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="./crm_clientlist.html" id="clientlist">
+                            <div>
+                                <img src="../assets/imgs/sidebar-clientlist.svg" class="sidebar_icon">
+                                <span>고객 관리</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li id="toggle-menu">
+                        <a href="#" id="report">
+                            <div>
+                                <img src="../assets/imgs/sidebar-board.svg" class="sidebar_icon">
+                                <span>업무 리포트</span>
+                            </div>
+                            <img src="../assets/imgs/sidebar-toggle.svg" class="sidebar_drop_icon">
+                        </a>
+                    </li>
+                    <div class="submenu" id="submenu">
+                        <div class="submenu-item"><a href="./crm_week_report.html" id="week">주간 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_month_report.html" id="month">월간 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_meeting_report.html" id="meeting">미팅 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_business_report.html" id="business">출장 리포트</a></div>
+                    </div>
+                    <li>
+                        <a href="./crm_calendar.html" id="calendar">
+                            <div>
+                                <img src="../assets/imgs/sidebar-calendar.svg" class="sidebar_icon">
+                                <span>일정 관리</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li id="toggle-menu-insight">
+                        <a href="#" id="insight">
+                            <div>
+                                <img src="../assets/imgs/sidebar-insight.svg" class="sidebar_icon">
+                                <span>인사이트</span>
+                            </div>
+                            <img src="../assets/imgs/sidebar-toggle.svg" class="sidebar_drop_icon">
+                        </a>
+                    </li>
+                    <div class="submenu" id="submenu-insight">
+                        <div class="submenu-item"><a href="./crm_traders_journey.html" id="journey">Trader’s Journey</a></div>
+                        <div class="submenu-item"><a href="./crm_export_case.html" id="export">수출 성공 사례</a></div>
+                        <div class="submenu-item"><a href="./crm_taas_team.html" id="taas">TaaS 팀</a></div>
+                    </div>
+                </ul>
+            </nav>
+            <div>
+                <button class="transfer-button">
+                    <img src="../assets/imgs/change_type.svg">
+                    <span>기업 전환</span>
+                </button>
+            </div>
+    </aside>
+    <main class="mg-14">
+    <header>
+        <div class="menu-nav">
+            <span class="text_colors_1">인사이트</span>
+            <img src="./assets/imgs/nav_right_icon.svg">
+            <span>Trader’s Journey</span>
+        </div>
+        <div class="mypage">
+            <div class="user-info" id="myprofile">
+                    <img src="/images/supplier/100003-티제이코프/profile_1643868771.png" class="profile_img">
+                <span class="bold">홍길동</span><span>님</span>
+                <img src="../assets/imgs/drop_inactive_icon.svg" class="sidebar_drop_icon">
+            </div>
+        </div>
+    </header>
+    <div class="myprofile-box">
+        <div>
+            <span>
+                <a href="/crm_profile_edit.html">개인정보 수정</a>
+            </span>
+        </div>
+        <div>
+            <span onclick="signOut()">로그아웃</span>
+        </div>
+    </div>
+    <div>
+        <div class="insight-view-wrap">
+            <h3>Trader’s Journey</h3>
+            <div class="traders-journey-wrap">
+                <div class="journey-box">
+                    <div class="number-tag-container">
+                        <div class="number-tag active">01</div>
+                        <div class="vertical-line active"></div>
+                        <img src="./assets/imgs/journey-line.png" class="line-image" />
+                    </div>
+                    <div class="content-box" onclick="goView()">
+                        <div>
+                            <div class="numbering">CHAPTER 01</div>
+                            <h4>시장 조사 (Market Research)</h4>
+                            <div class="txt-info">제품의 상품성, 해외 시장 현황에 대한 시장조사</div>
+                        </div>  
+                        <div class="img-box">
+                            <img src="./assets/imgs/chapter-img1.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="journey-box">
+                    <div class="number-tag">02</div>
+                    <div class="vertical-line"></div>
+                    <div class="content-box">
+                        <div>
+                            <div class="numbering">CHAPTER 02</div>
+                            <h4>수출 준비 (Export Preparation) </h4>
+                            <div class="txt-info">수출을 위한 제반 준비, 상품 홍보자료, 무역 조직 구축</div>
+                        </div>  
+                        <div class="img-box">
+                            <img src="./assets/imgs/chapter-img2.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="journey-box">
+                    <div class="number-tag">03</div>
+                    <div class="vertical-line"></div>
+                    <div class="content-box">
+                        <div>
+                            <div class="numbering">CHAPTER 03</div>
+                            <h4>바이어 발굴 (Finding Buyers) </h4>
+                            <div class="txt-info">잠재 고객 발굴 (바이어 DB - Search, 전시회, Data 사이트 등)</div>
+                        </div> 
+                        <div class="img-box">
+                            <img src="./assets/imgs/chapter-img3.png">
+                        </div> 
+                    </div>
+                </div>
+                <div class="journey-box">
+                    <div class="number-tag">04</div>
+                    <div class="vertical-line"></div>
+                    <div class="content-box">
+                        <div>
+                            <div class="numbering">CHAPTER 04</div>
+                            <h4>홍보 / 마케팅 / 영업 (Promotion / Marketing / Sales) </h4>
+                            <div class="txt-info">마케팅 홍보, 영업전략 수립 및 시행</div>
+                        </div>  
+                        <div class="img-box">
+                            <img src="./assets/imgs/chapter-img4.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="journey-box">
+                    <div class="number-tag">05</div>
+                    <div class="vertical-line"></div>
+                    <div class="content-box">
+                        <div>
+                            <div class="numbering">CHAPTER 05</div>
+                            <h4>INQ / RFQ / QUO  </h4>
+                            <div class="txt-info">바이어에 대한 거래 제안, 제품 문의 견적서</div>
+                        </div> 
+                        <div class="img-box">
+                            <img src="./assets/imgs/chapter-img5.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="journey-box">
+                    <div class="number-tag">06</div>
+                    <div class="vertical-line"></div>
+                    <div class="content-box">
+                        <div>
+                            <div class="numbering">CHAPTER 06</div>
+                            <h4>협상 (Negotiation) </h4>
+                            <div class="txt-info">계약 체결을 위한 세부 협상</div>
+                        </div> 
+                        <div class="img-box">
+                            <img src="./assets/imgs/chapter-img6.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="journey-box">
+                    <div class="number-tag">07</div>
+                    <div class="vertical-line"></div>
+                    <div class="content-box">
+                        <div>
+                            <div class="numbering">CHAPTER 07</div>
+                            <h4>계약 체결 (Contract) </h4>
+                            <div class="txt-info">협상 결과를 반영한 계약 체결</div>
+                        </div> 
+                        <div class="img-box">
+                            <img src="./assets/imgs/chapter-img7.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="journey-box">
+                    <div class="number-tag">08</div>
+                    <div class="vertical-line"></div>
+                    <div class="content-box">
+                        <div>
+                            <div class="numbering">CHAPTER 08</div>
+                            <h4>생산 (Production) </h4>
+                            <div class="txt-info">제품과 서비스의 생산</div>
+                        </div> 
+                        <div class="img-box">
+                            <img src="./assets/imgs/chapter-img8.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="journey-box">
+                    <div class="number-tag">09</div>
+                    <div class="vertical-line"></div>
+                    <div class="content-box">
+                        <div>
+                            <div class="numbering">CHAPTER 09</div>
+                            <h4>선적 (Shipping) </h4>
+                            <div class="txt-info">국제 운송을 통한 물품 운송 (FOB, C&F 조건 등 인코텀즈 활용) </div>
+                        </div> 
+                        <div class="img-box">
+                            <img src="./assets/imgs/chapter-img9.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="journey-box">
+                    <div class="number-tag">10</div>
+                    <div class="content-box">
+                        <div>
+                            <div class="numbering">CHAPTER 10</div>
+                            <h4>결제 (Payment) </h4>
+                            <div class="txt-info">대금의 지급과 수취 (T/T, L/C 방식 등)</div>
+                        </div> 
+                        <div class="img-box">
+                            <img src="./assets/imgs/chapter-img10.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+
+
+<script>
+ // 사이드 메뉴 공통 CSS 스크립트
+    const menuItems = [
+        {
+            id: 'dash',
+            iconHover: '../assets/imgs/sidebar-dash-active.svg',
+            iconDefault: '../assets/imgs/sidebar-dash.svg',
+            urls: ['/crm_dashboard.html']
+        },
+        {
+            id: 'buyerlist',
+            iconHover: '../assets/imgs/sidebar-buyerlist-active.svg',
+            iconDefault: '../assets/imgs/sidebar-buyerlist.svg',
+            urls: ['/crm_buyerlist.html']
+        },
+        {
+            id: 'clientlist',
+            iconHover: '../assets/imgs/sidebar-clientlist-active.svg',
+            iconDefault: '../assets/imgs/sidebar-clientlist.svg',
+            urls: ['/crm_clientlist.html','/crm_detail.html','/crm_update_detail.html','/crm_update_manager.html','/crm_update_report.html']
+        },
+        {
+            id: 'report',
+            iconHover: '../assets/imgs/sidebar-board-active.svg',
+            iconDefault: '../assets/imgs/sidebar-board.svg',
+            urls: [''],
+            submenuUrls: ['/crm_week_report.html', '/crm_month_report.html', '/crm_meeting_report.html', '/crm_business_report.html'] 
+        },
+        {
+            id: 'calendar',
+            iconHover: '../assets/imgs/sidebar-calendar-acitve.svg',
+            iconDefault: '../assets/imgs/sidebar-calendar.svg',
+            urls: ['/crm_calendar.html']
+        },
+        {
+            id: 'insight',
+            iconHover: '../assets/imgs/sidebar-insight-active.svg',
+            iconDefault: '../assets/imgs/sidebar-insight.svg' ,
+            urls: [''],
+            submenuUrls: ['/crm_traders_journey.html', '/crm_export_case.html', '/crm_taas_team.html','/crm_traders_journey_view.html'] 
+        }
+    ];
+
+    const currentPath = window.location.pathname;
+
+    const setMenuStyle = (item, icon, isActive) => {
+        item.style.backgroundColor = isActive ? 'rgba(12, 120, 251, 0.1)' : 'transparent';
+        item.style.color = isActive ? '#0c77fb' : '#505050';
+        item.style.fontWeight = isActive ? 'bold' : 'normal';
+        icon.src = isActive ? item.dataset.iconHover : item.dataset.iconDefault;
+    };
+
+    // 서브메뉴 상태 관리 함수
+    const toggleSubmenu = (isActive) => {
+        const submenu = document.querySelector('#submenu-insight');
+        submenu.style.display = isActive ? 'block' : 'none';
+    };
+
+    // 메뉴 아이템 반복 처리
+    menuItems.forEach(menu => {
+        const item = document.getElementById(menu.id);
+        const icon = item.querySelector('img');
+        
+        // Dataset 속성을 통해 아이콘 정보를 추가
+        item.dataset.iconHover = menu.iconHover;
+        item.dataset.iconDefault = menu.iconDefault;
+
+        item.addEventListener('mouseover', () => setMenuStyle(item, icon, true));
+        item.addEventListener('mouseout', () => !item.classList.contains('active') && setMenuStyle(item, icon, false));
+
+        if (menu.urls.includes(currentPath)) {
+            item.classList.add('active');
+            setMenuStyle(item, icon, true);
+        }
+
+    // 서브메뉴를 포함한 메뉴일 경우 추가 처리
+    if (menu.submenuUrls && menu.submenuUrls.includes(currentPath)) {
+        const toggleItem = document.getElementById('toggle-menu-insight');
+        item.style.fontWeight = 'bold';
+        item.style.color = '#0c77fb';
+
+        toggleSubmenu(true);
+
+        const sidebarIcon = toggleItem.querySelector('.sidebar_icon');
+        const sidebarDropIcon = toggleItem.querySelector('.sidebar_drop_icon');
+        
+        sidebarIcon.src = '../assets/imgs/sidebar-insight-active.svg'; 
+        sidebarDropIcon.src = '../assets/imgs/sidebar-toggle-active.svg';  
+
+        const submenuItems = document.querySelectorAll('.submenu-item a');
+        submenuItems.forEach(subItem => {
+            if (subItem.getAttribute('href') === currentPath) {
+                subItem.style.backgroundColor = 'rgba(12, 120, 251, 0.1)';
+                subItem.style.color = '#0c77fb';
+                subItem.style.fontWeight = 'bold';
+            }
+        });
+    }
+});
+
+    // 현재 경로와 서브메뉴 a 요소의 href 속성 비교
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.submenu-item a').forEach(subItem => {
+            const hrefPath = subItem.getAttribute('href').replace('./', '');
+
+            if (currentPath.includes(hrefPath)) {
+                subItem.style.backgroundColor = 'rgba(12, 120, 251, 0.1)';
+                subItem.style.color = '#0c77fb';
+
+                // 서브메뉴 열기
+                toggleSubmenu(true);
+            }
+        });
+    });
+    // 업무 리포트 사이드메뉴 CSS 스크립트
+    $(function() {
+        $('#report').click(function(e) {
+            e.preventDefault();
+
+            const $submenu = $('#submenu');
+            const isExpanded = $submenu.is(':visible');
+
+            $submenu.slideToggle(300);
+            $('#report .sidebar_drop_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-toggle.svg' : '../assets/imgs/sidebar-toggle-active.svg');
+            $('#report .sidebar_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-board.svg' : '../assets/imgs/sidebar-board-active.svg');
+            $('#report span').css({
+                'color': isExpanded ? '#505050' : '#0c77fb',
+                'font-weight': isExpanded ? '400' : 'bold'
+            });
+            $('#report').css('background-color', 'transparent');
+        });
+    });
+    // 인사이트 사이드메뉴 css 스크립트 
+    $(function() {
+        $('#insight').click(function(e) {
+            e.preventDefault();
+
+            const $submenuInsight = $('#submenu-insight');
+            const isExpanded = $submenuInsight.is(':visible');
+
+            $submenuInsight.slideToggle(300);
+            $('#insight .sidebar_drop_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-toggle.svg' : '../assets/imgs/sidebar-toggle-active.svg');
+            $('#insight .sidebar_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-insight.svg' : '../assets/imgs/sidebar-insight-active.svg');
+            $('#insight span').css({
+                'color': isExpanded ? '#505050' : '#0c77fb',
+                'font-weight': isExpanded ? '400' : 'bold'
+            });
+            $('#insight').css('background-color', 'transparent');
+        });
+    });
+
+    
+    // 상단 프로필 공통 스크립트
+    $("#myprofile").click(function(event) {
+        event.stopPropagation();
+        $(".myprofile-box").toggle();
+        if ($(".myprofile-box").is(":visible")) {
+            $(".sidebar_drop_icon").attr("src", "../assets/imgs/drop_active_icon.svg");
+        } else {
+            $(".sidebar_drop_icon").attr("src", "../assets/imgs/drop_inactive_icon.svg");
+        }
+    });
+    // 상세 페이지 이동 (하드코딩)
+    function goView(chapter) {
+        window.location.href = '/crm_traders_journey_view_' + chapter + '.html';
+    }
+
+    document.querySelectorAll('.content-box').forEach(function(contentBox) {
+        contentBox.addEventListener('click', function() {
+            const chapter = this.closest('.journey-box').querySelector('.number-tag').textContent.trim();
+            goView(chapter);
+        });
+    });
+
+    // 스크롤에 따른 active class 추가 제거
+    $(document).ready(function () {
+    var index = 0;
+    var journeyBoxes = $('.journey-box');
+
+    // 스크롤 이벤트
+    $(window).on('scroll', function () {
+        var scrollTop = $(window).scrollTop();
+        var windowHeight = $(window).height();
+        var documentHeight = $(document).height();
+        var lastBoxTop = journeyBoxes.last().offset().top;
+
+        // 스크롤이 맨 위에 있을 때: 첫 번째 요소만 active
+        if (scrollTop <= 0) {
+            index = 0;
+            journeyBoxes.find('.number-tag, .vertical-line').removeClass('active');
+            journeyBoxes.eq(index).find('.number-tag, .vertical-line').addClass('active');
+            return;
+        }
+
+        // 스크롤이 맨 아래에 있을 때: 마지막 요소만 active
+        if (scrollTop + windowHeight >= documentHeight) {
+            journeyBoxes.find('.number-tag, .vertical-line').addClass('active').removeClass('default');
+            return;
+        }
+
+        // 스크롤 위치에 따라 요소에 active 클래스 추가/제거
+        journeyBoxes.each(function (i, el) {
+            var elementTop = $(el).offset().top;
+
+            if (scrollTop >= elementTop - windowHeight / 2) {
+                journeyBoxes.eq(i).find('.number-tag, .vertical-line').addClass('active');
+            } else {
+                journeyBoxes.eq(i).find('.number-tag, .vertical-line').removeClass('active');
+            }
+        });
+    });
+});
+</script>
+
+</html>

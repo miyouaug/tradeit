@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트레이드잇</title>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- <link rel="stylesheet" href="../files/fonts/xeicon/xeicon.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/d49aa60918.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/mypage.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="../assets/imgs/tradeit_logo.svg" alt="logo" onclick="location.href='/';">
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="./crm_dashboard.html" id="dash">
+                            <div>
+                                <img src="../assets/imgs/sidebar-dash.svg" class="sidebar_icon">
+                                <span>대시보드</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="./crm_buyerlist.html" id="buyerlist">
+                            <div>
+                                <img src="../assets/imgs/sidebar-buyerlist.svg" class="sidebar_icon">
+                                <span>바이어 리스트</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="./crm_clientlist.html" id="clientlist">
+                            <div>
+                                <img src="../assets/imgs/sidebar-clientlist.svg" class="sidebar_icon">
+                                <span>고객 관리</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li id="toggle-menu">
+                        <a href="#" id="report">
+                            <div>
+                                <img src="../assets/imgs/sidebar-board.svg" class="sidebar_icon">
+                                <span>업무 리포트</span>
+                            </div>
+                            <img src="../assets/imgs/sidebar-toggle.svg" class="sidebar_drop_icon">
+                        </a>
+                    </li>
+                    <div class="submenu">
+                        <div class="submenu-item"><a href="./crm_week_report.html" id="week">주간 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_month_report.html" id="month">월간 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_meeting_report.html" id="meeting">미팅 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_business_report.html" id="business">출장 리포트</a></div>
+                    </div>
+                    <li>
+                        <a href="./crm_calendar.html" id="calendar">
+                            <div>
+                                <img src="../assets/imgs/sidebar-calendar.svg" class="sidebar_icon">
+                                <span>일정 관리</span>
+                            </div>
+                        </a>
+                    </li> 
+                </ul>
+            </nav>
+            <div>
+                <button class="transfer-button">
+                    <img src="../assets/imgs/change_type.svg">
+                    <span>기업 전환</span>
+                </button>
+            </div>
+    </aside>
+<main class="mg-14">
+    <header>
+        <div class="menu-nav">
+            <span class="text_colors_1">업무 리포트</span>
+            <img src="./assets/imgs/nav_right_icon.svg">
+            <span class="text_colors_1">미팅 리포트</span>
+            <img src="./assets/imgs/nav_right_icon.svg">
+            <span>미팅 리포트 상세페이지</span>
+        </div>
+        <div class="mypage">
+            <div class="user-info" id="myprofile">
+                    <img src="/images/supplier/100003-티제이코프/profile_1643868771.png" class="profile_img">
+                <span class="bold">홍길동</span><span>님</span>
+                <img src="../assets/imgs/drop_inactive_icon.svg" class="sidebar_drop_icon">
+            </div>
+        </div>
+    </header>
+    <div class="myprofile-box">
+        <div>
+            <span>
+                <a href="/crm_profile_edit.html">개인정보 수정</a>
+            </span>
+        </div>
+        <div>
+            <span onclick="signOut()">로그아웃</span>
+        </div>
+    </div>
+    <div class="view-wrap">
+        <div class="manager-box">
+            <h5>담당 TM</h5>
+            <div class="img-box">
+                <img src="./assets/imgs/manager_img.png"> 
+            </div>
+            <div>
+                <div class="name">홍길동 매니저</div>
+                <div class="info-box">
+                    <div class="flex-center">
+                        <img src="./assets/imgs/client_label3.svg">
+                        <div class="value">010-0000-0000</div>
+                    </div>
+                    <div class="flex-center">
+                        <img src="./assets/imgs/client_label2.svg">
+                        <div class="value">hong.gildong@tradeit.co.kr</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-box">
+            <div>
+                <div class="title">2024년 8월 30일 미팅 리포트</div>
+                <div class="date">2024-08-30</div>
+            </div>
+            <div class="textarea">
+                1.	정양SG 현재상황 <br>
+                -	성적서들 영문으로 번역하는 작업중으로, 시간은 조금 걸릴 것으로 예상. 완료 예상시기는 아직까지 미정 <br>
+                <br>
+                2.	요청사항 to Trade It<br>
+                -	영업제안서 영문으로 제작하여 최대한 빨리 전달요청<br>
+                -	전략보고서 내용중 “쉐크보다 우수한 성능을 가지고 있다”는 점은 조금 조심스러울 필요있어, 영업제안서에는 제외 요청<br>
+                -	가격 경쟁력을 강점으로 영업할 것<br>
+                -	매주 비디오 미팅(하지만 현실적으로 어려울 것 같아, 정양측과 협의 필요)<br>
+                -	쉐크사에서 사용한 HS Code 전부 각각 세율이 얼마인지 보고 요청<br>
+                -	쉐크 지사별 교역 아이템이 샘플을 보낸건지? 설계사무소에 보낸건지 아니면 제조장소에 보낸건지?<br>
+                -	쉐크사의 각 지사별 수출규모 및 어떤 아이템들을 수출하였는지, 각 국가별 시장 차지비율은 어떻게 되는지<br>
+                -	해외 경쟁 업체들의 수출 및 고객사들의 수입빈도를 조사하여 또 재구매 가능성 및 확률 분석 후 제출 요청<br>
+            </div>
+            <div class="file-box">
+                <div class="files">
+                    <img src="./assets/imgs/file_clips.svg"> 
+                    <span>screwpdf_11710377727.jpg</span>
+                </div>
+                <div class="files">
+                    <img src="./assets/imgs/file_clips.svg"> 
+                    <span>Trackshoeprofile_190CT8_11640429895.pdf</span>
+                </div>
+            </div>
+            <div class="button-wrap">
+                <button class="btn_blue" onclick="location.href='./crm_meeting_report.html'">
+                    <img src="./assets/imgs/list_icon.svg"> 
+                    <span>목록</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+
+
+<script>
+  const menuItems = [
+        {
+            id: 'dash',
+            iconHover: '../assets/imgs/sidebar-dash-active.svg',
+            iconDefault: '../assets/imgs/sidebar-dash.svg',
+            urls: ['/crm_dashboard.html']
+        },
+        {
+            id: 'buyerlist',
+            iconHover: '../assets/imgs/sidebar-buyerlist-active.svg',
+            iconDefault: '../assets/imgs/sidebar-buyerlist.svg',
+            urls: ['/crm_buyerlist.html']
+        },
+        {
+            id: 'clientlist',
+            iconHover: '../assets/imgs/sidebar-clientlist-active.svg',
+            iconDefault: '../assets/imgs/sidebar-clientlist.svg',
+            urls: ['/crm_clientlist.html', '/crm_detail.html', '/crm_update_detail.html', '/crm_update_manager.html', '/crm_update_report.html']
+        },
+        {
+            id: 'report',
+            iconHover: '../assets/imgs/sidebar-board-active.svg',
+            iconDefault: '../assets/imgs/sidebar-board.svg',
+            urls: [''],
+            submenuUrls: ['/crm_week_report.html', '/crm_month_report.html', '/crm_meeting_report.html', '/crm_business_report.html'] 
+        },
+        {
+            id: 'calendar',
+            iconHover: '../assets/imgs/sidebar-calendar-active.svg',
+            iconDefault: '../assets/imgs/sidebar-calendar.svg',
+            urls: ['/crm_calendar.html']
+        },
+    ];
+
+    const currentPath = window.location.pathname;
+
+    const setMenuStyle = (item, icon, isActive) => {
+        item.style.backgroundColor = isActive ? 'rgba(12, 120, 251, 0.1)' : 'transparent';
+        item.style.color = isActive ? '#0c77fb' : '#505050';
+        item.style.fontWeight = isActive ? 'bold' : 'normal';
+        icon.src = isActive ? item.dataset.iconHover : item.dataset.iconDefault;
+    };
+
+    // 서브메뉴 상태 관리 함수
+    const toggleSubmenu = (isActive) => {
+        const submenu = document.querySelector('.submenu');
+        submenu.style.display = isActive ? 'block' : 'none';
+    };
+
+    // 메뉴 아이템 반복 처리
+    menuItems.forEach(menu => {
+        const item = document.getElementById(menu.id);
+        const icon = item.querySelector('img');
+        
+        // Dataset 속성을 통해 아이콘 정보를 추가
+        item.dataset.iconHover = menu.iconHover;
+        item.dataset.iconDefault = menu.iconDefault;
+
+        item.addEventListener('mouseover', () => setMenuStyle(item, icon, true));
+        item.addEventListener('mouseout', () => !item.classList.contains('active') && setMenuStyle(item, icon, false));
+
+        if (menu.urls.includes(currentPath)) {
+            item.classList.add('active');
+            setMenuStyle(item, icon, true);
+        }
+
+        // 서브메뉴를 포함한 메뉴일 경우 추가 처리
+        if (menu.submenuUrls && menu.submenuUrls.includes(currentPath)) {
+            const toggleItem = document.getElementById('toggle-menu');
+            item.style.fontWeight = 'bold';
+            item.style.color = '#0c77fb';
+
+            toggleSubmenu(true);
+
+            const sidebarIcon = toggleItem.querySelector('.sidebar_icon');
+            const sidebarDropIcon = toggleItem.querySelector('.sidebar_drop_icon');
+            
+            sidebarIcon.src = '../assets/imgs/sidebar-board-active.svg'; 
+            sidebarDropIcon.src = '../assets/imgs/sidebar-toggle-active.svg';  
+
+            const submenuItems = document.querySelectorAll('.submenu-item a');
+            submenuItems.forEach(subItem => {
+                if (subItem.getAttribute('href') === currentPath) {
+                    subItem.style.backgroundColor = 'rgba(12, 120, 251, 0.1)';
+                    subItem.style.color = '#0c77fb';
+                    subItem.style.fontWeight = 'bold';
+                }
+            });
+        }
+    });
+
+    // 현재 경로와 서브메뉴 a 요소의 href 속성 비교
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.submenu-item a').forEach(subItem => {
+            const hrefPath = subItem.getAttribute('href').replace('./', '');
+
+            console.log("currentPath:", currentPath); 
+            console.log("subItem href:", hrefPath);  
+
+            if (currentPath.includes(hrefPath)) {
+                subItem.style.backgroundColor = 'rgba(12, 120, 251, 0.1)';
+                subItem.style.color = '#0c77fb';
+
+                // 서브메뉴 열기
+                toggleSubmenu(true);
+            }
+        });
+    });
+
+    // 업무 리포트 사이드메뉴 CSS 스크립트
+    $(function() {
+        $('#report').click(function(e) {
+            e.preventDefault();
+
+            const $submenu = $('.submenu');
+            const isExpanded = $submenu.is(':visible');
+
+            $submenu.slideToggle(300);
+            $('#report .sidebar_drop_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-toggle.svg' : '../assets/imgs/sidebar-toggle-active.svg');
+            $('#report .sidebar_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-board.svg' : '../assets/imgs/sidebar-board-active.svg');
+            $('#report span').css({
+                'color': isExpanded ? '#505050' : '#0c77fb',
+                'font-weight': isExpanded ? '400' : 'bold'
+            });
+            $('#report').css('background-color', 'transparent');
+        });
+    });
+
+        // 상단 프로필 공통 스크립트
+        $("#myprofile").click(function(event) {
+        event.stopPropagation();
+        $(".myprofile-box").toggle();
+        if ($(".myprofile-box").is(":visible")) {
+            $(".sidebar_drop_icon").attr("src", "../assets/imgs/drop_active_icon.svg");
+        } else {
+            $(".sidebar_drop_icon").attr("src", "../assets/imgs/drop_inactive_icon.svg");
+        }
+    });
+
+</script>
+
+</html>

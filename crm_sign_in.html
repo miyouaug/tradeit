@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트레이드잇 | CRM</title>
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/tradeit.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/mypage.css">
+    <!-- js -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+</head>
+<body id="wrap-signin">
+    <header>
+        <h1>로그인</h1>
+    </header>
+    
+    <main>
+        <div class="category-box">
+            <div class="category active">
+                <img src="./assets/imgs/personal-active.svg">
+                <span>개인회원</span>
+            </div>
+            <div class="category">
+                <img src="./assets/imgs/company.svg">
+                <span>기업회원</span>
+            </div>
+        </div>
+        <div class="input-box">
+            <span>이메일</span> <br>
+            <div class="input-container">
+                <input id="email" type="text" placeholder="이메일을 입력해주세요.">
+                <div class="button-box">
+                    <button type="button" class="reset"></button>
+                </div>
+            </div> 
+            <br>
+            <span>비밀번호</span> <br>
+            <div class="input-container">
+                <input id="password" class="password" type="password" placeholder="비밀번호를 입력해주세요.">
+                <div class="button-box">
+                    <button type="button" class="password-nonview"></button>
+                    <button type="button" class="reset"></button>
+                </div>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox">
+                <span>로그인 상태 유지</span>
+            </div>
+            <button class="signin-button">
+                <span>로그인</span>
+            </button>
+            <div class="txt-box">
+                <span><a href="/crm_find_id.html">아이디 찾기</a> / <a href="/crm_find_password.html">비밀번호 찾기</a></span>
+                <a href="/crm_sign_up.html"><span>회원가입</span></a>
+            </div>
+        </div>
+        <div>
+            <div class="hr-sect">SNS계정으로 로그인</div>
+            <div class="sns-box">
+                <img src="./assets/imgs/gmail.svg">
+                <img src="./assets/imgs/kakao.svg">
+                <img src="./assets/imgs/naver.svg">
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="g-15">
+            <span class="underline personal-info text_colors_1 bold">개인정보처리방침</span>
+            <span class="underline terms text_colors_1">서비스이용약관</span>
+        </div>
+        <div>
+            <span class="text_colors_5">©2021 Trade it All rights reserved.</span>
+        </div>
+        <div class="overlay"></div>
+        <div class="terms-modal">
+            <div class="header"> 
+                <div class="flex-side" style="border-bottom: 1px solid #dbdbdb;">
+                    <h3>이용약관</h3>
+                    <img src="./assets/imgs/modal-close.svg" class="modal-close">
+                </div>
+            </div>
+            <div class="modal-content"></div>
+        </div>
+    </footer>
+
+    <script>
+    $(document).ready(function() {
+        $('.category').click(function() {
+            // 모든 category 요소에서 active 클래스 제거
+            $('.category').removeClass('active');
+
+            // 모든 이미지의 src를 기본 이미지로 되돌림
+            $('.category img').each(function() {
+                var defaultSrc = $(this).attr('src').replace('-active', '');
+                $(this).attr('src', defaultSrc);
+            });
+            
+            // 클릭된 category에 active 클래스 추가
+            $(this).addClass('active');
+
+            // 클릭된 category의 이미지를 active 이미지로 변경
+            var img = $(this).find('img');
+            var activeSrc = img.attr('src').replace('.svg', '-active.svg');
+            img.attr('src', activeSrc);
+        });
+    });
+    $(document).ready(function() {
+        const $emailInput = $('#email');
+        const $passwordInput = $('#password');
+
+        const $emailResetBtn = $emailInput.siblings('.button-box').find('.reset');
+        const $passwordResetBtn = $passwordInput.siblings('.button-box').find('.reset');
+        const $passwordViewBtn = $passwordInput.siblings('.button-box').find('.password-nonview');
+        const $signinButton = $('.signin-button');
+
+        let isPasswordVisible = false;
+
+        // 입력값에 따라 reset 버튼 표시/숨기기
+        function toggleResetButton($input, $resetBtn) {
+            if ($input.val().length > 0) {
+                $resetBtn.show();
+            } else {
+                $resetBtn.hide();
+            }
+        }
+
+        // 이메일과 비밀번호 입력 시 signin-button 배경색 변경
+        function checkInput() {
+            if ($emailInput.val() !== "" && $passwordInput.val() !== "") {
+                $signinButton.css('background-color', '#0c77fb');
+            } else {
+                $signinButton.css('background-color', '#ccc');
+            }
+        }
+
+        // 비밀번호 아이콘 변경 함수
+        function updatePasswordIcon() {
+            if ($passwordInput.val().length > 0) {
+                $passwordViewBtn.css('background-image', 'url("https://tradeit.co.kr/assets/imgs/password-view.svg")');
+            } else {
+                $passwordViewBtn.css('background-image', 'url("https://tradeit.co.kr/assets/imgs/password-nonview.svg")');
+            }
+        }
+
+        // 이메일 입력에 따른 리셋 버튼 표시 및 로그인 버튼 배경색 변경
+        $emailInput.on('input', function() {
+            toggleResetButton($emailInput, $emailResetBtn);
+            checkInput();
+        });
+
+        // 비밀번호 입력에 따른 리셋 버튼 및 아이콘 변경
+        $passwordInput.on('input', function() {
+            toggleResetButton($passwordInput, $passwordResetBtn);
+            checkInput();
+            updatePasswordIcon();  // 비밀번호 입력 시 아이콘 변경
+        });
+
+        // 이메일 리셋 버튼 클릭 시 입력 필드 초기화
+        $emailResetBtn.on('click', function() {
+            $emailInput.val('');
+            toggleResetButton($emailInput, $emailResetBtn);
+            checkInput();
+        });
+
+        // 비밀번호 리셋 버튼 클릭 시 입력 필드 초기화
+        $passwordResetBtn.on('click', function() {
+            $passwordInput.val('');
+            toggleResetButton($passwordInput, $passwordResetBtn);
+            checkInput();
+            updatePasswordIcon();  // 필드 초기화 시 아이콘 변경
+        });
+
+        // 비밀번호 보기/숨기기 버튼 기능
+        $passwordViewBtn.on('click', function() {
+            isPasswordVisible = !isPasswordVisible;
+            if (isPasswordVisible) {
+                $passwordInput.attr('type', 'text');
+                $passwordViewBtn.css('background-image', 'url("https://tradeit.co.kr/assets/imgs/password-nonview.svg")');
+            } else {
+                $passwordInput.attr('type', 'password');
+                $passwordViewBtn.css('background-image', 'url("https://tradeit.co.kr/assets/imgs/password-view.svg")');
+            }
+        });
+
+        // 페이지 로드 시 리셋 버튼 초기 상태 설정
+        toggleResetButton($emailInput, $emailResetBtn);
+        toggleResetButton($passwordInput, $passwordResetBtn);
+        checkInput();  
+        updatePasswordIcon();
+    });    
+
+    // 약관 모달
+    $(document).ready(function() {
+        $('span.underline').on('click', function() {
+            $('.overlay').fadeIn();
+            $('.terms-modal').fadeIn();
+
+            // 클릭한 span의 클래스에 따라 다른 내용 삽입
+            if ($(this).hasClass('terms')) {
+                $('.modal-content').html('<p>여기에 서비스 이용약관 내용을 넣습니다.</p>');
+            } else if ($(this).hasClass('personal-info')) {
+                $('.modal-content').html('<p>여기에 개인정보 수집 및 이용에 대한 내용을 넣습니다.</p>');
+            }
+        });
+
+        // 모달 닫기
+        $('.modal-close, .overlay').on('click', function() {
+            $('.overlay').fadeOut();
+            $('.terms-modal').fadeOut();
+        });
+    });
+    </script>
+
+</body>
+</html>

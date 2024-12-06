@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트레이드잇</title>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+
+    <!-- <link rel="stylesheet" href="../files/fonts/xeicon/xeicon.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/d49aa60918.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/mypage.css">
+    
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="../assets/imgs/tradeit_logo.svg" alt="logo" onclick="location.href='/';">
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="./crm_dashboard.html" id="dash">
+                            <div>
+                                <img src="../assets/imgs/sidebar-dash.svg" class="sidebar_icon">
+                                <span>대시보드</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="./crm_buyerlist.html" id="buyerlist">
+                            <div>
+                                <img src="../assets/imgs/sidebar-buyerlist.svg" class="sidebar_icon">
+                                <span>바이어 영업 현황</span>
+                            </div>
+                        </a>
+                    </li>  
+                    <li id="toggle-menu">
+                        <a href="#" id="report">
+                            <div>
+                                <img src="../assets/imgs/sidebar-board.svg" class="sidebar_icon">
+                                <span>업무 리포트</span>
+                            </div>
+                            <img src="../assets/imgs/sidebar-toggle.svg" class="sidebar_drop_icon">
+                        </a>
+                    </li>
+                    <div class="submenu">
+                        <div class="submenu-item"><a href="./crm_week_report.html" id="week">주간 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_month_report.html" id="month">월간 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_meeting_report.html" id="meeting">미팅 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_business_report.html" id="business">출장 리포트</a></div>
+                    </div>
+                    <li>
+                        <a href="./crm_calendar.html" id="calendar">
+                            <div>
+                                <img src="../assets/imgs/sidebar-calendar.svg" class="sidebar_icon">
+                                <span>일정 관리</span>
+                            </div>
+                        </a>
+                    </li> 
+                </ul>
+            </nav>
+            <div>
+                <button class="transfer-button">
+                    <img src="../assets/imgs/change_type.svg">
+                    <span>기업 전환</span>
+                </button>
+            </div>
+    </aside>
+    <main class="mg-14">
+    <header>
+        <div class="menu-nav">
+            <span>Dashboard</span>
+            <img src="./assets/imgs/nav_right_icon.svg">
+            <span>바이어 영업 현황</span>
+        </div>
+        <div class="mypage">
+            <div class="user-info" id="myprofile">
+                    <img src="/images/supplier/100003-티제이코프/profile_1643868771.png" class="profile_img">
+                <span class="bold">홍길동</span><span>님</span>
+                <img src="../assets/imgs/drop_inactive_icon.svg" class="sidebar_drop_icon">
+            </div>
+        </div>
+    </header>
+    <div class="myprofile-box">
+        <div>
+            <span>
+                <a href="/crm_profile_edit.html">개인정보 수정</a>
+            </span>
+        </div>
+        <div>
+            <span onclick="signOut()">로그아웃</span>
+        </div>
+    </div>
+    <div>
+        <div class="page-box">
+            <div class="page-title">바이어 영업 현황</div>
+        </div>
+    </div>
+    <div class="category-tap">
+        <div class="tap-box active">
+            <div class="title-tap active">List</div>
+            <div class="num-tag active">100</div>
+        </div>
+        <div class="tap-box">
+            <div class="title-tap">Communication</div>
+            <div class="num-tag">76</div>
+        </div>
+        <div class="tap-box">
+            <div class="title-tap">Inquiry</div>
+            <div class="num-tag">5</div>
+        </div>
+        <div class="tap-box">
+            <div class="title-tap">Quotation</div>
+            <div class="num-tag">3</div>
+        </div>
+        <div class="tap-box">
+            <div class="title-tap">Contract</div>
+            <div class="num-tag">1</div>
+        </div>
+    </div>
+    <div class="buyer-sales-wrap" style="gap: 5.625rem; ">
+        <div class="table-box">
+            <table>
+                <colgroup>
+                    <col style="width: 6rem;">
+                    <col style="width: 6rem;"> 
+                    <col style="width: 22.5rem;"> 
+                    <col style="width: 12rem;">
+                    <col style="width: 10rem;">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>로고</th>
+                        <th>회사명</th>
+                        <th>국가</th>
+                        <th>매출</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: center;">461</td>
+                        <td>
+                            <div class="logo-box flex-center">
+                                <img src="./assets/imgs/buyer_logo1.png">
+                            </div>
+                        </td>
+                        <td onclick="goDetail()">
+                            <div class="company-name">
+                                <div>JAIN SULAMA SISTEMLERI</div>
+                                <div class="new-tag">New</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="flex-center">
+                                <div class="flag-box flex-center">
+                                    <img src="./assets/imgs/flag_jp.png">
+                                </div>
+                                <div>Japan</div>
+                            </div>
+                        </td>
+                        <td>$ 233.22M</td>
+                    </tr>
+                    <tr>
+                        <td  style="text-align: center;">460</td>
+                        <td>
+                            <div class="logo-box flex-center">
+                                <img src="./assets/imgs/buyer_logo2.png">
+                            </div>
+                        </td>
+                        <td onclick="goDetail()">
+                            <div class="company-name">
+                                <div>JAIN SULAMA SISTEMLERI</div>
+                                <div class="new-tag">New</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="flex-center">
+                                <div class="flag-box flex-center">
+                                    <img src="./assets/imgs/flag_jp.png">
+                                </div>
+                                <div>Japan</div>
+                            </div>
+                        </td>
+                        <td>$ 11.24M</td>
+                    </tr>
+                    <tr>
+                        <td  style="text-align: center;">460</td>
+                        <td>
+                            <div class="logo-box flex-center">
+                                <img src="./assets/imgs/buyer_logo2.png">
+                            </div>
+                        </td>
+                        <td onclick="goDetail()">
+                            <div class="company-name">
+                                <div>JAIN SULAMA SISTEMLERI</div>
+                                <div class="new-tag">New</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="flex-center">
+                                <div class="flag-box flex-center">
+                                    <img src="./assets/imgs/flag_jp.png">
+                                </div>
+                                <div>Japan</div>
+                            </div>
+                        </td>
+                        <td>$ 3.28M</td>
+                    </tr>
+                    <tr>
+                        <td  style="text-align: center;">460</td>
+                        <td>
+                            <div class="logo-box flex-center">
+                                <img src="./assets/imgs/buyer_logo2.png">
+                            </div>
+                        </td>
+                        <td onclick="goDetail()">
+                            <div class="company-name">
+                                <div>JAIN SULAMA SISTEMLERI</div>
+                                <div class="new-tag">New</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="flex-center">
+                                <div class="flag-box flex-center">
+                                    <img src="./assets/imgs/flag_jp.png">
+                                </div>
+                                <div>Japan</div>
+                            </div>
+                        </td>
+                        <td>$ 3.28M</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">461</td>
+                        <td>
+                            <div class="logo-box flex-center">
+                                <img src="./assets/imgs/buyer_logo1.png">
+                            </div>
+                        </td>
+                        <td onclick="goDetail()">
+                            <div class="company-name">
+                                <div>JAIN SULAMA SISTEMLERI</div>
+                                <div class="new-tag">New</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="flex-center">
+                                <div class="flag-box flex-center">
+                                    <img src="./assets/imgs/flag_jp.png">
+                                </div>
+                                <div>Japan</div>
+                            </div>
+                        </td>
+                        <td>$ 233.22M</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">461</td>
+                        <td>
+                            <div class="logo-box flex-center">
+                                <img src="./assets/imgs/buyer_logo1.png">
+                            </div>
+                        </td>
+                        <td onclick="goDetail()">
+                            <div class="company-name">
+                                <div>JAIN SULAMA SISTEMLERI</div>
+                                <div class="new-tag">New</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="flex-center">
+                                <div class="flag-box flex-center">
+                                    <img src="./assets/imgs/flag_jp.png">
+                                </div>
+                                <div>Japan</div>
+                            </div>
+                        </td>
+                        <td>$ 233.22M</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">461</td>
+                        <td>
+                            <div class="logo-box flex-center">
+                                <img src="./assets/imgs/buyer_logo1.png">
+                            </div>
+                        </td>
+                        <td onclick="goDetail()">
+                            <div class="company-name">
+                                <div>abcd</div>
+                                <div class="new-tag">New</div>
+                            </div>
+                        <td>
+                            <div class="flex-center">
+                                <div class="flag-box flex-center">
+                                    <img src="./assets/imgs/flag_jp.png">
+                                </div>
+                                <div>Japan</div>
+                            </div>
+                        </td>
+                        <td>$ 233.22M</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- 데이터 없을 경우 (일단 display:none) -->
+            <div class="nodata-box">
+                <img src="./assets/imgs/nodata_icon.svg"> 
+                <p>등록된 바이어 영업현황이 없습니다.</p>
+            </div>
+            <!-- paging -->
+            <div class="pagination">
+                <img src="./assets/imgs/paging_left_inactive.svg">
+                <!-- <img src="./assets/imgs/paging_left_active.svg"> -->
+                <button class="btn_page active">1</button>
+                <button class="btn_page ">2</button>
+                <button class="btn_page">3</button>
+                <button class="btn_page">4</button>
+                <button class="btn_page">5</button>
+                <img src="./assets/imgs/paging_right_active.svg">
+                <!-- <img src="./assets/imgs/paging_right_inactive.svg"> -->
+            </div> 
+        </div>
+        <div class="chart-box">
+            <h5>업무 현황</h5>
+            <canvas id="myChart"></canvas> 
+            <div class="chart-info">
+                <div class="flex-side">
+                    <div class="flex-center">
+                        <div class="value-tag communication"></div>
+                        <div class="value-title">Communication</div>
+                    </div>
+                    <div class="value-num">60</div>
+                </div>
+                <div class="flex-side">
+                    <div class="flex-center">
+                        <div class="value-tag inq"></div>
+                        <div class="value-title">Inquiry</div>
+                    </div>
+                    <div class="value-num">10</div>
+                </div>
+                <div class="flex-side">
+                    <div class="flex-center">
+                        <div class="value-tag rfq"></div>
+                        <div class="value-title">Quotation</div>
+                    </div>
+                    <div class="value-num">4</div>
+                </div>
+                <div class="flex-side">
+                    <div class="flex-center">
+                        <div class="value-tag contract"></div>
+                        <div class="value-title">Contract</div>
+                    </div>
+                    <div class="value-num">1</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+</body>
+
+<script>
+    const menuItems = [
+        {
+            id: 'dash',
+            iconHover: '../assets/imgs/sidebar-dash-active.svg',
+            iconDefault: '../assets/imgs/sidebar-dash.svg',
+            urls: ['/crm_dashboard.html']
+        },
+        {
+            id: 'buyerlist',
+            iconHover: '../assets/imgs/sidebar-buyerlist-active.svg',
+            iconDefault: '../assets/imgs/sidebar-buyerlist.svg',
+            urls: ['/crm_buyerlist.html']
+        },
+        {
+            id: 'report',
+            iconHover: '../assets/imgs/sidebar-board-active.svg',
+            iconDefault: '../assets/imgs/sidebar-board.svg',
+            urls: [''],
+            submenuUrls: ['/crm_week_report.html', '/crm_month_report.html', '/crm_meeting_report.html', '/crm_business_report.html'] 
+        },
+        {
+            id: 'calendar',
+            iconHover: '../assets/imgs/sidebar-calendar-active.svg',
+            iconDefault: '../assets/imgs/sidebar-calendar.svg',
+            urls: ['/crm_calendar.html']
+        },
+    ];
+
+    const currentPath = window.location.pathname;
+
+    const setMenuStyle = (item, icon, isActive) => {
+        item.style.backgroundColor = isActive ? 'rgba(12, 120, 251, 0.1)' : 'transparent';
+        item.style.color = isActive ? '#0c77fb' : '#505050';
+        item.style.fontWeight = isActive ? 'bold' : 'normal';
+        icon.src = isActive ? item.dataset.iconHover : item.dataset.iconDefault;
+    };
+
+    // 서브메뉴 상태 관리 함수
+    const toggleSubmenu = (isActive) => {
+        const submenu = document.querySelector('.submenu');
+        submenu.style.display = isActive ? 'block' : 'none';
+    };
+
+    // 메뉴 아이템 반복 처리
+    menuItems.forEach(menu => {
+        const item = document.getElementById(menu.id);
+        const icon = item.querySelector('img');
+        
+        // Dataset 속성을 통해 아이콘 정보를 추가
+        item.dataset.iconHover = menu.iconHover;
+        item.dataset.iconDefault = menu.iconDefault;
+
+        item.addEventListener('mouseover', () => setMenuStyle(item, icon, true));
+        item.addEventListener('mouseout', () => !item.classList.contains('active') && setMenuStyle(item, icon, false));
+
+        if (menu.urls.includes(currentPath)) {
+            item.classList.add('active');
+            setMenuStyle(item, icon, true);
+        }
+
+        // 서브메뉴를 포함한 메뉴일 경우 추가 처리
+        if (menu.submenuUrls && menu.submenuUrls.includes(currentPath)) {
+            const toggleItem = document.getElementById('toggle-menu');
+            item.style.fontWeight = 'bold';
+            item.style.color = '#0c77fb';
+
+            toggleSubmenu(true);
+
+            const sidebarIcon = toggleItem.querySelector('.sidebar_icon');
+            const sidebarDropIcon = toggleItem.querySelector('.sidebar_drop_icon');
+            
+            sidebarIcon.src = '../assets/imgs/sidebar-board-active.svg'; 
+            sidebarDropIcon.src = '../assets/imgs/sidebar-toggle-active.svg';  
+
+            const submenuItems = document.querySelectorAll('.submenu-item a');
+            submenuItems.forEach(subItem => {
+                if (subItem.getAttribute('href') === currentPath) {
+                    subItem.style.backgroundColor = 'rgba(12, 120, 251, 0.1)';
+                    subItem.style.color = '#0c77fb';
+                    subItem.style.fontWeight = 'bold';
+                }
+            });
+        }
+    });
+
+    // 현재 경로와 서브메뉴 a 요소의 href 속성 비교
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.submenu-item a').forEach(subItem => {
+            const hrefPath = subItem.getAttribute('href').replace('./', '');
+
+            console.log("currentPath:", currentPath); 
+            console.log("subItem href:", hrefPath);  
+
+            if (currentPath.includes(hrefPath)) {
+                subItem.style.backgroundColor = 'rgba(12, 120, 251, 0.1)';
+                subItem.style.color = '#0c77fb';
+
+                // 서브메뉴 열기
+                toggleSubmenu(true);
+            }
+        });
+    });
+
+    // 업무 리포트 사이드메뉴 CSS 스크립트
+    $(function() {
+        $('#report').click(function(e) {
+            e.preventDefault();
+
+            const $submenu = $('.submenu');
+            const isExpanded = $submenu.is(':visible');
+
+            $submenu.slideToggle(300);
+            $('#report .sidebar_drop_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-toggle.svg' : '../assets/imgs/sidebar-toggle-active.svg');
+            $('#report .sidebar_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-board.svg' : '../assets/imgs/sidebar-board-active.svg');
+            $('#report span').css({
+                'color': isExpanded ? '#505050' : '#0c77fb',
+                'font-weight': isExpanded ? '400' : 'bold'
+            });
+            $('#report').css('background-color', 'transparent');
+        });
+    });
+    
+    // 상단 프로필 공통 스크립트
+    $("#myprofile").click(function(event) {
+        event.stopPropagation();
+        $(".myprofile-box").toggle();
+        if ($(".myprofile-box").is(":visible")) {
+            $(".sidebar_drop_icon").attr("src", "../assets/imgs/drop_active_icon.svg");
+        } else {
+            $(".sidebar_drop_icon").attr("src", "../assets/imgs/drop_inactive_icon.svg");
+        }
+    });
+    // tr hover img 변경 css
+    $(document).ready(function() {
+        $('tr').hover(
+            function() {
+                // mouseenter event
+                $(this).find('.to-client img').attr('src', './assets/imgs/change_client_hover.svg');
+            },
+            function() {
+                // mouseleave event
+                $(this).find('.to-client img').attr('src', './assets/imgs/change_client.svg');
+            }
+        );
+    });
+
+    // Client 전환
+    $(document).ready(function() {
+        $('.to-client').click(function() {
+            // Alert 메시지
+            alert('Client로 전환되었습니다.');
+            // .to-client 요소 숨기기
+            $(this).hide();
+
+            // .client 요소 표시하기
+            $('.client').css('display', 'flex');
+        });
+    });
+    
+    // 상세 페이지 이동
+    function goDetail() {
+        window.location.href = '/crm_detail.html';
+    }
+
+    $(document).ready(function() {
+        $('.tap-box').click(function() {
+            // 모든 탭에서 active 클래스를 제거
+            $('.tap-box').removeClass('active');
+            $('.title-tap').removeClass('active');
+            $('.num-tag').removeClass('active');
+            
+            // 클릭된 탭에 active 클래스 추가
+            $(this).addClass('active');
+            $(this).find('.title-tap').addClass('active');
+            $(this).find('.num-tag').addClass('active');
+        });
+        });
+
+    // Chart.js
+    const ctx = document.getElementById('myChart');
+    const myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                data: [60, 10, 4, 1, 25], // 100 기준으로 변환된 데이터
+                backgroundColor: [
+                    '#6e31d1',
+                    '#00bf4c',
+                    '#eb7639',
+                    '#0c77fb',
+                    '#dbdbdb'
+                ],
+                borderColor: [
+                    '#6e31d1',
+                    '#00bf4c',
+                    '#eb7639',
+                    '#0c77fb',
+                    '#dbdbdb'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: false,
+            cutout: '80%', 
+            plugins: {
+                legend: {
+                    display: false 
+                }
+            }
+        },
+        plugins: [{
+            id: 'centerText',
+            beforeDraw: function(chart) {
+                const width = chart.width;
+                const height = chart.height;
+                const ctx = chart.ctx;
+                ctx.save();
+
+                // 첫 번째 줄 텍스트 설정
+                ctx.font = "0.875rem Pretendard";
+                ctx.fillStyle = '#999'; 
+                ctx.textBaseline = "middle";
+
+                const firstLineText = "총 List"; 
+                const firstLineX = Math.round((width - ctx.measureText(firstLineText).width) / 2);
+                const firstLineY = height / 2 - 15; 
+
+                ctx.fillText(firstLineText, firstLineX, firstLineY);
+
+                // 두 번째 줄 텍스트 설정
+                ctx.font = "bold 1.75rem Pretendard"; 
+                ctx.fillStyle = '#191919';
+
+                const secondLineText = "100"; 
+                const secondLineX = Math.round((width - ctx.measureText(secondLineText).width) / 2);
+                const secondLineY = height / 2 + 10;
+
+                ctx.fillText(secondLineText, secondLineX, secondLineY);
+
+                ctx.restore();
+            }
+        }]
+    });
+</script>
+
+</html>

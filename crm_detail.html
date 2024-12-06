@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트레이드잇</title>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- <link rel="stylesheet" href="../files/fonts/xeicon/xeicon.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/d49aa60918.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/mypage.css">
+    
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="../assets/imgs/tradeit_logo.svg" alt="logo" onclick="location.href='/';">
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="./crm_dashboard.html" id="dash">
+                            <div>
+                                <img src="../assets/imgs/sidebar-dash.svg" class="sidebar_icon">
+                                <span>대시보드</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="./crm_buyerlist.html" id="buyerlist">
+                            <div>
+                                <img src="../assets/imgs/sidebar-buyerlist.svg" class="sidebar_icon">
+                                <span>바이어 리스트</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="./crm_clientlist.html" id="clientlist">
+                            <div>
+                                <img src="../assets/imgs/sidebar-clientlist.svg" class="sidebar_icon">
+                                <span>고객 관리</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li id="toggle-menu">
+                        <a href="#" id="report">
+                            <div>
+                                <img src="../assets/imgs/sidebar-board.svg" class="sidebar_icon">
+                                <span>업무 리포트</span>
+                            </div>
+                            <img src="../assets/imgs/sidebar-toggle.svg" class="sidebar_drop_icon">
+                        </a>
+                    </li>
+                    <div class="submenu">
+                        <div class="submenu-item"><a href="./crm_week_report.html" id="week">주간 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_month_report.html" id="month">월간 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_meeting_report.html" id="meeting">미팅 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_business_report.html" id="business">출장 리포트</a></div>
+                    </div>
+                    <li>
+                        <a href="./crm_calendar.html" id="calendar">
+                            <div>
+                                <img src="../assets/imgs/sidebar-calendar.svg" class="sidebar_icon">
+                                <span>일정 관리</span>
+                            </div>
+                        </a>
+                    </li> 
+                </ul>
+            </nav>
+            <div>
+                <button class="transfer-button">
+                    <img src="../assets/imgs/change_type.svg">
+                    <span>기업 전환</span>
+                </button>
+            </div>
+    </aside>
+    <main class="mg-14">
+    <header>
+        <div class="menu-nav">
+            <span>Dashboard</span>
+        </div>
+        <div class="mypage">
+            <div class="user-info" id="myprofile">
+                    <img src="/images/supplier/100003-티제이코프/profile_1643868771.png" class="profile_img">
+                <span class="bold">홍길동</span><span>님</span>
+                <img src="../assets/imgs/drop_inactive_icon.svg" class="sidebar_drop_icon">
+            </div>
+        </div>
+    </header>
+    <div class="myprofile-box">
+        <div>
+            <span>
+                <a href="/crm_profile_edit.html">개인정보 수정</a>
+            </span>
+        </div>
+        <div>
+            <span onclick="signOut()">로그아웃</span>
+        </div>
+    </div>
+    <div>
+        <div class="page-box">
+            <div class="page-title">고객 상세 정보</div>
+            <!-- 바이어리스트에서 접근할 경우
+            <div class="page-title">바이어 상세 정보</div> -->
+        </div>
+    </div>
+    <section class="detail-wrap">
+        <!-- left section -->
+        <div class="client-box">
+            <div>
+                <img src="./assets/imgs/buyer_logo6.png" class="logo">
+            </div>
+            <div class="company-name">
+                <span>Victaulic Company</span>
+            </div>
+            <div class="info-wrap">
+                <div class="flex-center" style="margin-bottom: 0.25rem;">
+                    <div class="label">
+                        <img src="./assets/imgs/client_label1.svg">
+                    </div>
+                    <div class="flex-center value">
+                        <div class="flag-box flex-center">
+                            <img src="./assets/imgs/flag_jp.png">
+                        </div>
+                        <div>Japan</div>
+                    </div>
+                </div>
+                <div class="flex-center" >
+                    <div class="label">
+                        <img src="./assets/imgs/client_label3.svg">
+                    </div>
+                    <div class="value">90-3223945513</div>
+                </div>
+                <div class="flex-center">
+                    <div class="label">
+                        <img src="./assets/imgs/client_label2.svg">
+                    </div>
+                    <div class="value">jmmmmy@gmail.com</div>
+                </div>
+            </div>
+        </div>
+        <!-- right section -->
+        <div class="info-box">
+            <div class="tap-box">
+                <div class="tap active" data-target="top">상세 정보</div>
+                <div class="tap" data-target="#manager-info-box">담당자 정보</div>
+                <div class="tap" data-target="#sales-report-box">영업 현황</div>
+            </div>
+            <div class="content-box">
+                <!--상세 정보 section -->
+                <div class="detail-info-box" id="detail-info-box">
+                    <div class="header flex-side">
+                        <h5>상세 정보</h5>
+                        <button class="btn_add" onclick="location.href='/crm_update_detail.html'">
+                            <img src="./assets/imgs/update_icon.svg">
+                            <span>수정하기</span>
+                        </button>
+                    </div>
+                    <div class="contents">
+                        <div class="flex">
+                            <div class="label">회사 소개</div>
+                            <div class="value">회사 소개 입니다.</div>
+                        </div>
+                        <div class="flex">
+                            <div class="label">주소</div>
+                            <div class="value">
+                                No:48 Haci Sabanci Organize Sanayi BolgesiAtaturk Bulvari, Saricam Adana, 01350 Turkey <br>
+                                <div class="map-box">
+                                    <!-- maps section -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div class="label">종업원수</div>
+                            <div class="value">000명</div>
+                        </div>
+                        <div class="flex">
+                            <div class="label">매출액</div>
+                            <div class="value">20M</div>
+                        </div>
+                        <div class="flex">
+                            <div class="label">홈페이지</div>
+                            <div class="value felx-center">
+                                <a href="https://swastikimpex.in/" target="_blank">swastikimpex.in/</a>
+                                <a href="https://swastikimpex.in/" target="_blank"><img src="./assets/imgs/homepage_icon.svg"></a>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div class="label">설립일</div>
+                            <div class="value">2005.03.12</div>
+                        </div>
+                    </div> 
+                    <!-- 상세 정보 nodata (일단 display:none)-->
+                    <div class="nodata-box">
+                        <div class="nodata-contents">
+                            <img src="./assets/imgs/nodata_icon.svg">
+                            <p>상세 정보가 없습니다.</p>
+                            <button class="btn_add" onclick="location.href='/crm_update_detail.html'">
+                                <img src="./assets/imgs/plus_icon.svg">
+                                <span>추가하기</span> 
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 담당자 정보 section -->
+                <div class="manager-info-box" id="manager-info-box">
+                    <div class="header flex-side">
+                        <h5>담당자 정보</h5>
+                        <button class="btn_add" onclick="location.href='/crm_update_manager.html'">
+                            <img src="./assets/imgs/plus_icon.svg">
+                            <span>추가하기</span>
+                        </button>
+                    </div>
+                    <div class="contents">
+                        <div class="profile-box">
+                            <div class="header-info">
+                                <div class="flex-center">
+                                    <img src="./assets/imgs/manager_profile1.svg">
+                                    <div class="margin_0625">
+                                        <div class="name">John Park</div>
+                                        <div class="position">
+                                            <span>CEO</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <img src="./assets/imgs/more_icon.svg" class="settings">
+                                <div class="update-box">
+                                    <div class="row-div" onclick="location.href='/crm_update_manager.html'">
+                                        <img src="./assets/imgs/update_inactive.svg">
+                                        <span>수정</span>
+                                    </div>
+                                    <div class="row-div">
+                                        <img src="./assets/imgs/delete_inactive.svg">
+                                        <span>삭제</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-info">
+                                <div class="flex-center">
+                                    <div class="label">HP</div>
+                                    <div class="value">+91 000-0000-0000</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">Tel</div>
+                                    <div class="value">+91 942-882-9256</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">이메일</div>
+                                    <div class="value">john.park@gmail.com</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="label">SNS</div>
+                                    <div class="value flex-center sns-box">
+                                        <a href="#"><img src="./assets/imgs/facebook.svg"></a>
+                                        <a href="#"><img src="./assets/imgs/twitter.svg"></a>
+                                        <a href="#"><img src="./assets/imgs/linkedin.svg"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-box">
+                            <div class="header-info">
+                                <div class="flex-center">
+                                    <img src="./assets/imgs/manager_profile2.svg">
+                                    <div class="margin_0625">
+                                        <div class="name">Amy Seo</div>
+                                        <div class="position">
+                                            <span>Manager</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <img src="./assets/imgs/more_icon.svg" class="settings">
+                                <div class="update-box">
+                                    <div class="row-div" onclick="location.href='/crm_update_manager.html'">
+                                        <img src="./assets/imgs/update_inactive.svg">
+                                        <span>수정</span>
+                                    </div>
+                                    <div class="row-div">
+                                        <img src="./assets/imgs/delete_inactive.svg">
+                                        <span>삭제</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-info">
+                                <div class="flex-center">
+                                    <div class="label">HP</div>
+                                    <div class="value">+91 000-0000-0000</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">Tel</div>
+                                    <div class="value">+91 942-882-9256</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">이메일</div>
+                                    <div class="value">john.park@gmail.com</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">SNS</div>
+                                    <div class="value flex-center sns-box">
+                                        <a href="#"><img src="./assets/imgs/facebook.svg"></a>
+                                        <a href="#"><img src="./assets/imgs/twitter.svg"></a>
+                                        <a href="#"><img src="./assets/imgs/linkedin.svg"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-box">
+                            <div class="header-info">
+                                <div class="flex-center">
+                                    <img src="./assets/imgs/manager_profile3.svg">
+                                    <div class="margin_0625">
+                                        <div class="name">Jun Kim</div>
+                                        <div class="position">
+                                            <span>Manager</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <img src="./assets/imgs/more_icon.svg" class="settings">
+                                <div class="update-box">
+                                    <div class="row-div" onclick="location.href='/crm_update_manager.html'">
+                                        <img src="./assets/imgs/update_inactive.svg">
+                                        <span>수정</span>
+                                    </div>
+                                    <div class="row-div">
+                                        <img src="./assets/imgs/delete_inactive.svg">
+                                        <span>삭제</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-info">
+                                <div class="flex-center">
+                                    <div class="label">HP</div>
+                                    <div class="value">+91 000-0000-0000</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">Tel</div>
+                                    <div class="value">+91 942-882-9256</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">이메일</div>
+                                    <div class="value">john.park@gmail.com</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">SNS</div>
+                                    <div class="value flex-center sns-box">
+                                        <a href="#"><img src="./assets/imgs/facebook.svg"></a>
+                                        <a href="#"><img src="./assets/imgs/twitter.svg"></a>
+                                        <a href="#"><img src="./assets/imgs/linkedin.svg"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-box">
+                            <div class="header-info">
+                                <div class="flex-center">
+                                    <img src="./assets/imgs/manager_profile4.svg">
+                                    <div class="margin_0625">
+                                        <div class="name">Elly Lee</div>
+                                        <div class="position">
+                                            <span>Manager</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <img src="./assets/imgs/more_icon.svg" class="settings">
+                                <div class="update-box">
+                                    <div class="row-div" onclick="location.href='/crm_update_manager.html'">
+                                        <img src="./assets/imgs/update_inactive.svg">
+                                        <span>수정</span>
+                                    </div>
+                                    <div class="row-div" >
+                                        <img src="./assets/imgs/delete_inactive.svg">
+                                        <span>삭제</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-info">
+                                <div class="flex-center">
+                                    <div class="label">HP</div>
+                                    <div class="value">+91 000-0000-0000</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">Tel</div>
+                                    <div class="value">+91 942-882-9256</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">이메일</div>
+                                    <div class="value">john.park@gmail.com</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="label">SNS</div>
+                                    <div class="value flex-center sns-box">
+                                        <a href="#"><img src="./assets/imgs/facebook.svg"></a>
+                                        <a href="#"><img src="./assets/imgs/twitter.svg"></a>
+                                        <a href="#"><img src="./assets/imgs/linkedin.svg"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 담당자 정보 nodata (일단 display:none) -->
+                    <div class="nodata-box">
+                        <div class="nodata-contents">
+                            <img src="./assets/imgs/nodata_icon.svg">
+                            <p>담당자 정보가 없습니다.</p>
+                            <button class="btn_add" onclick="location.href='/crm_update_manager.html'">
+                                <img src="./assets/imgs/plus_icon.svg">
+                                <span>추가하기</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 영업 현황 section -->
+                <div class="sales-report-box" id="sales-report-box">
+                    <div class="header flex-side">
+                        <h5>영업 현황</h5>
+                        <!-- 3가지 아이콘은 동일한 명칭으로 class명을 부여하면 컬러가 변경됨 css에 작성해둠! -->
+                        <div class="flex-center">
+                            <div class="notice flex-center">
+                                <div class="flex-center">
+                                    <div class="icon communication"></div>
+                                    <div class="margin_0313">Communication</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="icon inquiry"></div>
+                                    <div class="margin_0313">Inquiry</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="icon quotation"></div>
+                                    <div class="margin_0313">Quotation</div>
+                                </div>
+                                <div class="flex-center">
+                                    <div class="icon contract"></div>
+                                    <div class="margin_0313">Contract</div>
+                                </div>
+                            </div>
+                            <button class="btn_add" onclick="location.href='/crm_update_report.html'">
+                                <img src="./assets/imgs/plus_icon.svg">
+                                <span>작성하기</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="contents">
+                        <div class="report-box flex">
+                            <div class="timestamp">24-06-12<br>16:50</div>
+                            <div class="line">
+                                <div class="icon communication" id="important">
+                                    <!-- important 인 경우 img display -->
+                                    <img src="./assets/imgs/important_icon.svg">
+                                </div>
+                            </div>
+                            <div style="width: 100%;">
+                                <div class="flex-side">
+                                    <div class="flex-center">
+                                        <div class="name">User</div>
+                                        <div class="self-tag">
+                                            <span>본인</span>
+                                        </div>
+                                    </div>
+                                    <img src="./assets/imgs/more_icon.svg" class="settings">
+                                    <div class="update-box">
+                                        <div class="row-div" onclick="location.href='/crm_update_report.html'">
+                                            <img src="./assets/imgs/update_active.svg">
+                                            <span>수정</span>
+                                        </div>
+                                        <div class="row-div">
+                                            <img src="./assets/imgs/delete_inactive.svg">
+                                            <span>삭제</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="textarea">
+                                    <div class="textarea-text">
+                                        바이어명 : Texicon <br>
+                                        국가 : 필리핀 <br>
+                                        담당자 : Leo Andaya - Purchasing Manager <br>
+                                        진행 상황 : 에코윈 자료 소개 후 follow up 진행 중 <br>
+                                        - 에코윈 구경본 대표님으로부터 대응 자료 확보 <br>
+                                        - 담당자에게 전달했고, 제품군이 자기 제품들과 상당히 겹친다는 피드백 받음 <br>
+                                        - 해외 공급 담당자가 새로와서 공유해주겠다고 했고 (Mr. Andaya는 현지 공급 담당, 해외 purchasing manager이 사직하여 <br>
+                                            임시로 맡고 있었음) <br>
+                                            제품에 대한 니즈가 있을 때 샘플 요청하겠다고 함. <br>
+                                        - 샘플을 바로 요청하지 않는 이유는, 회사 규정상 정말 가시권에 있는 제품만 샘플로 테스트한다는 규정이 있기 때문이라고 함. 
+                                    </div>
+                                </div>
+                                <div class="comment-input">
+                                    <input type="text" placeholder="댓글을 입력해보세요.">
+                                    <div class="send">
+                                        <img src="./assets/imgs/send_icon.svg">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="report-box flex">
+                            <div class="timestamp">24-06-10<br>9:50</div>
+                            <!-- 마지막 요소에는 line x. class명 변경  -->
+                            <div class="line-last">
+                                <div class="icon inquiry">
+                                    <!-- important 인 경우 img display -->
+                                    <!-- <img src="./assets/imgs/important_icon.svg"> -->
+                                </div>
+                            </div>
+                            <div style="width: 100%;">
+                                <div class="flex-side">
+                                    <div class="flex-center">
+                                        <div class="name">트레이드잇 매니저</div>
+                                    </div>
+                                    <img src="./assets/imgs/more_icon.svg" class="settings">
+                                    <div class="update-box">
+                                        <div class="row-div" onclick="location.href='/crm_update_report.html'">
+                                            <img src="./assets/imgs/update_active.svg">
+                                            <span>수정</span>
+                                        </div>
+                                        <div class="row-div">
+                                            <img src="./assets/imgs/delete_inactive.svg">
+                                            <span>삭제</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="textarea">
+                                    <div class="textarea-img">
+                                        <img src="./assets/imgs/sample_img2.png" class="report-img">
+                                    </div>
+                                    <div class="textarea-text">
+                                        "ELECTRIC EXCAVATOR"로 cic 검색 및 전체 385개의 수입 업체 중 중복 및 오류업체의 데이터를 제외하여 총 20개로 필터링 완료 (웹사이트 확인)
+                                    </div>
+                                    <div class="textarea-file">
+                                        <div class="files">
+                                            <img src="./assets/imgs/file_clips.svg"> 
+                                            <span>screwpdf_11710377727.jpg</span>
+                                        </div>
+                                    </div>
+                                    <div class="textarea-comment">
+                                        <div class="title flex-center">
+                                            <span>댓글</span>
+                                            <div class="cnt">
+                                                <span>2</span>
+                                            </div>
+                                        </div>
+                                        <div class="content">
+                                            <div class="comment-box">
+                                                <div class="flex-side">
+                                                    <div class="flex-center">
+                                                        <div class="name">User</div>
+                                                        <div class="self-tag">
+                                                            <span>본인</span>
+                                                        </div>
+                                                        <div class="timestamp-comment">
+                                                            <span>2024-06-20  13:08</span>
+                                                        </div>
+                                                    </div>
+                                                    <img src="./assets/imgs/more_icon.svg" class="settings">
+                                                    <div class="update-box">
+                                                        <div class="row-div">
+                                                            <img src="./assets/imgs/delete_inactive.svg">
+                                                            <span>삭제</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="text">확인했습니다.</div>
+                                            </div>
+                                            <div class="comment-box">
+                                                <div class="flex-side">
+                                                    <div class="flex-center">
+                                                        <div class="name">트레이드잇 매니저</div>
+                                                        <!-- <div class="self-tag">
+                                                            <span>본인</span>
+                                                        </div> -->
+                                                        <div class="timestamp-comment">
+                                                            <span>2024-06-21  09:00</span>
+                                                        </div>
+                                                    </div>
+                                                    <img src="./assets/imgs/more_icon.svg" class="settings">
+                                                    <div class="update-box">
+                                                        <div class="row-div">
+                                                            <img src="./assets/imgs/delete_inactive.svg">
+                                                            <span>삭제</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="text">추가 문의사항이 있으시면 언제든지 연락주세요.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>  
+                                <div class="comment-input">
+                                    <input type="text" placeholder="댓글을 입력해보세요.">
+                                    <div class="send">
+                                        <img src="./assets/imgs/send_icon.svg">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div id="chart" style="width: 100%; height: 100vh;"></div> -->
+                    <!-- 영업 현황 nodata (일단 display:none) -->
+                    <div class="nodata-box">
+                        <div class="nodata-contents">
+                            <img src="./assets/imgs/nodata_icon.svg">
+                            <p>영업 현황이 없습니다.</p>
+                            <button class="btn_add">
+                                <img src="./assets/imgs/plus_icon.svg">
+                                <span>추가하기</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- 이미지 미리보기 팝업 -->
+                    <div class="overlay">
+                        <div class="img-view">
+                            <div class="img-box">
+                                <img src="./assets/imgs/sample_img2.png" class="report-img">
+                            </div>
+                            <div class="buttons">
+                                <button class="btn_add"  onclick="alert('저장되었습니다!');">
+                                    <img src="./assets/imgs/save_icon.svg">
+                                    <span>저장하기</span>
+                                </button>
+                                <button class="btn_close">
+                                    <img src="./assets/imgs/close_preview.svg">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+</main>
+</body>
+
+<script>
+    // 사이드 메뉴 공통 CSS 스크립트
+    const menuItems = [
+        {
+            id: 'dash',
+            iconHover: '../assets/imgs/sidebar-dash-active.svg',
+            iconDefault: '../assets/imgs/sidebar-dash.svg',
+            urls: ['/crm_dashboard.html']
+        },
+        {
+            id: 'buyerlist',
+            iconHover: '../assets/imgs/sidebar-buyerlist-active.svg',
+            iconDefault: '../assets/imgs/sidebar-buyerlist.svg',
+            urls: ['/crm_buyerlist.html']
+        },
+        {
+            id: 'clientlist',
+            iconHover: '../assets/imgs/sidebar-clientlist-active.svg',
+            iconDefault: '../assets/imgs/sidebar-clientlist.svg',
+            urls: ['/crm_clientlist.html','/crm_detail.html','/crm_update_detail.html','/crm_update_manager.html','/crm_update_report.html']
+        },
+        {
+            id: 'report',
+            iconHover: '../assets/imgs/sidebar-board-active.svg',
+            iconDefault: '../assets/imgs/sidebar-board.svg',
+            urls: ['']
+        },
+        {
+            id: 'calendar',
+            iconHover: '../assets/imgs/sidebar-calendar-acitve.svg',
+            iconDefault: '../assets/imgs/sidebar-calendar.svg',
+            urls: ['/crm_calendar.html']
+        },
+    ];
+
+    const currentPath = window.location.pathname;
+
+    const setMenuStyle = (item, icon, isActive) => {
+        item.style.backgroundColor = isActive ? 'rgba(12, 120, 251, 0.1)' : 'transparent';
+        item.style.color = isActive ? '#0c77fb' : '#505050';
+        item.style.fontWeight = isActive ? 'bold' : 'normal';
+        icon.src = isActive ? item.dataset.iconHover : item.dataset.iconDefault;
+    };
+
+    menuItems.forEach(menu => {
+        const item = document.getElementById(menu.id);
+        const icon = item.querySelector('img');
+        
+        // Dataset 속성을 통해 아이콘 정보를 추가
+        item.dataset.iconHover = menu.iconHover;
+        item.dataset.iconDefault = menu.iconDefault;
+
+        item.addEventListener('mouseover', () => setMenuStyle(item, icon, true));
+        item.addEventListener('mouseout', () => !item.classList.contains('active') && setMenuStyle(item, icon, false));
+
+        if (menu.urls.includes(currentPath)) {
+            item.classList.add('active');
+            setMenuStyle(item, icon, true);
+        }
+    });
+
+    
+    // 업무 리포트 사이드메뉴 CSS 스크립트
+    $(function() {
+        $('#report').click(function(e) {
+            e.preventDefault();
+
+            const $submenu = $('.submenu');
+            const isExpanded = $submenu.is(':visible');
+
+            $submenu.slideToggle(300);
+            $('#report .sidebar_drop_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-toggle.svg' : '../assets/imgs/sidebar-toggle-active.svg');
+            $('#report .sidebar_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-board.svg' : '../assets/imgs/sidebar-board-active.svg');
+            $('#report span').css({
+                'color': isExpanded ? '#505050' : '#0c77fb',
+                'font-weight': isExpanded ? '400' : 'bold'
+            });
+            $('#report').css('background-color', 'transparent');
+        });
+    });
+    // 상단 프로필 공통 스크립트
+    $("#myprofile").click(function(event) {
+        event.stopPropagation();
+        $(".myprofile-box").toggle();
+        if ($(".myprofile-box").is(":visible")) {
+            $(".sidebar_drop_icon").attr("src", "../assets/imgs/drop_active_icon.svg");
+        } else {
+            $(".sidebar_drop_icon").attr("src", "../assets/imgs/drop_inactive_icon.svg");
+        }
+    });
+    // hover img 변경
+    $(document).ready(function() {
+        $('.trans-btn').hover(
+            function() {
+                $(this).find('img').attr('src', './assets/imgs/change_client_hover.svg');
+            }, 
+            function() {
+                $(this).find('img').attr('src', './assets/imgs/change_client.svg');
+            }
+        );
+    });
+    // 댓글 input box css
+    $(document).ready(function() {
+        $('.comment-input').each(function() {
+            var $commentInput = $(this);
+            var $inputField = $commentInput.find('input');
+            var $sendButton = $commentInput.find('.send');
+
+            // 입력 필드에 포커스가 갈 때
+            $inputField.on('focus', function() {
+                $commentInput.css('border', '1px solid #0c77fb');
+                $sendButton.css('background-color', '#0c77fb');
+            });
+
+            // 입력 필드에서 포커스가 벗어날 때
+            $inputField.on('blur', function() {
+                if ($inputField.val().trim() === '') {
+                    $commentInput.css('border', 'none');
+                    $sendButton.css('background-color', '#ccc');
+                }
+            });
+
+            // 입력 필드에 텍스트가 입력될 때
+            $inputField.on('input', function() {
+                if ($inputField.val().trim() !== '') {
+                    $sendButton.css('background-color', '#0c77fb');
+                } else {
+                    $sendButton.css('background-color', '#ccc');
+                }
+            });
+        });
+    });
+    // tap 클릭 스크롤 이동 스크립트
+    $(document).ready(function() {
+        $(window).scrollTop(0);
+        $('.tap').on('click', function() {
+            // 모든 탭에서 active 클래스 제거
+            $('.tap').removeClass('active');
+            
+            // 클릭한 탭에 active 클래스 추가
+            $(this).addClass('active');
+            
+            // 해당 섹션으로 스크롤 이동
+            var target = $(this).data('target');
+            
+            if (target === 'top') {
+                // 상단으로 스크롤 이동
+                $('html, body').animate({ scrollTop: 0 }, 500); // 500ms 동안 스크롤
+            } else {
+                // 해당 섹션으로 스크롤 이동
+                $('html, body').animate({
+                    scrollTop: $(target).offset().top
+                }, 500); // 500ms 동안 스크롤
+            }
+        });
+    });
+
+    // hover 이미지 변경
+    $(document).ready(function() {
+        $('.row-div').hover(
+            function() {
+                toggleImageSrc($(this).find('img'), 'inactive', 'active');
+            },
+            function() {
+                toggleImageSrc($(this).find('img'), 'active', 'inactive');
+            }
+        );
+
+        function toggleImageSrc($img, oldState, newState) {
+            const src = $img.attr('src');
+            if (src.includes(`update_${oldState}`)) {
+                $img.attr('src', `./assets/imgs/update_${newState}.svg`);
+            } else if (src.includes(`delete_${oldState}`)) {
+                $img.attr('src', `./assets/imgs/delete_${newState}.svg`);
+            }
+        }
+    });
+
+    // 담당자 정보 수정/삭제 div display
+    $(document).ready(function() {
+        $('.update-box').hide();
+        $('.settings').on('click', function(event) {
+            event.stopPropagation();
+            var $updateBox = $(this).siblings('.update-box');
+            $('.update-box').not($updateBox).hide();
+            $updateBox.toggle();
+        });
+        $(document).on('click', function() {
+            $('.update-box').hide();
+        });
+        $('.update-box').on('click', function(event) {
+        });
+    });
+
+    // 이미지 클릭 시 미리보기 모달
+    $(document).ready(function() {
+        $('.report-img').on('click', function() {
+            $('.overlay').fadeIn(); 
+            $('body').addClass('fixed'); 
+        });
+
+        // overlay 클릭 시 닫기
+        $('.btn_close').on('click', function() {
+            $('.overlay').fadeOut(); 
+            $('body').removeClass('fixed'); 
+        });
+    });
+
+    var chartDom = document.getElementById('chart');
+        var myChart = echarts.init(chartDom);
+        var option;
+
+        option = {
+            tooltip: {},
+            series: [{
+                type: 'graph',
+                layout: 'none',  // 좌표 기반 레이아웃 사용
+                roam: false,  // 줌 및 드래그 가능
+                label: {
+                    show: true,
+                    position: 'right'
+                },
+                itemStyle: {
+                    color: '#1E88E5',  // 노드와 링크의 통일된 색상
+                    borderColor: '#1E88E5',
+                    borderWidth: 2
+                },
+                data: [
+                    {name: 'KORVAN Co.,Ltd', x: 0, y: 0, symbolSize: 80},  // 중앙 기준 노드
+                    {name: 'Left Node 1', x: -300, y: -100, symbolSize: 50},  // 좌측 첫 번째 노드
+                    {name: 'Left Node 2', x: -300, y: 100, symbolSize: 50},   // 좌측 두 번째 노드
+                    {name: 'Right Node 1', x: 300, y: -200, symbolSize: 50},  // 우측 첫 번째 노드
+                    {name: 'Right Node 2', x: 300, y: -100, symbolSize: 50},  // 우측 두 번째 노드
+                    {name: 'Right Node 3', x: 300, y: 0, symbolSize: 50},     // 우측 세 번째 노드
+                    {name: 'Right Node 4', x: 300, y: 100, symbolSize: 50},   // 우측 네 번째 노드
+                    {name: 'Right Node 5', x: 300, y: 200, symbolSize: 50},   // 우측 다섯 번째 노드
+                    {name: 'Right Node 6', x: 300, y: 300, symbolSize: 50}    // 우측 여섯 번째 노드
+                ],
+                links: [
+                    {source: 'KORVAN Co.,Ltd', target: 'Left Node 1', lineStyle: {curveness: 0.1, color: '#cccccc'}}, 
+                    {source: 'KORVAN Co.,Ltd', target: 'Left Node 2', lineStyle: {curveness: 0.1, color: '#cccccc'}}, 
+                    {source: 'KORVAN Co.,Ltd', target: 'Right Node 1', lineStyle: {curveness: 0.1, color: '#cccccc'}}, 
+                    {source: 'KORVAN Co.,Ltd', target: 'Right Node 2', lineStyle: {curveness: 0.1, color: '#cccccc'}}, 
+                    {source: 'KORVAN Co.,Ltd', target: 'Right Node 3', lineStyle: {curveness: 0.1, color: '#cccccc'}}, 
+                    {source: 'KORVAN Co.,Ltd', target: 'Right Node 4', lineStyle: {curveness: 0.1, color: '#cccccc'}}, 
+                    {source: 'KORVAN Co.,Ltd', target: 'Right Node 5', lineStyle: {curveness: 0.1, color: '#cccccc'}}, 
+                    {source: 'KORVAN Co.,Ltd', target: 'Right Node 6', lineStyle: {curveness: 0.1, color: '#cccccc'}}
+                ],
+                lineStyle: {
+                    color: '#1E88E5',  // 링크 색상 통일
+                    width: 2
+                }
+            }]
+        };
+
+        myChart.setOption(option);
+        
+</script>
+
+</html>

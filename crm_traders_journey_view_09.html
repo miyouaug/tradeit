@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트레이드잇</title>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- <link rel="stylesheet" href="../files/fonts/xeicon/xeicon.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/d49aa60918.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/mypage.css">
+    
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="../assets/imgs/tradeit_logo.svg" alt="logo" onclick="location.href='/';">
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="./crm_dashboard.html" id="dash">
+                            <div>
+                                <img src="../assets/imgs/sidebar-dash.svg" class="sidebar_icon">
+                                <span>대시보드</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="./crm_buyerlist.html" id="buyerlist">
+                            <div>
+                                <img src="../assets/imgs/sidebar-buyerlist.svg" class="sidebar_icon">
+                                <span>바이어 리스트</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="./crm_clientlist.html" id="clientlist">
+                            <div>
+                                <img src="../assets/imgs/sidebar-clientlist.svg" class="sidebar_icon">
+                                <span>고객 관리</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li id="toggle-menu">
+                        <a href="#" id="report">
+                            <div>
+                                <img src="../assets/imgs/sidebar-board.svg" class="sidebar_icon">
+                                <span>업무 리포트</span>
+                            </div>
+                            <img src="../assets/imgs/sidebar-toggle.svg" class="sidebar_drop_icon">
+                        </a>
+                    </li>
+                    <div class="submenu" id="submenu">
+                        <div class="submenu-item"><a href="./crm_week_report.html" id="week">주간 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_month_report.html" id="month">월간 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_meeting_report.html" id="meeting">미팅 리포트</a></div>
+                        <div class="submenu-item"><a href="./crm_business_report.html" id="business">출장 리포트</a></div>
+                    </div>
+                    <li>
+                        <a href="./crm_calendar.html" id="calendar">
+                            <div>
+                                <img src="../assets/imgs/sidebar-calendar.svg" class="sidebar_icon">
+                                <span>일정 관리</span>
+                            </div>
+                        </a>
+                    </li> 
+                    <li id="toggle-menu-insight">
+                        <a href="#" id="insight">
+                            <div>
+                                <img src="../assets/imgs/sidebar-insight.svg" class="sidebar_icon">
+                                <span>인사이트</span>
+                            </div>
+                            <img src="../assets/imgs/sidebar-toggle.svg" class="sidebar_drop_icon">
+                        </a>
+                    </li>
+                    <div class="submenu" id="submenu-insight">
+                        <div class="submenu-item"><a href="./crm_traders_journey.html" id="journey">Trader’s Journey</a></div>
+                        <div class="submenu-item"><a href="./crm_export_case.html" id="export">수출 성공 사례</a></div>
+                        <div class="submenu-item"><a href="./crm_taas_team.html" id="taas">TaaS 팀</a></div>
+                    </div>
+                </ul>
+            </nav>
+            <div>
+                <button class="transfer-button">
+                    <img src="../assets/imgs/change_type.svg">
+                    <span>기업 전환</span>
+                </button>
+            </div>
+    </aside>
+    <main class="mg-14">
+    <header>
+        <div class="menu-nav">
+            <span class="text_colors_1">인사이트</span>
+            <img src="./assets/imgs/nav_right_icon.svg">
+            <span class="text_colors_1">Trader’s Journey</span>
+            <img src="./assets/imgs/nav_right_icon.svg">
+            <span>선적</span>
+        </div>
+        <div class="mypage">
+            <div class="user-info" id="myprofile">
+                    <img src="/images/supplier/100003-티제이코프/profile_1643868771.png" class="profile_img">
+                <span class="bold">홍길동</span><span>님</span>
+                <img src="../assets/imgs/drop_inactive_icon.svg" class="sidebar_drop_icon">
+            </div>
+        </div>
+    </header>
+    <div class="myprofile-box">
+        <div>
+            <span>
+                <a href="/crm_profile_edit.html">개인정보 수정</a>
+            </span>
+        </div>
+        <div>
+            <span onclick="signOut()">로그아웃</span>
+        </div>
+    </div>
+    <div class="insight-view-wrap">
+        <div class="chapter-txt">CHAPTER 09</div>
+        <h3>선적</h3>
+        <div class="chapter-box">
+            <div>
+                <div class="chapter-tag">CHAPTER 09</div>
+                <h5 class="title">선적</h5>
+                <span class="contents">
+                    국제 운송을 통한 물품 운송 (FOB, C&F 조건 등 인코텀즈 활용)
+                </span>
+            </div>
+            <img src="./assets/imgs/chapter-img.svg">
+        </div>
+        <div class="contents-box">
+            <h5>수출 물품을 안전하게 선적하기 위해 고려해야 할 물류 조건은 무엇인가요?</h5>
+            <span>
+                1. 수출 물품을 안전하게 선적하기 위해 고려해야 할 물류 조건은 무엇인가요?<br>
+                물류는 크게 내륙 운송과 국제 해상 운송으로 나눌 수 있습니다. 
+                한국은 지리적으로 섬에 가까워, 주로 배나 비행기를 이용한 해상 또는 항공 운송을 필수적으로 사용하게 됩니다. 
+                따라서 국제 물류 방식에 대해 규정한 인코텀즈(Incoterms)의 이해는 매우 중요합니다.<br> 인코텀즈는 운송 방식에 따른 수출자와 수입자의 책임과 의무를 명확히 규정한 국제적인 약속입니다.  
+                <br><br>
+                인코텀즈는 크게 E 그룹, F 그룹, C 그룹, D 그룹으로 나뉩니다. 그룹이 뒤로 갈수록 수출자가 부담하는 비용이 커집니다. 
+                <br><br>
+                * E 그룹(Ex Works, EXW): 수출자의 공장에서 물품을 수입자가 픽업하는 방식으로, 수출자는 물류비를 부담할 필요가 없습니다.<br>
+                * F 그룹: 수출자는 물품을 정해진 장소까지 보내는 역할을 하고, 그 이후의 비용은 수입자가 부담합니다.<br>
+                <span class="indent">- FOB (Free On Board): 수출자가 물품을 배에 실어주는 비용까지 부담합니다.</span>
+                <span class="indent">- FAS (Free Alongside Ship): 수출자가 배 옆에 물품을 가져다 주는 것까지를 의미하며, 선적은 하지 않습니다.</span>
+                <span class="indent">- FCA (Free Carrier): 수출자가 운송인에게 물품을 전달하는 것까지만 책임집니다. </span>
+                * C 그룹: 수출자가 어디까지의 비용을 부담할지를 명시합니다.<br>
+                <span class="indent">- CFR (Cost and Freight): 수출자는 배에 실어 운임까지 부담합니다.</span>
+                <span class="indent">- CIF (Cost, Insurance, and Freight): 운임에 더해 보험료까지 수출자가 부담합니다.</span>
+                <span class="indent">- CPT (Carriage Paid To): 수출자가 철도나 항공 운송 비용을 부담합니다.</span>
+                <span class="indent">- CIP (Carriage and Insurance Paid To): 운송비와 보험료 모두를 수출자가 부담합니다.</span>
+                        해상 운송의 경우에는 CFR이나 CIF 조건을 주로 사용하며, 철도나 항공 운송의 경우에는 CPT나 CIP 조건을 주로 사용합니다.<br>
+                    * D 그룹: 수출자가 물품을 수입자의 국가까지 운송하는 조건입니다.<br>
+                <span class="indent">- DDP (Delivered Duty Paid): 수출자가 통관, 내륙 운송, 관세를 포함한 모든 비용을 부담합니다.</span>
+                <span class="indent">- DAP (Delivered at Place): 수출자가 국경 또는 지정된 장소까지 물품을 운송하되, 통관은 하지 않습니다.</span>
+                <br>
+                이와 같이, 인코텀즈의 다양한 운송 조건을 활용하여 수출과 수입 과정에서 발생하는 책임과 비용 분담을 명확히 할 수 있습니다. <br>
+                이러한 조건은 국제적인 표준이므로, 반드시 숙지하고 활용하는 것이 중요합니다.
+            </span>
+            <h5>운송 회사나 포워더를 선택할 때 중요한 고려 사항이 있을까요?</h5>
+            <span>
+                운송 회사나 포워더는 전국적으로 약 20,000개의 업체가 있으며, 일반적으로 수출 과정에서는 포워더를 통해 운송이 진행됩니다. <br>
+                대부분의 포워더는 자주 이용하는 항로나 특정 제품에 특화되어 있는 경우가 많습니다. 
+                물류는 제품의 특성에 따라 다양한 방식으로 이루어지며, <br>컨테이너, 벌크(대량 화물), 냉동선 등 여러 운송 수단이 존재합니다. 
+                따라서 가장 중요한 것은 우리 제품의 특성을 잘 파악하고, 해당 운송 경로에 대한 경험이 풍부한 포워더를 선정하는 것입니다.
+                <br><br>
+                또한 해외 네트워크도 매우 중요합니다. 
+                화물은 한국에서 선적된 후 현지에서의 통관과 물류 과정을 거치게 되므로, 현지에서의 처리 능력이 뛰어난 포워더를 선택하는 것이 필수적입니다. 
+                해외 네트워크가 구축된 포워더는 마치 현지에 우리 지사를 두는 것과 같은 서비스를 제공할 수 있습니다. 
+                심지어 수입 과정에서도 포워더의 현지 파트너사를 통해 화물의 상태를 미리 파악하거나, 필요한 정보를 적시에 확인할 수 있습니다. <br>
+                이러한 이유로 포워더의 네트워크는 매우 중요한 선택 기준이 됩니다.
+            </span>
+            <h5>해상 운송, 항공 운송 중 어떤 것이 적합한지 어떻게 판단하나요?</h5>
+            <span>
+                기본적으로 한국은 해상 운송과 항공 운송 두 가지 선택지 중 하나를 선택해야 합니다. 
+                해상과 항공을 선택할 때 가장 중요한 기준은 운임 비용과 <br>긴급성(납기)입니다. 
+                아무리 긴급한 상황이라고 해도 부피가 크거나 무거운 제품의 경우 항공 운송이 불가능할 수 있으며, 
+                반대로 가볍거나 부피가 작은 제품은 납기나 시간이 중요하다면 항공 운송이 더 적합할 수 있습니다. 이는 기본적인 상식 수준에서 판단이 가능할 것입니다.
+                <br><br>
+                그러나 해상 운임과 항공 운임에 대한 감을 미리 파악해 두는 것이 중요합니다. 
+                예를 들어, 우리 제품을 미국까지 배로 보냈을 때 걸리는 시간과 비용을 대략적으로 파악하고, 그 비용이 제품 가격에 얼마나 큰 비중을 차지하는지 알고 있는 것이 유리합니다.
+                <br><br>
+                한 컨테이너(40피트)에 우리 제품 100박스를 담아 보냈고 제품 가격 총액이 5,000만 원이라면 
+                미국까지의 해상 운임과 통관비가 500만 원이라고 가정했을 때, 운임은 제품가의 **10%**에 해당합니다. 만약 홍콩까지의 운임이 200만 원이라면, 이는 2.5% 수준으로 파악할 수 있습니다.<br> 
+                이러한 비율을 미리 인지하고 있으면, 제품 가격 설정 시 이를 반영할 수 있고, 해상 운송과 항공 운송을 결정할 때도 신속하게 판단할 수 있습니다.
+            </span>
+            <h5>선적 서류를 준비할 때 발생할 수 있는 문제는 어떤 것이 있나요?</h5>
+            <span>
+                선적 서류는 기본적으로 바이어와 셀러 간에 합의된 서류를 의미합니다. 
+                대표적인 기본 선적 서류로는 Invoice(송장), Packing List(포장명세서), Bill of Lading (B/L: 선하증권)이 있습니다. 
+                이 외에도 필요한 경우 C/O (Certificate of Origin: 원산지 증명서), Inspection Report(검사증명서), Certificate of Fumigation(훈증 증명서), Insurance Policy(보험증권) 등의 
+                서류가 추가될 수 있습니다.
+                <br><br>
+                기본 서류 외에도 바이어와 셀러 간의 합의 또는 통관 절차에 따라 추가적으로 요구되는 서류가 있을 수 있습니다. 
+                예를 들어, 신용장(L/C) 거래의 경우, 신용장에 명시된 선적 서류를 모두 구비하지 않으면 결제 지연이나 거절이 발생할 수 있습니다. 
+                따라서 선적 서류는 세부적으로 확인하고<br> 준비하는 것이 매우 중요합니다. 참고로 신용장 거래에서는 해당 서류를 제출하고 결제를 요청하는 절차를 네고(Nego: Negotiation)라고 합니다.
+                <br><br>
+                또한, 통관 절차와 관련해서는 국내에서는 포워더를 통해 관세사와 사전 협의하는 것이 중요하고, 해외 통관의 경우에는 바이어를 통해 현지 규정을 미리 확인하는 것이 필수적입니다. 
+                종종 물품을 해외로 보내고 현지 통관에 문제가 발생해 결제를 받지 못하는 사례가 발생할 수 있기 때문입니다.
+                결론적으로, 선적 서류는 결제 및 통관과 직결된 중요한 요소이므로 신중하게 준비하고 확인해야 할 부분입니다.
+            </span>
+        </div>
+        <div class="footer">
+            <div class="flex-center">
+                <button class="move-button" onclick="location.href='/crm_traders_journey_view_08.html'">
+                    <img src="./assets/imgs/prev_icon.svg"> 
+                </button>
+                <div class="txt-box">
+                    <div class="default-txt">이전</div>
+                    <div>생산</div>
+                </div>
+            </div>
+            <button class="list-button" onclick="location.href='/crm_traders_journey.html'">
+                <img src="./assets/imgs/list-icon.svg">
+                <span>목록</span>
+            </button>
+            <div class="flex-center">
+                <div class="txt-box" style="text-align: right;">
+                    <div class="default-txt">다음</div>
+                    <div>결제</div>
+                </div>
+                <button class="move-button" onclick="location.href='/crm_traders_journey_view_10.html'">
+                    <img src="./assets/imgs/next_icon.svg"> 
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+
+
+<script>
+    // 사이드 메뉴 공통 CSS 스크립트
+    const menuItems = [
+        {
+            id: 'dash',
+            iconHover: '../assets/imgs/sidebar-dash-active.svg',
+            iconDefault: '../assets/imgs/sidebar-dash.svg',
+            urls: ['/crm_dashboard.html']
+        },
+        {
+            id: 'buyerlist',
+            iconHover: '../assets/imgs/sidebar-buyerlist-active.svg',
+            iconDefault: '../assets/imgs/sidebar-buyerlist.svg',
+            urls: ['/crm_buyerlist.html']
+        },
+        {
+            id: 'clientlist',
+            iconHover: '../assets/imgs/sidebar-clientlist-active.svg',
+            iconDefault: '../assets/imgs/sidebar-clientlist.svg',
+            urls: ['/crm_clientlist.html','/crm_detail.html','/crm_update_detail.html','/crm_update_manager.html','/crm_update_report.html']
+        },
+        {
+            id: 'report',
+            iconHover: '../assets/imgs/sidebar-board-active.svg',
+            iconDefault: '../assets/imgs/sidebar-board.svg',
+            urls: [''],
+            submenuUrls: ['/crm_week_report.html', '/crm_month_report.html', '/crm_meeting_report.html', '/crm_business_report.html'] 
+        },
+        {
+            id: 'calendar',
+            iconHover: '../assets/imgs/sidebar-calendar-acitve.svg',
+            iconDefault: '../assets/imgs/sidebar-calendar.svg',
+            urls: ['/crm_calendar.html']
+        },
+        {
+            id: 'insight',
+            iconHover: '../assets/imgs/sidebar-insight-active.svg',
+            iconDefault: '../assets/imgs/sidebar-insight.svg' ,
+            urls: [''],
+            submenuUrls: ['/crm_traders_journey.html', '/crm_export_case.html', '/crm_taas_team.html','/crm_traders_journey_view.html'] 
+        }
+    ];
+
+    const currentPath = window.location.pathname;
+
+    const setMenuStyle = (item, icon, isActive) => {
+        item.style.backgroundColor = isActive ? 'rgba(12, 120, 251, 0.1)' : 'transparent';
+        item.style.color = isActive ? '#0c77fb' : '#505050';
+        item.style.fontWeight = isActive ? 'bold' : 'normal';
+        icon.src = isActive ? item.dataset.iconHover : item.dataset.iconDefault;
+    };
+
+    // 서브메뉴 상태 관리 함수
+    const toggleSubmenu = (isActive) => {
+        const submenu = document.querySelector('#submenu-insight');
+        submenu.style.display = isActive ? 'block' : 'none';
+    };
+
+    // 메뉴 아이템 반복 처리
+    menuItems.forEach(menu => {
+        const item = document.getElementById(menu.id);
+        const icon = item.querySelector('img');
+        
+        // Dataset 속성을 통해 아이콘 정보를 추가
+        item.dataset.iconHover = menu.iconHover;
+        item.dataset.iconDefault = menu.iconDefault;
+
+        item.addEventListener('mouseover', () => setMenuStyle(item, icon, true));
+        item.addEventListener('mouseout', () => !item.classList.contains('active') && setMenuStyle(item, icon, false));
+
+        if (menu.urls.includes(currentPath)) {
+            item.classList.add('active');
+            setMenuStyle(item, icon, true);
+        }
+
+    // 서브메뉴를 포함한 메뉴일 경우 추가 처리
+    if (menu.submenuUrls && menu.submenuUrls.includes(currentPath)) {
+        const toggleItem = document.getElementById('toggle-menu-insight');
+        item.style.fontWeight = 'bold';
+        item.style.color = '#0c77fb';
+
+        toggleSubmenu(true);
+
+        const sidebarIcon = toggleItem.querySelector('.sidebar_icon');
+        const sidebarDropIcon = toggleItem.querySelector('.sidebar_drop_icon');
+        
+        sidebarIcon.src = '../assets/imgs/sidebar-insight-active.svg'; 
+        sidebarDropIcon.src = '../assets/imgs/sidebar-toggle-active.svg';  
+
+        const submenuItems = document.querySelectorAll('.submenu-item a');
+        submenuItems.forEach(subItem => {
+            if (subItem.getAttribute('href') === currentPath) {
+                subItem.style.backgroundColor = 'rgba(12, 120, 251, 0.1)';
+                subItem.style.color = '#0c77fb';
+                subItem.style.fontWeight = 'bold';
+            }
+        });
+    }
+});
+
+    // 현재 경로와 서브메뉴 a 요소의 href 속성 비교
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.submenu-item a').forEach(subItem => {
+            const hrefPath = subItem.getAttribute('href').replace('./', '');
+
+            if (currentPath.includes(hrefPath)) {
+                subItem.style.backgroundColor = 'rgba(12, 120, 251, 0.1)';
+                subItem.style.color = '#0c77fb';
+
+                // 서브메뉴 열기
+                toggleSubmenu(true);
+            }
+        });
+    });
+    // 업무 리포트 사이드메뉴 CSS 스크립트
+    $(function() {
+        $('#report').click(function(e) {
+            e.preventDefault();
+
+            const $submenu = $('#submenu');
+            const isExpanded = $submenu.is(':visible');
+
+            $submenu.slideToggle(300);
+            $('#report .sidebar_drop_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-toggle.svg' : '../assets/imgs/sidebar-toggle-active.svg');
+            $('#report .sidebar_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-board.svg' : '../assets/imgs/sidebar-board-active.svg');
+            $('#report span').css({
+                'color': isExpanded ? '#505050' : '#0c77fb',
+                'font-weight': isExpanded ? '400' : 'bold'
+            });
+            $('#report').css('background-color', 'transparent');
+        });
+    });
+    // 인사이트 사이드메뉴 css 스크립트 
+    $(function() {
+        $('#insight').click(function(e) {
+            e.preventDefault();
+
+            const $submenuInsight = $('#submenu-insight');
+            const isExpanded = $submenuInsight.is(':visible');
+
+            $submenuInsight.slideToggle(300);
+            $('#insight .sidebar_drop_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-toggle.svg' : '../assets/imgs/sidebar-toggle-active.svg');
+            $('#insight .sidebar_icon').attr('src', isExpanded ? '../assets/imgs/sidebar-insight.svg' : '../assets/imgs/sidebar-insight-active.svg');
+            $('#insight span').css({
+                'color': isExpanded ? '#505050' : '#0c77fb',
+                'font-weight': isExpanded ? '400' : 'bold'
+            });
+            $('#insight').css('background-color', 'transparent');
+        });
+    });
+
+    
+    // 상단 프로필 공통 스크립트
+    $("#myprofile").click(function(event) {
+        event.stopPropagation();
+        $(".myprofile-box").toggle();
+        if ($(".myprofile-box").is(":visible")) {
+            $(".sidebar_drop_icon").attr("src", "../assets/imgs/drop_active_icon.svg");
+        } else {
+            $(".sidebar_drop_icon").attr("src", "../assets/imgs/drop_inactive_icon.svg");
+        }
+    });    
+</script>
+
+</html>

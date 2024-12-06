@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트레이드잇 | CRM</title>
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/tradeit.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/mypage.css">
+    <!-- js -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<!-- 개인 회원 -->
+<body id="wrap-signup-info">
+    <header>
+        <div class="custom-hr2"></div>
+        <h3>추가정보를 <br> 입력해 주세요.</h3>
+    </header>
+
+    <main>
+        <div class="input-box">
+            <span>회사명</span>
+            <input type="text" placeholder="회사명을 입력해주세요.">
+            <span>부서</span>
+            <input type="text" placeholder="부서를 입력해주세요.">
+            <span>직책</span>
+            <input type="text" placeholder="직책을 입력해주세요.">
+            <span>유입경로</span>
+            <div class="form-select" tabindex="0">
+                <div class="selected">선택</div>
+            </div>
+            <div class="option-box">
+                <div class="option-value">온라인 포털사이트 검색</div>
+                <div class="option-value">SNS</div>
+                <div class="option-value">온라인 광고</div>
+                <div class="option-value">이메일</div>
+                <div class="option-value etc">기타</div>
+            </div>
+            <div class="channel-etc">
+                <input type="text" placeholder="유입경로을 입력해주세요.">
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="buttons-box" style="margin-top: 3.125rem;">
+            <button class="prev-button" onclick="window.location.href = 'crm_sign_up_info_per.html';">  
+                <span>이전</span>
+            </button>
+            <button class="next-button active" onclick="window.location.href = 'crm_sign_up_complete.html';">  
+                <span>다음</span>
+            </button>
+        </div>
+    </footer>
+
+    <script>
+$(function() {
+        $('.form-select').click(function() {
+            $('.option-box').hide();
+
+            $(this).next('.option-box').toggle();
+        });
+
+        // option-value를 클릭했을 때 option-box 닫기
+        $('.option-box .option-value').click(function() {
+            $(this).parent('.option-box').hide();
+
+            var selectedValue = $(this).text();
+            $(this).closest('.option-box').prev('.form-select').find('.selected').text(selectedValue);
+        });
+
+        $(document).click(function(e) {
+            if (!$(e.target).closest('.form-select, .option-box').length) {
+                $('.option-box').hide();
+            }
+        });
+    });
+
+    $(document).ready(function() {
+        $('.option-value').click(function() {
+            if ($(this).hasClass('etc')) {
+                $('.channel-etc').show();
+            } else {
+                $('.channel-etc').hide();
+            }
+            
+            $('.selected').text($(this).text());
+        });
+    });
+    </script>
+
+</body>
+</html>

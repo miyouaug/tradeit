@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트레이드잇 | CRM</title>
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/tradeit.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/mypage.css">
+    <!-- js -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+</head>
+<body id="wrap-signup">
+    <header>
+        <h1>회원가입</h1>
+        <span>회원가입 후에도 회원유형 전환이 가능합니다.</span>
+    </header>
+
+    <main>
+        <div class="signup-option individual">
+            <img src="./assets/imgs/individual.svg">
+            <h3>개인회원</h3>
+            <span>바이어 리스트가 궁금하시면<br> 기업회원으로 가입해주세요.</span>
+            <hr>
+            <span>또는 SNS 계정으로 간편 회원가입</span>
+            <div class="sns-box">
+                <img src="./assets/imgs/gmail.svg">
+                <img src="./assets/imgs/kakao.svg">
+                <img src="./assets/imgs/naver.svg">
+            </div>
+        </div>
+        <div class="signup-option corporate">
+            <img src="./assets/imgs/corporate.svg">
+            <h3>기업회원</h3>
+            <span>바이어와 소통이 필요하시다면<br> Trade Force를 이용해주세요.</span>
+        </div>
+    </main>
+
+    <footer>
+        <button class="next-button">
+            <span>다음</span>
+        </button>
+    </footer>
+
+    <script>
+    // 개인회원, 기업회원 박스 선택 css 적용
+    $(document).ready(function() {
+    var selectedOption = '';
+
+    $('.signup-option').click(function() {
+        // 모든 옵션에서 active 클래스 제거
+        $('.signup-option').removeClass('active');
+        
+        // 선택된 옵션에 active 클래스 추가
+        $(this).addClass('active');
+
+        // 선택된 옵션 저장
+        if ($(this).hasClass('individual')) {
+            selectedOption = 'individual';
+        } else if ($(this).hasClass('corporate')) {
+            selectedOption = 'corporate';
+        }
+
+        // next-button 배경색 변경
+        $('.next-button').css('background-color', '#0c77fb');
+    });
+
+    // 다음 버튼 클릭 시 처리
+    $('.next-button').click(function() {
+        if ($('.signup-option.active').length > 0) {
+            // 옵션이 선택되어 있을 때 페이지 이동
+            if (selectedOption === 'individual') {
+                window.location.href = 'crm_sign_up_agree_per.html';
+            } else if (selectedOption === 'corporate') {
+                window.location.href = 'crm_sign_up_agree_com.html';
+            }
+        } else {
+            // 옵션이 선택되지 않았을 때 경고
+            alert('회원 유형을 선택해주세요.');
+        }
+    });
+});
+    </script>
+
+</body>
+</html>
