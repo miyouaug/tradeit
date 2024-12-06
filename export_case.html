@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트레이드잇</title>
+    <!-- css -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/index_nov.css">
+    
+    <!-- js -->
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+</head>
+<body class="fade-in">
+    <!-- header -->
+    <header>
+        <!-- white ver. -->
+        <div class="nav-box" id="white-nav">
+            <a href="./index.html"><img src="/img/header-logo.svg" class="logo"></a>
+            <ul class="nav-menu">
+                <li><a href="./index.html">홈</a></li>
+                <li><a href="./about.html">트레이드잇 소개</a></li>
+                <li class="active"><a href="./export_case.html">수출성공사례</a></li>
+            </ul>
+            <!-- mobile button -->
+            <button class="mobile-menu">
+                <img src="/img/mobile-menu.png">
+            </button>
+        </div>
+        <!-- black ver.-->
+        <div class="nav-box bl" id="black-nav">
+            <a href="./index.html"><img src="/img/tradeit-logo-blue.svg" class="logo"></a>
+            <ul class="nav-menu">
+                <li class="bl"><a href="./index.html">홈</a></li>
+                <li class="bl"><a href="./about.html">트레이드잇 소개</a></li>
+                <li class="bl active"><a href="./export_case.html">수출성공사례</a></li>
+            </ul>
+            <!-- mobile button -->
+            <button class="mobile-menu">
+                <img src="/img/mobile-menu-bl.svg">
+            </button>
+        </div>
+    </header>
+    <!--  mobile-nav -->
+    <div class="mobile-nav" id="mobile-nav">
+        <ul>
+            <li><a href="./index.html">홈</a></li>
+            <li><a href="./about.html">트레이드잇 소개</a></li>
+            <li><a href="./export_case.html"class="active">수출성공사례</a></li>
+        </ul>
+        <div class="nav-ft">
+            <!-- <div class="sns-box">
+                <a href="https://www.youtube.com/channel/UCmVW1TbzHsXcOfYUCROEAlg" target="_blank" rel="noopener noreferrer">
+                    <div class="sns-icon">
+                        <img src="/img/mb-nav-youtube.png">
+                    </div>
+                </a>
+                <a href="https://www.facebook.com/Trade-it-108557004849181/" target="_blank" rel="noopener noreferrer">
+                    <div class="sns-icon">
+                        <img src="/img/mb-nav-facebook.png">
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/company/tradeitnow" target="_blank" rel="noopener noreferrer">
+                    <div class="sns-icon">
+                        <img src="/img/mb-nav-linkedin.png">
+                    </div>
+                </a>
+                <a href="https://blog.naver.com/trade_it" target="_blank" rel="noopener noreferrer">
+                    <div class="sns-icon">
+                        <img src="/img/mb-nav-blog.png">
+                    </div>
+                </a>
+            </div> -->
+            <span>문의 : 070-8676-0984</span>
+        </div>
+    </div>
+    <!-- banner pc -->
+    <section id="banner-export" class="slide-in">
+        <div class="text-about">
+            <h5>수출성공사례</h5>
+            <h1 class="typewriter">
+                트레이드잇과 함께한 수출 성공 스토리, <br>
+                당신의 비즈니스에도 현실이 됩니다
+            </h1>
+        </div>
+        <div class="scroll-icon"></div>
+    </section>
+    <!-- banner mobile -->
+    <section id="banner-export-mb">
+        <div class="text-about">
+            <h5>수출성공사례</h5>
+            <h1 class="typewriter">
+                트레이드잇과 함께한 <br>수출 성공 스토리, <br>
+                당신의 비즈니스에도<br> 현실이 됩니다
+            </h1>
+        </div>
+        <div class="scroll-icon"></div>
+    </section>
+    <section id="content-export">
+        <div class="container">
+            <div class="text-section slide-up">
+                <h2>트레이드잇과 함께한<br> 고객사의 <span class="highlight">수출 성공</span> 스토리</h2>
+            </div>
+            <div class="img-section">
+                <div>
+                    <img src="/img/jetwake.png" id="jetwake" onclick="navigateToView('jetwake')">
+                    <div class="company-name">㈜제***크</div>
+                </div>
+                <div>
+                    <img src="/img/gabsanmetal.png" id="gabsanmetal" onclick="navigateToView('gabsanmetal')">
+                    <div class="company-name">갑**탈㈜</div>
+                </div>
+                <div>
+                    <img src="/img/lumitec.png" id="lumitec" onclick="navigateToView('lumitec')">
+                    <div class="company-name">루*텍㈜</div>
+                </div>
+                <div>
+                    <img src="/img/jkmetal.png" id="jkmetal" onclick="navigateToView('jkmetal')"> 
+                    <div class="company-name">(주)제*****소재</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="content-export-mb">
+        <div class="container">
+            <div class="text-section slide-up">
+                <h2>트레이드잇과 함께한<br> 고객사의 <span class="highlight">수출 성공</span> 스토리</h2>
+            </div>
+            <div class="img-section">
+                <div>
+                    <img src="/img/jetwake.png" id="jetwake" onclick="navigateToView('jetwake')">
+                    <div class="company-name slide-up">㈜제***크</div>
+                </div>
+                <div>
+                    <img src="/img/gabsanmetal.png" id="gabsanmetal" onclick="navigateToView('gabsanmetal')">
+                    <div class="company-name slide-up">갑**탈㈜</div>
+                </div>
+                <div>
+                    <img src="/img/lumitec.png" id="lumitec" onclick="navigateToView('lumitec')">
+                    <div class="company-name slide-up">루*텍㈜</div>
+                </div>
+                <div>
+                    <img src="/img/jkmetal.png" id="jkmetal" onclick="navigateToView('jkmetal')"> 
+                    <div class="company-name slide-up">(주)제*****소재</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- quick menu -->
+    <section id="quick-menu">
+        <div id="scrollTopBtn">
+            <img src="/img/tradeit-top.svg">
+        </div>
+    </section>
+    <!-- footer -->
+    <footer id="footer-pc">
+        <div class="container pc">
+            <div class="flex-box">
+                <div>
+                    <img src="/img/header-logo.svg" class="logo">
+                </div>
+                <div class="sns-box">
+                    <a href="https://www.youtube.com/channel/UCmVW1TbzHsXcOfYUCROEAlg" target="_blank" rel="noopener noreferrer">
+                        <div class="sns-button">
+                            <img src="/img/youtube.svg">
+                        </div>
+                    </a>
+                    <a href="https://www.facebook.com/Trade-it-108557004849181/" target="_blank" rel="noopener noreferrer">
+                        <div class="sns-button">
+                            <img src="/img/facebook.svg">
+                        </div>
+                    </a>
+                    <a href="https://www.linkedin.com/company/tradeitnow" target="_blank" rel="noopener noreferrer">
+                        <div class="sns-button">
+                            <img src="/img/linkedin.svg">
+                        </div>
+                    </a>
+                    <a href="https://blog.naver.com/trade_it" target="_blank" rel="noopener noreferrer">
+                        <div class="sns-button">
+                            <img src="/img/blog.svg">
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="info-box">
+                <div class="tel">문의 : 070-8676-0984</div> 
+                <div class="company-info">
+                    <span>㈜트레이드잇</span>
+                    <span>대표이사 : 문성용 </span>
+                    <span>사업자등록번호 : 125-86-33444 </span>
+                </div>
+                <div class="company-info2">
+                    <span>주소 : 부산광역시 해운대구 센텀중앙로 90 큐비E센텀 23층 2304~2306호</span>
+                    <span> E-mail : businessmanager@tradeit.co.kr</span>
+                </div>
+                <div class="company-info3">
+                    <span>Copyright© 2024 Tradeit. All right reserved.</span>
+                </div>
+            </div>
+        </div>
+    </footer> 
+    <footer id="footer-mb">
+        <div class="container">
+            <div>
+                <img src="/img/header-logo.svg" class="logo">
+            </div>
+            <div class="sns-box">
+                <a href="https://www.youtube.com/channel/UCmVW1TbzHsXcOfYUCROEAlg" target="_blank" rel="noopener noreferrer">
+                    <div class="sns-button">
+                        <img src="/img/youtube.svg">
+                    </div>
+                </a>
+                <a href="https://www.facebook.com/Trade-it-108557004849181/" target="_blank" rel="noopener noreferrer">
+                    <div class="sns-button">
+                        <img src="/img/facebook.svg">
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/company/tradeitnow" target="_blank" rel="noopener noreferrer">
+                    <div class="sns-button">
+                        <img src="/img/linkedin.svg">
+                    </div>
+                </a>
+                <a href="https://blog.naver.com/trade_it" target="_blank" rel="noopener noreferrer">
+                    <div class="sns-button">
+                        <img src="/img/blog.svg">
+                    </div>
+                </a>
+            </div>
+            <div class="info-box">
+                <div class="tel">문의 : 070-8676-0984</div> 
+                <div class="company-info">
+                    <span>㈜트레이드잇</span>
+                    <span>대표이사 : 문성용 </span>
+                </div>
+                <div class="company-info2">
+                    <span>사업자등록번호 : 125-86-33444 </span> <br>
+                    <span>주소 : 부산광역시 해운대구 센텀중앙로 90 큐비E센텀 23층 2304~2306호</span> <br>
+                    <span> E-mail : businessmanager@tradeit.co.kr</span>
+                </div>
+                <div class="company-info3">
+                    <span>Copyright© 2024 Tradeit. All right reserved.</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+<script>
+    // 페이지가 로드된 후 초기 상태 설정
+    document.addEventListener('DOMContentLoaded', function () {
+        const blackNav = document.getElementById('black-nav');
+        const header = document.querySelector('header');
+
+        blackNav.style.display = 'none';
+        header.style.transform = 'translateY(0)'; 
+    });
+
+    // header css
+    window.addEventListener('scroll', function () {
+        const scrollPosition = window.scrollY;
+        const header = document.querySelector('header');
+        const whiteNav = document.getElementById('white-nav');
+        const blackNav = document.getElementById('black-nav');
+
+        // 화면 너비 확인
+        const threshold = window.innerWidth <= 769 ? 600 : 1000;
+
+        if (scrollPosition > threshold) {
+            whiteNav.style.display = 'none';
+            blackNav.style.display = 'flex';
+            header.classList.add('bl');
+            header.style.transform = 'translateY(0)'; 
+        } else {
+            whiteNav.style.display = 'flex';
+            blackNav.style.display = 'none';
+            header.classList.remove('bl');
+            header.style.transform = scrollPosition > 0 ? 'translateY(-100%)' : 'translateY(0)'; 
+        }
+    });
+
+    // 모바일 메뉴 
+    document.addEventListener("DOMContentLoaded", () => {
+        const menuButtons = document.querySelectorAll(".mobile-menu");
+        const mobileNav = document.getElementById("mobile-nav");
+        const body = document.body;
+        const logo = document.querySelector(".nav-box .logo");
+        const mobileButtonImage = document.querySelector(".mobile-menu img");
+
+        const disableScroll = () => {
+            body.style.overflow = "hidden";
+            body.style.height = "100%";
+        };
+
+        const enableScroll = () => {
+            body.style.overflow = "";
+            body.style.height = "";
+        };
+
+        const activateMobileNav = () => {
+            mobileNav.classList.add("active");
+            logo.src = "/img/tradeit-logo-blue.svg"; 
+            mobileButtonImage.src = "/img/close-mb-nav.svg";
+            disableScroll();
+        };
+
+        const deactivateMobileNav = () => {
+            mobileNav.classList.remove("active");
+            logo.src = "/img/header-logo.svg";
+            mobileButtonImage.src = "/img/mobile-menu.svg"; 
+            enableScroll();
+        };
+
+        menuButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                if (mobileNav.classList.contains("active")) {
+                    deactivateMobileNav(); 
+                } else {
+                    activateMobileNav(); 
+                }
+            });
+        });
+
+        mobileNav.addEventListener(
+            "touchmove",
+            (e) => {
+                e.preventDefault();
+            },
+            { passive: false }
+        );
+    });
+
+
+    // typewriter
+    document.addEventListener("DOMContentLoaded", () => {
+    const typewriters = document.querySelectorAll('.typewriter');
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target); 
+            }
+        });
+    }, { threshold: 0.3 }); 
+
+        typewriters.forEach(typewriter => observer.observe(typewriter)); 
+    });
+    // slide-up
+    const animatedTexts = document.querySelectorAll('.slide-up');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.5 
+    });
+
+    // 각 요소에 Observer 연결
+    animatedTexts.forEach((text) => observer.observe(text));
+
+    //scoll top
+    $('#scrollTopBtn').click(function() {
+        window.scrollTo({top:0, left:0, behavior:'smooth'});
+    });
+
+    // view 이동
+    function navigateToView(sectionId) {
+        window.location.href = `export_case_view.html?id=${sectionId}`;
+    }
+
+    window.addEventListener('DOMContentLoaded', function () {
+    // 저장된 스크롤 위치 가져오기
+    const scrollPosition = sessionStorage.getItem('scrollPosition');
+        if (scrollPosition) {
+            // 스크롤 위치 설정
+            window.scrollTo(0, parseInt(scrollPosition));
+            // 저장된 스크롤 위치 삭제 (필요 시)
+            sessionStorage.removeItem('scrollPosition');
+        }
+    });
+</script>
+</html>
